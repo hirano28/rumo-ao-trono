@@ -1,16 +1,19 @@
 // Uma partida contra um adversário do desafio. No parque não há relógio,
-// como era de fato (DESIGN.md §6).
+// como era de fato; no clube, o relógio mecânico conta o tempo da história
+// (DESIGN.md §6).
 
 import Phaser from "phaser";
 import { Chess, type Color } from "chess.js";
-import { CONTEUDO, guardar, progresso } from "../estado";
+import { CONTEUDO, capituloAtual, guardar, progresso } from "../estado";
 import { t } from "../i18n/textos";
 import { forcaNoTabuleiro, type Pontos } from "../logica/forca";
 import type { Adversario } from "../logica/conteudo";
+import { Relogio, type Lado } from "../logica/relogio";
 import { lanceDoAdversario, prepararAdversario, type LanceUci } from "../motor/adversario";
 import { motor } from "../motor/motor";
 import { CAMADA_SOBRE, botao, veu } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
+import { RelogioDeXadrez } from "../ui/relogioDeXadrez";
 import { Tabuleiro, type LanceDoJogador } from "../ui/tabuleiro";
 import { trocarDeCena } from "../ui/transicao";
 
@@ -32,6 +35,8 @@ export class Partida extends Phaser.Scene {
    *  atrasado do motor não pode cair na partida seguinte. */
   private numero = 0;
   private fecharConfirmacao?: () => void;
+  private relogio?: Relogio;
+  private mostradores?: RelogioDeXadrez;
 
   constructor() {
     super("Partida");
@@ -57,8 +62,40 @@ export class Partida extends Phaser.Scene {
     const origemX = 92;
     const origemY = (ALTURA - CASA * 8) / 2;
     this.tabuleiro = new Tabuleiro(this, origemX, origemY, CASA, this.ladoDoJogador, this.partida, (lance) => this.jogar(lance));
+    const controle = capituloAtual().desafio.relogio;
+    this.relogio = controle ? new Relogio(controle) : undefined;
+    this.mostradores = undefined;
     this.desenharPainel();
+    this.relogio?.iniciar("w");
+    // com a aba escondida o jogo para (e o adversário com ele): o relógio também
+    const pausar = () => this.relogio?.pausar();
+    const retomar = () => this.relogio?.retomar();
+    this.game.events.on(Phaser.Core.Events.HIDDEN, pausar);
+    this.game.events.on(Phaser.Core.Events.VISIBLE, retomar);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.game.events.off(Phaser.Core.Events.HIDDEN, pausar);
+      this.game.events.off(Phaser.Core.Events.VISIBLE, retomar);
+    });
     this.proximaVez();
+  }
+
+  update(): void {
+    if (!this.relogio || !this.mostradores || this.terminada) return;
+    const eu = this.ladoDoJogador;
+    const ele: Lado = eu === "w" ? "b" : "w";
+    const vez = this.partida.turn();
+    this.mostradores.atualizar([this.relogio.minutosDaHistoria(eu), this.relogio.minutosDaHistoria(ele)], vez === eu ? 0 : 1);
+    const caiu = this.relogio.bandeira();
+    if (caiu) this.perdeuNoTempo(caiu);
+  }
+
+  /** Bandeira caída perde, a não ser que o outro lado só tenha o rei (aí é empate). */
+  private perdeuNoTempo(lado: Lado): void {
+    const outro: Lado = lado === "w" ? "b" : "w";
+    const soRei = this.partida.board().flat().filter((p) => p && p.color === outro).length === 1;
+    if (soRei) return this.registrar(0.5, "partida.fim_tempo_sem_material");
+    const meu = lado === this.ladoDoJogador;
+    this.registrar(meu ? 0 : 1, meu ? "partida.fim_tempo_seu" : "partida.fim_tempo_dele");
   }
 
   private desenharMesa(): void {
@@ -99,8 +136,11 @@ export class Partida extends Phaser.Scene {
       color: css(COR.vermelho),
       wordWrap: { width: 410 },
     });
-    this.lances = this.add.text(x0 + 24, 280, "", {
-      fontFamily: FONTE.maquina,
+    if (this.relogio) {
+      this.mostradores = new RelogioDeXadrez(this, x0 + 230, 340, [t("torneio.voce"), t(this.adversario.nome)]);
+    }
+    this.lances = this.add.text(x0 + 24, this.relogio ? 470 : 280, "", {
+      fontFamily: FONTE.colunas,
       fontSize: "17px",
       color: css(COR.tinta),
       lineSpacing: 6,
@@ -129,6 +169,7 @@ export class Partida extends Phaser.Scene {
   private jogar(lance: LanceDoJogador): void {
     if (this.terminada) return;
     const feito = this.partida.move(lance);
+    this.relogio?.apertar();
     this.tabuleiro.marcarUltimo(feito.from, feito.to);
     this.proximaVez();
   }
@@ -148,10 +189,13 @@ export class Partida extends Phaser.Scene {
     }
     const valeAinda = (): boolean => numero === this.numero && partida === this.partida && !this.terminada;
     if (!valeAinda()) return;
-    const espera = PENSAR_MINIMO_MS + Math.random() * PENSAR_VARIACAO_MS - (performance.now() - inicio);
+    let espera = PENSAR_MINIMO_MS + Math.random() * PENSAR_VARIACAO_MS - (performance.now() - inicio);
+    // apertado no relógio, o adversário joga logo
+    if (this.relogio) espera = Math.min(espera, this.relogio.restanteMs(partida.turn()) / 30);
     this.time.delayedCall(Math.max(0, espera), () => {
       if (!valeAinda()) return;
       const feito = partida.move(lance);
+      this.relogio?.apertar();
       this.tabuleiro.marcarUltimo(feito.from, feito.to);
       this.proximaVez();
     });
@@ -163,7 +207,7 @@ export class Partida extends Phaser.Scene {
     for (let i = 0; i < historico.length; i += 2) {
       linhas.push(`${String(i / 2 + 1).padStart(3)}. ${historico[i].padEnd(8)}${historico[i + 1] ?? ""}`);
     }
-    this.lances.setText(linhas.slice(-14).join("\n"));
+    this.lances.setText(linhas.slice(this.relogio ? -6 : -14).join("\n"));
   }
 
   private encerrar(): void {
@@ -223,6 +267,7 @@ export class Partida extends Phaser.Scene {
     if (this.terminada) return;
     this.fecharConfirmacao?.();
     this.terminada = true;
+    this.relogio?.parar();
     this.tabuleiro.liberar(false);
     progresso().resultados[this.idAdversario] = pontos;
     progresso().forcas[this.idAdversario] = this.forcaDoAdversario;
@@ -252,7 +297,7 @@ export class Partida extends Phaser.Scene {
       })
       .setOrigin(0.5)
       .setDepth(CAMADA_SOBRE);
-    botao(this, LARGURA / 2, ALTURA / 2 + 72, t("partida.voltar_ao_parque"), () => trocarDeCena(this, "Praca")).setDepth(
+    botao(this, LARGURA / 2, ALTURA / 2 + 72, t("partida.levantar"), () => trocarDeCena(this, "Local")).setDepth(
       CAMADA_SOBRE,
     );
   }

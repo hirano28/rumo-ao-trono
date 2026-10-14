@@ -2,7 +2,7 @@
 // e os objetos que trazem a época (jornal, revista, livro, tabuleiro).
 
 import Phaser from "phaser";
-import { CONTEUDO, capituloAtual, guardar, progresso } from "../estado";
+import { CONTEUDO, capituloAtual, guardar, progresso, vistoChave } from "../estado";
 import { dataPorExtenso, t } from "../i18n/textos";
 import type { ObjetoDoQuarto } from "../logica/conteudo";
 import { clicavel } from "../ui/clicavel";
@@ -31,14 +31,15 @@ export class Quarto extends Phaser.Scene {
     this.desenharQuarto();
 
     const capitulo = capituloAtual();
-    for (const objeto of capitulo.quarto.objetos) {
+    const quarto = capitulo.quarto!;
+    for (const objeto of quarto.objetos) {
       const lugar = LUGAR[objeto.id];
       if (!lugar) continue;
       clicavel(this, lugar.x, lugar.y, lugar.l, lugar.a, t(objeto.rotulo), () => this.abrir(objeto), {
-        visto: progresso().vistos.includes(objeto.id),
+        visto: progresso().vistos.includes(vistoChave(objeto.id)),
       });
     }
-    clicavel(this, 110, 430, 150, 300, t(capitulo.quarto.saida), () => this.sair(), { rotuloEmCima: true, visto: true });
+    clicavel(this, 110, 430, 150, 300, t(quarto.saida), () => this.sair(), { rotuloEmCima: true, visto: true });
 
     this.add
       .text(LARGURA / 2, 30, t("quarto.dica"), {
@@ -56,8 +57,8 @@ export class Quarto extends Phaser.Scene {
     if (this.aberto) return;
     this.aberto = true;
     const vistos = progresso().vistos;
-    if (!vistos.includes(objeto.id)) {
-      vistos.push(objeto.id);
+    if (!vistos.includes(vistoChave(objeto.id))) {
+      vistos.push(vistoChave(objeto.id));
       guardar();
     }
     const secoes: Secao[] =
@@ -74,7 +75,7 @@ export class Quarto extends Phaser.Scene {
 
   private sair(): void {
     if (this.aberto) return;
-    trocarDeCena(this, "Praca", undefined, 600);
+    trocarDeCena(this, "Local", undefined, 600);
   }
 
   private desenharQuarto(): void {

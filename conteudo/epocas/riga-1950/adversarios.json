@@ -1,5 +1,51 @@
 {
-  "peteris": { "nome": "adv.peteris.nome", "apresentacao": "adv.peteris.apresentacao", "forcaHistorica": 800, "degrau": -200, "corDoJogador": "brancas" },
-  "grisha": { "nome": "adv.grisha.nome", "apresentacao": "adv.grisha.apresentacao", "forcaHistorica": 900, "degrau": -100, "corDoJogador": "pretas" },
-  "ozols": { "nome": "adv.ozols.nome", "apresentacao": "adv.ozols.apresentacao", "forcaHistorica": 1050, "degrau": 50, "corDoJogador": "brancas" }
+  "peteris": {
+    "nome": "adv.peteris.nome",
+    "apresentacao": "adv.peteris.apresentacao",
+    "forcaHistorica": 800,
+    "degrau": -200,
+    "corDoJogador": "brancas"
+  },
+  "grisha": {
+    "nome": "adv.grisha.nome",
+    "apresentacao": "adv.grisha.apresentacao",
+    "forcaHistorica": 900,
+    "degrau": -100,
+    "corDoJogador": "pretas"
+  },
+  "ozols": {
+    "nome": "adv.ozols.nome",
+    "apresentacao": "adv.ozols.apresentacao",
+    "forcaHistorica": 1050,
+    "degrau": 50,
+    "corDoJogador": "brancas"
+  },
+  "valdis": {
+    "nome": "adv.valdis.nome",
+    "apresentacao": "adv.valdis.apresentacao",
+    "forcaHistorica": 1200,
+    "degrau": -100,
+    "corDoJogador": "brancas"
+  },
+  "ilze": {
+    "nome": "adv.ilze.nome",
+    "apresentacao": "adv.ilze.apresentacao",
+    "forcaHistorica": 1300,
+    "degrau": -50,
+    "corDoJogador": "pretas"
+  },
+  "boris": {
+    "nome": "adv.boris.nome",
+    "apresentacao": "adv.boris.apresentacao",
+    "forcaHistorica": 1350,
+    "degrau": 0,
+    "corDoJogador": "brancas"
+  },
+  "gipslis": {
+    "nome": "adv.gipslis.nome",
+    "apresentacao": "adv.gipslis.apresentacao",
+    "forcaHistorica": 1450,
+    "degrau": 75,
+    "corDoJogador": "pretas"
+  }
 }

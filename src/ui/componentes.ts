@@ -60,6 +60,8 @@ export interface Secao {
   titulo?: string;
   data?: string;
   texto: string;
+  /** Texto em colunas (tabela de torneio): fonte de máquina de escrever. */
+  monoespacada?: boolean;
 }
 
 /**
@@ -121,8 +123,8 @@ export function folhaDePapel(
       y += titulo.height + 6;
     }
     const corpo = cena.add.text(x0 + 40, y, secao.texto, {
-      fontFamily: FONTE.corpo,
-      fontSize: "18px",
+      fontFamily: secao.monoespacada ? FONTE.colunas : FONTE.corpo,
+      fontSize: secao.monoespacada ? "19px" : "18px",
       color: css(COR.tinta),
       lineSpacing: 5,
       wordWrap: { width: largura - 80 },

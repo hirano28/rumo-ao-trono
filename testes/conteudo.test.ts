@@ -47,6 +47,13 @@ describe("conferirConteudo", () => {
     expect(conferirConteudo(ruim, TEXTOS)).toContain("texto not.N1950-errada.titulo ausente em pt-BR");
   });
 
+  it("acusa adversário do desafio sem personagem no local", () => {
+    const ruim = structuredClone(CONTEUDO);
+    const cap2 = ruim.epoca.capitulos.find((c) => c.id === "cap2")!;
+    cap2.local.personagens = cap2.local.personagens.filter((p) => p.id !== "boris");
+    expect(conferirConteudo(ruim, TEXTOS)).toContain("desafio de cap2: boris não tem personagem no local (o jogador nunca poderia jogar com ele)");
+  });
+
   it("acusa referência quebrada", () => {
     const ruim = structuredClone(CONTEUDO);
     ruim.epoca.capitulos[0].desafio.adversarios.push("fantasma");

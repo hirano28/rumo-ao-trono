@@ -38,5 +38,29 @@
     "texto": "not.n1950_final_urss.texto",
     "fonte": "https://en.wikipedia.org/wiki/1950_USSR_Chess_Championship (ficha 0-07)",
     "confianca": "alta"
+  },
+  {
+    "id": "n1951_palacio_10_anos",
+    "data": "1951-02",
+    "titulo": "not.n1951_palacio_10_anos.titulo",
+    "texto": "not.n1951_palacio_10_anos.texto",
+    "fonte": "https://www.lvarhivs.gov.lv/pionierupils/index.php?id=1 ; https://www.archiv.org.lv/pionierupils/index.php?id=2 ; https://lv.wikipedia.org/wiki/R%C4%ABgas_Skol%C4%93nu_pils (ficha cap. 2: P-02, P-03, P-07)",
+    "confianca": "media"
+  },
+  {
+    "id": "n1951_match_comeca",
+    "data": "1951-03-15",
+    "titulo": "not.n1951_match_comeca.titulo",
+    "texto": "not.n1951_match_comeca.texto",
+    "fonte": "https://en.wikipedia.org/wiki/World_Chess_Championship_1951 (ficha cap. 2: N-01)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1951_match_fim",
+    "data": "1951-05-11",
+    "titulo": "not.n1951_match_fim.titulo",
+    "texto": "not.n1951_match_fim.texto",
+    "fonte": "https://en.wikipedia.org/wiki/World_Chess_Championship_1951 (ficha cap. 2: N-01, N-02)",
+    "confianca": "alta"
   }
 ]

@@ -54,27 +54,48 @@
           }
         ]
       },
-      "praca": {
+      "local": {
         "titulo": "cap1.praca.titulo",
+        "cenario": "parque",
         "personagens": [
           {
             "id": "peteris",
             "dialogo": "peteris",
-            "adversario": "peteris"
+            "adversario": "peteris",
+            "x": 330,
+            "y": 470,
+            "roupa": "#5b6b8a",
+            "altura": 0.8,
+            "chapeu": true
           },
           {
             "id": "grisha",
             "dialogo": "grisha",
-            "adversario": "grisha"
+            "adversario": "grisha",
+            "x": 640,
+            "y": 455,
+            "roupa": "#5a4a3a",
+            "altura": 1,
+            "chapeu": true
           },
           {
             "id": "ozols",
             "dialogo": "ozols",
-            "adversario": "ozols"
+            "adversario": "ozols",
+            "x": 960,
+            "y": 460,
+            "roupa": "#3a3a3a",
+            "altura": 1,
+            "chapeu": true
           },
           {
             "id": "marta",
-            "dialogo": "marta"
+            "dialogo": "marta",
+            "x": 1150,
+            "y": 430,
+            "roupa": "#7a3d2c",
+            "altura": 0.95,
+            "chapeu": true
           }
         ]
       },
@@ -89,7 +110,197 @@
       "fechamento": {
         "aprovado": "cap1.fechamento.aprovado",
         "reprovado": "cap1.fechamento.reprovado",
-        "proximo": "cap1.fechamento.proximo"
+        "proximo": "cap1.fechamento.proximo",
+        "tentar": "cap1.fechamento.tentar"
+      }
+    },
+    {
+      "id": "cap2",
+      "ano": 1951,
+      "titulo": "cap2.titulo",
+      "abertura": [
+        "cap2.abertura.p1",
+        "cap2.abertura.p2",
+        "cap2.abertura.p3",
+        "cap2.abertura.p4"
+      ],
+      "quarto": {
+        "saida": "cap2.quarto.saida",
+        "objetos": [
+          {
+            "id": "jornal",
+            "rotulo": "cap2.quarto.jornal.rotulo",
+            "cabecalho": "cap2.quarto.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1951_palacio_10_anos",
+              "n1951_match_comeca"
+            ]
+          },
+          {
+            "id": "revista",
+            "rotulo": "cap2.quarto.revista.rotulo",
+            "cabecalho": "cap2.quarto.revista.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1951_match_fim"
+            ]
+          },
+          {
+            "id": "livro",
+            "rotulo": "cap2.quarto.livro.rotulo",
+            "cabecalho": "cap2.quarto.livro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap2.quarto.livro.texto"
+          },
+          {
+            "id": "tabuleiro",
+            "rotulo": "cap2.quarto.tabuleiro.rotulo",
+            "cabecalho": "cap2.quarto.tabuleiro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap2.quarto.tabuleiro.texto"
+          }
+        ]
+      },
+      "local": {
+        "titulo": "cap2.local.titulo",
+        "cenario": "palacio",
+        "objetos": [
+          {
+            "id": "quadro",
+            "rotulo": "cap2.local.quadro.rotulo",
+            "cabecalho": "cap2.local.quadro.cabecalho",
+            "tipo": "tabela",
+            "x": 640,
+            "y": 205,
+            "largura": 160,
+            "altura": 190
+          },
+          {
+            "id": "vitrine",
+            "rotulo": "cap2.local.vitrine.rotulo",
+            "cabecalho": "cap2.local.vitrine.cabecalho",
+            "tipo": "texto",
+            "texto": "cap2.local.vitrine.texto",
+            "x": 1095,
+            "y": 315,
+            "largura": 170,
+            "altura": 130
+          }
+        ],
+        "personagens": [
+          {
+            "id": "kruzkops",
+            "dialogo": "kruzkops",
+            "x": 230,
+            "y": 445,
+            "roupa": "#3b3f5c",
+            "altura": 1
+          },
+          {
+            "id": "tal",
+            "dialogo": "tal",
+            "x": 420,
+            "y": 470,
+            "roupa": "#6b2f25",
+            "altura": 0.86
+          },
+          {
+            "id": "valdis",
+            "dialogo": "valdis",
+            "adversario": "valdis",
+            "x": 770,
+            "y": 480,
+            "roupa": "#5b6b8a",
+            "altura": 0.8
+          },
+          {
+            "id": "ilze",
+            "dialogo": "ilze",
+            "adversario": "ilze",
+            "x": 890,
+            "y": 478,
+            "roupa": "#7d5a8a",
+            "altura": 0.82
+          },
+          {
+            "id": "boris",
+            "dialogo": "boris",
+            "adversario": "boris",
+            "x": 1010,
+            "y": 470,
+            "roupa": "#4d5a3a",
+            "altura": 0.88
+          },
+          {
+            "id": "gipslis",
+            "dialogo": "gipslis",
+            "adversario": "gipslis",
+            "x": 1140,
+            "y": 476,
+            "roupa": "#5a4a3a",
+            "altura": 0.85
+          }
+        ]
+      },
+      "desafio": {
+        "adversarios": [
+          "valdis",
+          "ilze",
+          "boris",
+          "gipslis"
+        ],
+        "pontosMinimos": 2.5,
+        "relogio": {
+          "minutos": 15,
+          "incremento": 0,
+          "minutosDaHistoria": 120
+        },
+        "torneio": {
+          "titulo": "cap2.torneio.titulo",
+          "rodadas": [
+            [
+              [
+                "ilze",
+                "boris"
+              ]
+            ],
+            [
+              [
+                "valdis",
+                "gipslis"
+              ]
+            ],
+            [
+              [
+                "ilze",
+                "gipslis"
+              ]
+            ],
+            [
+              [
+                "valdis",
+                "boris"
+              ]
+            ],
+            [
+              [
+                "valdis",
+                "ilze"
+              ],
+              [
+                "boris",
+                "gipslis"
+              ]
+            ]
+          ]
+        }
+      },
+      "fechamento": {
+        "aprovado": "cap2.fechamento.aprovado",
+        "reprovado": "cap2.fechamento.reprovado",
+        "proximo": "cap2.fechamento.proximo",
+        "tentar": "cap2.fechamento.tentar"
       }
     }
   ]

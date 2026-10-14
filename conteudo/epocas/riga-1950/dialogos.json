@@ -219,5 +219,287 @@
         ]
       }
     }
+  },
+  "kruzkops": {
+    "quem": "dlg.kruzkops.quem",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.kruzkops.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.kruzkops.op_regras",
+            "vai": "regras"
+          },
+          {
+            "texto": "dlg.kruzkops.op_ativo",
+            "vai": "ativo"
+          },
+          {
+            "texto": "dlg.op.pronto",
+            "acao": "sair"
+          }
+        ]
+      },
+      "regras": {
+        "fala": "dlg.kruzkops.regras",
+        "opcoes": [
+          {
+            "texto": "dlg.kruzkops.op_ativo",
+            "vai": "ativo"
+          },
+          {
+            "texto": "dlg.op.pronto",
+            "acao": "sair"
+          }
+        ]
+      },
+      "ativo": {
+        "fala": "dlg.kruzkops.ativo",
+        "opcoes": [
+          {
+            "texto": "dlg.kruzkops.op_regras",
+            "vai": "regras"
+          },
+          {
+            "texto": "dlg.op.pronto",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "tal": {
+    "quem": "dlg.tal.quem",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.tal.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.tal.op_porta",
+            "vai": "porta"
+          },
+          {
+            "texto": "dlg.tal.op_torneio",
+            "vai": "torneio"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "porta": {
+        "fala": "dlg.tal.porta",
+        "opcoes": [
+          {
+            "texto": "dlg.tal.op_torneio",
+            "vai": "torneio"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "torneio": {
+        "fala": "dlg.tal.torneio",
+        "opcoes": [
+          {
+            "texto": "dlg.tal.op_porta",
+            "vai": "porta"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "valdis": {
+    "quem": "adv.valdis.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.valdis.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar_rodada",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.ate_a_rodada",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.valdis.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.valdis.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.valdis.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "ilze": {
+    "quem": "adv.ilze.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.ilze.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar_rodada",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.ate_a_rodada",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.ilze.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.ilze.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.ilze.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "boris": {
+    "quem": "adv.boris.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.boris.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar_rodada",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.ate_a_rodada",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.boris.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.boris.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.boris.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "gipslis": {
+    "quem": "adv.gipslis.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.gipslis.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar_rodada",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.ate_a_rodada",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.gipslis.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.gipslis.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.gipslis.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
   }
 }

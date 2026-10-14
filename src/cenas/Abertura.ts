@@ -87,6 +87,6 @@ export class Abertura extends Phaser.Scene {
   }
 
   private terminar(): void {
-    trocarDeCena(this, "Quarto", undefined, 600);
+    trocarDeCena(this, capituloAtual().quarto ? "Quarto" : "Local", undefined, 600);
   }
 }

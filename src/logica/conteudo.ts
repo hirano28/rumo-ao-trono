@@ -2,6 +2,8 @@
 // O código do jogo não sabe que é 1950: tudo vem destes dados.
 
 import type { Pontos } from "./forca";
+import type { ControleDeTempo } from "./relogio";
+import { conferirRodadas } from "./torneio";
 
 export type Confianca = "alta" | "media" | "baixa";
 
@@ -45,17 +47,42 @@ export interface Dialogo {
 export interface ObjetoDoQuarto {
   id: string;
   rotulo: string;
-  /** "noticias": mostra as notícias listadas; "texto": um texto só. */
-  tipo: "noticias" | "texto";
+  /** "noticias": as notícias listadas; "texto": um texto só; "tabela": a tabela do torneio. */
+  tipo: "noticias" | "texto" | "tabela";
   cabecalho: string;
   noticias?: string[];
   texto?: string;
+  /** Posição e tamanho da área de clique, nos lugares fora do quarto. */
+  x?: number;
+  y?: number;
+  largura?: number;
+  altura?: number;
 }
 
 export interface Personagem {
   id: string;
   dialogo: string;
   adversario?: string;
+  /** Onde fica na cena (1280×720, ponto dos pés ao centro do corpo). */
+  x: number;
+  y: number;
+  /** Cor da roupa, "#rrggbb". */
+  roupa: string;
+  /** 1 = adulto; menos para criança. */
+  altura: number;
+  chapeu?: boolean;
+}
+
+/** Os cenários que a cena de local sabe desenhar. */
+export type Cenario = "parque" | "palacio";
+
+export interface Desafio {
+  adversarios: string[];
+  pontosMinimos: number;
+  /** Sem relógio, as partidas são livres (como no parque). */
+  relogio?: ControleDeTempo;
+  /** Turno único: os jogos entre os outros, rodada a rodada. */
+  torneio?: { titulo: string; rodadas: Array<Array<[string, string]>> };
 }
 
 export interface Capitulo {
@@ -63,10 +90,12 @@ export interface Capitulo {
   ano: number;
   titulo: string;
   abertura: string[];
-  quarto: { objetos: ObjetoDoQuarto[]; saida: string };
-  praca: { titulo: string; personagens: Personagem[] };
-  desafio: { adversarios: string[]; pontosMinimos: number };
-  fechamento: { aprovado: string; reprovado: string; proximo: string };
+  /** Sem quarto, a abertura leva direto ao local. */
+  quarto?: { objetos: ObjetoDoQuarto[]; saida: string };
+  local: { titulo: string; cenario: Cenario; personagens: Personagem[]; objetos?: ObjetoDoQuarto[] };
+  desafio: Desafio;
+  /** `tentar`: o botão de quem não passou ("Voltar ao parque amanhã"). */
+  fechamento: { aprovado: string; reprovado: string; proximo: string; tentar?: string };
 }
 
 export interface Epoca {
@@ -106,6 +135,7 @@ const CAMPOS_DE_TEXTO = new Set([
   "aprovado",
   "reprovado",
   "proximo",
+  "tentar",
   "abertura",
 ]);
 
@@ -149,12 +179,13 @@ export function conferirConteudo(
   }
 
   for (const capitulo of conteudo.epoca.capitulos) {
-    for (const objeto of capitulo.quarto.objetos) {
+    for (const objeto of capitulo.quarto?.objetos ?? []) {
       for (const id of objeto.noticias ?? []) {
         if (!idsDeNoticia.has(id)) problemas.push(`objeto ${objeto.id} cita notícia inexistente ${id}`);
       }
     }
-    for (const personagem of capitulo.praca.personagens) {
+    for (const personagem of capitulo.local.personagens) {
+      if (!/^#[0-9a-f]{6}$/i.test(personagem.roupa)) problemas.push(`personagem ${personagem.id} com cor de roupa inválida`);
       if (!conteudo.dialogos[personagem.dialogo]) {
         problemas.push(`personagem ${personagem.id} sem diálogo ${personagem.dialogo}`);
       }
@@ -164,9 +195,21 @@ export function conferirConteudo(
     }
     for (const id of capitulo.desafio.adversarios) {
       if (!conteudo.adversarios[id]) problemas.push(`desafio de ${capitulo.id} cita adversário inexistente ${id}`);
+      if (!capitulo.local.personagens.some((p) => p.adversario === id)) {
+        problemas.push(`desafio de ${capitulo.id}: ${id} não tem personagem no local (o jogador nunca poderia jogar com ele)`);
+      }
     }
     if (capitulo.desafio.pontosMinimos > capitulo.desafio.adversarios.length) {
       problemas.push(`desafio de ${capitulo.id} pede mais pontos do que partidas`);
+    }
+    if (capitulo.desafio.torneio) {
+      for (const problema of conferirRodadas(capitulo.desafio.torneio.rodadas, capitulo.desafio.adversarios)) {
+        problemas.push(`torneio de ${capitulo.id}: ${problema}`);
+      }
+    }
+    const relogio = capitulo.desafio.relogio;
+    if (relogio && !(relogio.minutos > 0 && relogio.incremento >= 0 && relogio.minutosDaHistoria > 0)) {
+      problemas.push(`relógio de ${capitulo.id} inválido`);
     }
   }
 

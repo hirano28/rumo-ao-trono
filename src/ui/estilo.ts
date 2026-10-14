@@ -30,6 +30,8 @@ export const FONTE = {
   titulo: "'Playfair Display', Georgia, serif",
   corpo: "Lora, Georgia, serif",
   maquina: "'Special Elite', 'Courier New', monospace",
+  /** Monoespaçada de verdade, para colunas (a Special Elite não é). */
+  colunas: "'Courier Prime', 'Courier New', monospace",
 } as const;
 
 export const FONTES_A_CARREGAR = [
@@ -39,4 +41,5 @@ export const FONTES_A_CARREGAR = [
   "600 20px Lora",
   "italic 400 20px Lora",
   "400 20px 'Special Elite'",
+  "400 20px 'Courier Prime'",
 ];

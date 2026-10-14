@@ -114,6 +114,6 @@ export class Titulo extends Phaser.Scene {
     // salvo de um capítulo que não existe mais (conteúdo mudou): começa de novo
     if (!salvo || !CONTEUDO.epoca.capitulos.some((c) => c.id === salvo.capitulo)) return this.novoJogo();
     definirProgresso({ ...salvo, idioma: idiomaAtual() });
-    this.scene.start(salvo.concluidos.includes(salvo.capitulo) ? "Resultado" : "Praca");
+    this.scene.start(salvo.concluidos.includes(salvo.capitulo) ? "Resultado" : "Local");
   }
 }

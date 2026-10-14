@@ -17,14 +17,20 @@ export interface Progresso {
   forcas: Record<string, number>;
   /** Capítulos cujo desafio já foi vencido. */
   concluidos: string[];
-  /** Objetos e conversas já vistos. */
+  /** Objetos e conversas já vistos, como "capitulo:id". */
   vistos: string[];
+  /** Fixa os resultados simulados do torneio deste jogo. */
+  semente: string;
 }
 
 const CHAVE = "rumo-ao-trono:progresso";
 
 export function novoProgresso(idioma: Idioma, modo: Modo, capitulo: string): Progresso {
-  return { versao: 1, idioma, modo, capitulo, resultados: {}, forcas: {}, concluidos: [], vistos: [] };
+  return { versao: 1, idioma, modo, capitulo, resultados: {}, forcas: {}, concluidos: [], vistos: [], semente: novaSemente() };
+}
+
+export function novaSemente(): string {
+  return Math.random().toString(36).slice(2, 10);
 }
 
 export interface Armazenamento {
@@ -80,7 +86,9 @@ export function normalizar(dado: unknown): Progresso | undefined {
   progresso.resultados = registro(d.resultados, (v): v is Pontos => PONTOS_VALIDOS.includes(v));
   progresso.forcas = registro(d.forcas, (v): v is number => typeof v === "number" && Number.isFinite(v));
   progresso.concluidos = textos(d.concluidos);
-  progresso.vistos = textos(d.vistos);
+  // antes dos capítulos, os vistos não tinham prefixo: eram todos do capítulo 1
+  progresso.vistos = textos(d.vistos).map((v) => (v.includes(":") ? v : `cap1:${v}`));
+  if (typeof d.semente === "string" && d.semente) progresso.semente = d.semente;
   return progresso;
 }
 

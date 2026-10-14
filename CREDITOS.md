@@ -10,6 +10,7 @@
 | chess.js | pacote npm `chess.js` | BSD-2-Clause |
 | Playfair Display, Lora | Google Fonts | OFL 1.1 |
 | Special Elite | Google Fonts (Astigmatic) | Apache-2.0 |
+| Courier Prime | Google Fonts (Quote-Unquote Apps) | OFL 1.1 |
 
 ## Conteúdo histórico
 
@@ -18,5 +19,8 @@ Nenhum texto ou foto de jornal da época foi copiado. A fonte de cada fato está
 em `conteudo/epocas/<época>/noticias.json` e na ficha
 `docs/pesquisa/fatos_1950_1960.md`.
 
-Personagens do parque (Pēteris, Grigori Lvovich, senhor Ozols, dona Marta)
-são fictícios.
+Personagens do parque (Pēteris, Grigori Lvovich, senhor Ozols, dona Marta) e
+da turma do Palácio (Valdis, Ilze, Boris) são fictícios. Mikhail Tal, Jānis
+Krūzkops e Aivars Gipslis existiram; as cenas e falas deles são ficção,
+escrita a partir do que eles próprios contaram ou do que as fontes da ficha
+registram (por exemplo, Tal chegando ao Palácio atrás do grupo de teatro).

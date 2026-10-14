@@ -69,8 +69,18 @@ describe("normalizar", () => {
       resultados: { b: 0.5 },
       forcas: { a: 900 },
       concluidos: [],
-      vistos: ["jornal"],
+      vistos: ["cap1:jornal"],
+      semente: expect.any(String),
     });
+  });
+
+  it("salvo de antes dos capítulos: os vistos ganham o prefixo do capítulo 1", () => {
+    expect(normalizar({ versao: 1, capitulo: "cap1", vistos: ["jornal", "cap2:quadro"] })!.vistos).toEqual(["cap1:jornal", "cap2:quadro"]);
+  });
+
+  it("guarda a semente do torneio, ou cria uma se faltar", () => {
+    expect(normalizar({ versao: 1, capitulo: "cap2", semente: "abc123" })!.semente).toBe("abc123");
+    expect(normalizar({ versao: 1, capitulo: "cap2" })!.semente).toMatch(/^[a-z0-9]+$/);
   });
 
   it("sem versão 1 ou sem capítulo, não aproveita nada", () => {

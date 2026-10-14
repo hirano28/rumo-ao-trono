@@ -7,7 +7,7 @@ import { CATEGORIAS } from "../src/logica/forca";
 
 const FONTES = import.meta.glob("../src/**/*.ts", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
 
-const PREFIXOS = ["titulo", "abertura", "quarto", "comum", "praca", "partida", "resultado", "categoria"];
+const PREFIXOS = ["titulo", "abertura", "quarto", "comum", "local", "torneio", "partida", "resultado", "categoria"];
 const LITERAL = new RegExp(`"((?:${PREFIXOS.join("|")})[.][a-z0-9_.]+)"`, "g");
 
 const literais = new Set(Object.values(FONTES).flatMap((fonte) => [...fonte.matchAll(LITERAL)].map((m) => m[1])));

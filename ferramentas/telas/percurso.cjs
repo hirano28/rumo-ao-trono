@@ -50,7 +50,7 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await foto("05-revista");
   await clicar(640, 620, 600);
   await clicar(110, 430); // porta
-  await esperarCena("Praca");
+  await esperarCena("Local");
   await espera(1000);
   await foto("06-parque");
   await clicar(1150, 430, 700); // Marta
@@ -128,7 +128,7 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   });
 
   await clicar(640, 360 + 72); // voltar ao parque
-  await esperarCena("Praca");
+  await esperarCena("Local");
   await espera(900);
   await foto("13-parque-depois");
 

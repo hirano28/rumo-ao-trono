@@ -4,8 +4,9 @@ Jogo narrativo de xadrez: você vive a carreira de um enxadrista numa época
 real, da praça do bairro ao match pelo título mundial. Primeira época:
 **Riga, 1950–1960**, crescendo no mesmo meio que Mikhail Tal.
 
-> Protótipo (fatia vertical). Hoje dá para jogar o **capítulo 1**: a abertura,
-> o quarto com as notícias de 1950, o parque e o desafio de três partidas.
+> Protótipo. Hoje dá para jogar o **capítulo 1** (o parque do bairro, outono
+> de 1950) e o **capítulo 2** (o Palácio dos Pioneiros, 1951: o torneio
+> interno da turma, com relógio mecânico e tabela na parede).
 > O que o jogo é e por quê: [`docs/DESIGN.md`](docs/DESIGN.md).
 
 **Jogar agora:** https://hirano28.github.io/rumo-ao-trono/ (no computador, ou

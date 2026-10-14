@@ -37,7 +37,7 @@ function progresso(resultados) {
     await esperarCena("Titulo");
     await espera(600);
     await pagina.mouse.click(640, 360); // Continuar
-    await esperarCena("Praca");
+    await esperarCena("Local");
     await espera(900);
     await pagina.screenshot({ path: `${pasta}/20-parque-${nome}.png` });
     await pagina.mouse.click(640, 670); // O dia acabou

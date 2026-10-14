@@ -58,7 +58,7 @@ de qualquer carreira real) e o jogador pode tentar de novo.
 | # | Ano | Lugar | Desafio |
 |---|-----|-------|---------|
 | 1 | 1950 | Quarto e praça do bairro | 3 partidas contra iniciantes (800/900/1050) |
-| 2 | 1951 | Palácio dos Pioneiros | Torneio interno; entrar na turma do treinador |
+| 2 | 1951 | Palácio dos Pioneiros (Castelo de Riga) | Torneio interno da turma de Jānis Krūzkops, com relógio |
 | 3 | 1952–53 | Clube de Riga | Torneio de clube; 3ª → 2ª categoria |
 | 4 | 1954–55 | Campeonato de Riga / da Letônia | 1ª categoria, candidato a mestre |
 | 5 | 1956–57 | Semifinal e final do campeonato da URSS | Mestre do esporte |
@@ -66,8 +66,21 @@ de qualquer carreira real) e o jogador pode tentar de novo.
 | 7 | 1959 | Candidatos (Iugoslávia) | Direito de desafiar o campeão |
 | 8 | 1960 | Match em Moscou | O título |
 
-Os anos e lugares serão ajustados pela ficha de fatos
-(`docs/pesquisa/fatos_1950_1960.md`).
+Os anos e lugares seguem as fichas de fatos (`docs/pesquisa/fatos_1950_1960.md`
+e `docs/pesquisa/fatos_1951_cap2.md`). A ficha do capítulo 2 corrigiu o
+roteiro: quem dava aula de xadrez no Palácio era Jānis Krūzkops (1946–1960),
+não Koblencs; em 1951 Koblencs é mestre e adversário de Tal, não treinador.
+
+Capítulos 1 e 2 no ar (14/10/2026).
+
+### 4.2.1 Torneios
+
+Um desafio pode ser um torneio em turno único. O jogador enfrenta os
+adversários na ordem das rodadas (só o da rodada oferece partida); os jogos
+entre os outros são simulados pela expectativa do Elo, com chance de empate
+que cai com a diferença de força, e um resultado fixo por jogo salvo (semente
+no progresso). A tabela fica num quadro na parede e só mostra as rodadas já
+jogadas; a rodada de folga do jogador entra na classificação final.
 
 ### 4.3 História alternativa
 
@@ -128,9 +141,10 @@ desafio (ex.: 2 de 3 pontos; empate vale meio).
 
 ## 6. Tempo
 
-Cada desafio define o **relógio da história** (ex.: 2h por 40 lances) e o
-**relógio real** (ex.: 10 min + 5 s). A tela mostra o relógio da história,
-convertido em escala. Partidas longas podem ter **adiamento** com lance
+Cada desafio define o **relógio da história** (ex.: 2 horas por jogador) e o
+**relógio real** (ex.: 15 min). A tela mostra um relógio mecânico com
+ponteiros, no tempo da história: a bandeira cai às 6:00. Sem incremento,
+porque relógio de 1951 não tinha (o incremento faria o tempo passar de 2h00). Partidas longas podem ter **adiamento** com lance
 secreto (a partir do capítulo de clube).
 
 Na praça, as partidas são sem relógio, como eram de fato.
