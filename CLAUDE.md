@@ -1,0 +1,37 @@
+# Rumo ao Trono — instruções para agentes
+
+Responda em português do Brasil. O que o jogo é e por quê: `docs/DESIGN.md`.
+Como rodar e onde mora cada coisa: `README.md`.
+
+## Regras
+
+1. **Fato histórico só com fonte.** Toda notícia de `noticias.json` leva
+   `fonte` e `confianca` (alta ou média; baixa não entra). Antes de escrever
+   fala ou notícia nova, confira na ficha `docs/pesquisa/fatos_1950_1960.md`;
+   o que não estiver lá, pesquise e acrescente à ficha com a URL. Use só a
+   precisão de data que a fonte sustenta (`"1950"`, `"1950-05"`).
+2. **Nenhum texto visível no código.** Todo texto vai por chave em
+   `conteudo/**/textos.<idioma>.json`, nos dois idiomas, com as mesmas chaves.
+   O teste `testes/conteudo.test.ts` acusa a falta.
+3. **O código não sabe a época.** Lugar, ano, personagem e adversário moram em
+   `conteudo/epocas/<época>/`; a cena só lê.
+4. **A fonte de máquina de escrever (Special Elite) desenha mal o travessão.**
+   Não use "—" em texto mostrado nela (abertura, datas, "próximo capítulo").
+5. **Versões exatas** no `package.json`, de pacote publicado há pelo menos duas
+   semanas.
+
+## Verificação
+
+- `npm run check` (tsc + Vitest) antes de todo commit.
+- Tela de verdade: o painel do navegador escondido congela o
+  `requestAnimationFrame`, e o jogo para. Use Playwright headless (há um em
+  `C:/edson/projetos/chess-ai-pipeline/frontend/node_modules/playwright`). A
+  instância do jogo fica em `window.jogo`; a cena da partida expõe `partida`
+  (chess.js) e `tabuleiro`.
+- Percursos prontos em `ferramentas/telas/` (com `npm run dev` no ar):
+  `node ferramentas/telas/percurso.cjs <url> <pasta> [en]` joga o capítulo 1
+  inteiro e fotografa; `resultado.cjs` confere a tela de resultado;
+  `pretas.cjs`, o tabuleiro virado e a promoção. Fotos vão para `fotos/`
+  (fora do git).
+- Coordenadas da tela: 1280×720; o tabuleiro começa em (92, 72), com 72 px por
+  casa.

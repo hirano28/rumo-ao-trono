@@ -1,0 +1,96 @@
+{
+  "id": "riga-1950",
+  "titulo": "epoca.titulo",
+  "subtitulo": "epoca.subtitulo",
+  "capitulos": [
+    {
+      "id": "cap1",
+      "ano": 1950,
+      "titulo": "cap1.titulo",
+      "abertura": [
+        "cap1.abertura.p1",
+        "cap1.abertura.p2",
+        "cap1.abertura.p3",
+        "cap1.abertura.p4",
+        "cap1.abertura.p5"
+      ],
+      "quarto": {
+        "saida": "cap1.quarto.saida",
+        "objetos": [
+          {
+            "id": "jornal",
+            "rotulo": "cap1.quarto.jornal.rotulo",
+            "cabecalho": "cap1.quarto.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1950_budapeste",
+              "n1950_desempate",
+              "n1950_mezgailis"
+            ]
+          },
+          {
+            "id": "revista",
+            "rotulo": "cap1.quarto.revista.rotulo",
+            "cabecalho": "cap1.quarto.revista.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1950_titulos",
+              "n1950_final_urss"
+            ]
+          },
+          {
+            "id": "livro",
+            "rotulo": "cap1.quarto.livro.rotulo",
+            "cabecalho": "cap1.quarto.livro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap1.quarto.livro.texto"
+          },
+          {
+            "id": "tabuleiro",
+            "rotulo": "cap1.quarto.tabuleiro.rotulo",
+            "cabecalho": "cap1.quarto.tabuleiro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap1.quarto.tabuleiro.texto"
+          }
+        ]
+      },
+      "praca": {
+        "titulo": "cap1.praca.titulo",
+        "personagens": [
+          {
+            "id": "peteris",
+            "dialogo": "peteris",
+            "adversario": "peteris"
+          },
+          {
+            "id": "grisha",
+            "dialogo": "grisha",
+            "adversario": "grisha"
+          },
+          {
+            "id": "ozols",
+            "dialogo": "ozols",
+            "adversario": "ozols"
+          },
+          {
+            "id": "marta",
+            "dialogo": "marta"
+          }
+        ]
+      },
+      "desafio": {
+        "adversarios": [
+          "peteris",
+          "grisha",
+          "ozols"
+        ],
+        "pontosMinimos": 2
+      },
+      "fechamento": {
+        "aprovado": "cap1.fechamento.aprovado",
+        "reprovado": "cap1.fechamento.reprovado",
+        "proximo": "cap1.fechamento.proximo"
+      }
+    }
+  ]
+}

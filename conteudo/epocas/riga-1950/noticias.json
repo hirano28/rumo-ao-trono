@@ -1,0 +1,42 @@
+[
+  {
+    "id": "n1950_budapeste",
+    "data": "1950-05",
+    "titulo": "not.n1950_budapeste.titulo",
+    "texto": "not.n1950_budapeste.texto",
+    "fonte": "https://www.fide.com/history-of-the-candidates-from-budapest-1950-to-toronto-2024/ ; https://en.wikipedia.org/wiki/World_Chess_Championship_1951 (ficha 0-01, 0-02)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1950_desempate",
+    "data": "1950-08",
+    "titulo": "not.n1950_desempate.titulo",
+    "texto": "not.n1950_desempate.texto",
+    "fonte": "https://en.wikipedia.org/wiki/World_Chess_Championship_1951 ; https://www.fide.com/news/475 (ficha 0-04)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1950_mezgailis",
+    "data": "1950",
+    "titulo": "not.n1950_mezgailis.titulo",
+    "texto": "not.n1950_mezgailis.texto",
+    "fonte": "https://en.wikipedia.org/wiki/Latvian_Chess_Championship ; https://en.wikipedia.org/wiki/Voldem%C4%81rs_Me%C5%BEgailis (ficha 0-09, 2-06)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1950_titulos",
+    "data": "1950-07",
+    "titulo": "not.n1950_titulos.titulo",
+    "texto": "not.n1950_titulos.texto",
+    "fonte": "https://www.mieses.info/en/fide-grandmaster-1950.html ; https://en.wikipedia.org/wiki/Grandmaster_(chess) (ficha 0-05)",
+    "confianca": "media"
+  },
+  {
+    "id": "n1950_final_urss",
+    "data": "1950-11",
+    "titulo": "not.n1950_final_urss.titulo",
+    "texto": "not.n1950_final_urss.texto",
+    "fonte": "https://en.wikipedia.org/wiki/1950_USSR_Chess_Championship (ficha 0-07)",
+    "confianca": "alta"
+  }
+]

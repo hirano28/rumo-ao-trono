@@ -1,0 +1,223 @@
+{
+  "peteris": {
+    "quem": "adv.peteris.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.peteris.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.agora_nao",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.peteris.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_amanha",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.peteris.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_amanha",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.peteris.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_amanha",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "grisha": {
+    "quem": "adv.grisha.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.grisha.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.grisha.op_guerra",
+            "vai": "guerra"
+          },
+          {
+            "texto": "dlg.op.agora_nao",
+            "acao": "sair"
+          }
+        ]
+      },
+      "guerra": {
+        "fala": "dlg.grisha.guerra",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.agora_nao",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.grisha.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.grisha.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.grisha.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "ozols": {
+    "quem": "adv.ozols.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.ozols.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.ozols.op_quero",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.ainda_nao",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.ozols.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.ozols.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.ozols.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.obrigado",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "marta": {
+    "quem": "dlg.marta.quem",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.marta.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.marta.op_novidades",
+            "vai": "novidades"
+          },
+          {
+            "texto": "dlg.marta.op_garoto",
+            "vai": "garoto"
+          },
+          {
+            "texto": "dlg.marta.op_melhor",
+            "vai": "melhor"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "novidades": {
+        "fala": "dlg.marta.novidades",
+        "opcoes": [
+          {
+            "texto": "dlg.marta.op_garoto",
+            "vai": "garoto"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "melhor": {
+        "fala": "dlg.marta.melhor",
+        "opcoes": [
+          {
+            "texto": "dlg.marta.op_novidades",
+            "vai": "novidades"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "garoto": {
+        "fala": "dlg.marta.garoto",
+        "opcoes": [
+          {
+            "texto": "dlg.marta.op_melhor",
+            "vai": "melhor"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  }
+}

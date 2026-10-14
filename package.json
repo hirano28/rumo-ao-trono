@@ -1,0 +1,27 @@
+{
+  "name": "rumo-ao-trono",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Jogo narrativo de xadrez: viva a carreira de um enxadrista numa época real.",
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "predev": "node ferramentas/copiar_motor.mjs",
+    "dev": "vite",
+    "prebuild": "node ferramentas/copiar_motor.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "check": "tsc --noEmit && vitest run"
+  },
+  "dependencies": {
+    "chess.js": "1.4.0",
+    "phaser": "4.2.1",
+    "stockfish": "18.0.8"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "vite": "8.3.1",
+    "vitest": "5.0.2"
+  }
+}
