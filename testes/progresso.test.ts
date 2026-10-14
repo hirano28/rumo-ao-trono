@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { carregar, normalizar, novoProgresso, salvar, type Armazenamento } from "../src/logica/progresso";
+import { carregar, comecarCapitulo, normalizar, novoProgresso, salvar, type Armazenamento } from "../src/logica/progresso";
 
 function memoria(): Armazenamento & { dados: Map<string, string> } {
   const dados = new Map<string, string>();
@@ -88,5 +88,34 @@ describe("normalizar", () => {
     expect(normalizar({ versao: 1 })).toBeUndefined();
     expect(normalizar(null)).toBeUndefined();
     expect(normalizar("texto")).toBeUndefined();
+  });
+});
+
+describe("comecarCapitulo", () => {
+  it("sem jogo salvo, começa direto no capítulo escolhido, sem força", () => {
+    const p = comecarCapitulo(undefined, "cap2", "en", "realista");
+    expect(p.capitulo).toBe("cap2");
+    expect(p.forca).toBeUndefined();
+    expect(p.idioma).toBe("en");
+    expect(p.modo).toBe("realista");
+  });
+
+  it("rejogar o capítulo 1 mantém a carreira e zera só as partidas dele", () => {
+    const salvo = {
+      ...novoProgresso("pt-BR", "carreira", "cap2"),
+      forca: 1320,
+      concluidos: ["cap1", "cap2"],
+      resultados: { valdis: 1 as const },
+      forcas: { valdis: 1220 },
+      vistos: ["cap1:jornal"],
+    };
+    const p = comecarCapitulo(salvo, "cap1", "pt-BR", "carreira");
+    expect(p.capitulo).toBe("cap1");
+    expect(p.forca).toBe(1320);
+    expect(p.concluidos).toEqual(["cap2"]);
+    expect(p.resultados).toEqual({});
+    expect(p.forcas).toEqual({});
+    expect(p.vistos).toEqual(["cap1:jornal"]);
+    expect(p.semente).not.toBe(salvo.semente);
   });
 });

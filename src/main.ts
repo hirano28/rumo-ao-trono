@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { Abertura } from "./cenas/Abertura";
+import { Capitulos } from "./cenas/Capitulos";
 import { Partida } from "./cenas/Partida";
 import { Local } from "./cenas/Local";
 import { Quarto } from "./cenas/Quarto";
@@ -26,7 +27,7 @@ async function iniciar(): Promise<void> {
     height: ALTURA,
     backgroundColor: COR.noite,
     scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
-    scene: [Titulo, Abertura, Quarto, Local, Partida, Resultado],
+    scene: [Titulo, Capitulos, Abertura, Quarto, Local, Partida, Resultado],
   });
   // Para os testes de tela conferirem a cena atual.
   (window as unknown as { jogo: Phaser.Game }).jogo = jogo;

@@ -105,7 +105,8 @@
           "grisha",
           "ozols"
         ],
-        "pontosMinimos": 2
+        "pontosMinimos": 2,
+        "calibracao": true
       },
       "fechamento": {
         "aprovado": "cap1.fechamento.aprovado",

@@ -20,7 +20,10 @@ export class Titulo extends Phaser.Scene {
 
   create(): void {
     const salvo = carregar();
-    if (salvo) definirIdioma(salvo.idioma);
+    if (salvo) {
+      definirIdioma(salvo.idioma);
+      this.modo = salvo.modo;
+    }
     this.desenhar(salvo !== undefined);
   }
 
@@ -53,13 +56,15 @@ export class Titulo extends Phaser.Scene {
       })
       .setOrigin(0.5);
 
-    let y = 360;
+    let y = temSalvo ? 335 : 345;
     if (temSalvo) {
       botao(this, LARGURA / 2, y, t("titulo.continuar"), () => this.continuar());
-      y += 70;
+      y += 64;
     }
     botao(this, LARGURA / 2, y, t("titulo.novo_jogo"), () => this.novoJogo(), { claro: temSalvo });
-    y += 86;
+    y += 64;
+    botao(this, LARGURA / 2, y, t("titulo.capitulos"), () => this.scene.start("Capitulos", { modo: this.modo }), { claro: true });
+    y += 80;
 
     const modos: Modo[] = ["carreira", "realista"];
     modos.forEach((modo, i) => {

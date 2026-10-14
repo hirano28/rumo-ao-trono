@@ -33,7 +33,8 @@ Como rodar e onde mora cada coisa: `README.md`.
   inteiro e fotografa; `resultado.cjs` confere a tela de resultado;
   `pretas.cjs`, o tabuleiro virado e a promoção; `capitulo2.cjs`, a passagem
   de capítulo, o Palácio, o torneio, o relógio e a bandeira; `sem_motor.cjs`,
-  a partida seguindo sem motor. Fotos vão para `fotos/`
+  a partida seguindo sem motor; `capitulos.cjs`, a tela de capítulos (entrar
+  direto no 2, rejogar o 1 na força histórica). Fotos vão para `fotos/`
   (fora do git).
 - O adversário humano é o Maia em ONNX (`public/maia/`). Para regerar:
   `node ferramentas/converter_maia.mjs` (precisa do lc0 e dos pesos oficiais

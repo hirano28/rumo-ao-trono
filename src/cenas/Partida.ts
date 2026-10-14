@@ -4,9 +4,9 @@
 
 import Phaser from "phaser";
 import { Chess, type Color } from "chess.js";
-import { CONTEUDO, capituloAtual, guardar, progresso } from "../estado";
+import { CONTEUDO, capituloAtual, forcaDoAdversario, guardar, progresso } from "../estado";
 import { t } from "../i18n/textos";
-import { forcaNoTabuleiro, type Pontos } from "../logica/forca";
+import type { Pontos } from "../logica/forca";
 import type { Adversario } from "../logica/conteudo";
 import { Relogio, type Lado } from "../logica/relogio";
 import { lanceDoAdversario, prepararAdversario, type LanceUci } from "../motor/adversario";
@@ -46,8 +46,7 @@ export class Partida extends Phaser.Scene {
     this.idAdversario = dados.adversario;
     this.adversario = CONTEUDO.adversarios[dados.adversario];
     this.ladoDoJogador = this.adversario.corDoJogador === "brancas" ? "w" : "b";
-    const { modo, forca } = progresso();
-    this.forcaDoAdversario = forcaNoTabuleiro(modo, this.adversario, forca);
+    this.forcaDoAdversario = forcaDoAdversario(dados.adversario);
     this.terminada = false;
     this.numero++;
   }

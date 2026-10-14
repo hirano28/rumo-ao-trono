@@ -12,7 +12,7 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await p.evaluate(() => localStorage.setItem("rumo-ao-trono:progresso", JSON.stringify({ versao: 1, idioma: "pt-BR", modo: "carreira", capitulo: "cap1", resultados: {}, forcas: {}, concluidos: [], vistos: [] })));
   await p.reload();
   await espera(1500);
-  await p.mouse.click(640, 360); // Continuar
+  await p.mouse.click(640, 335); // Continuar
   await espera(1500);
   await p.mouse.click(640, 455); // Grigori, que abre de brancas
   await espera(700);

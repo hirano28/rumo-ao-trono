@@ -28,7 +28,7 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await pagina.reload();
   await esperarCena("Titulo");
   await espera(600);
-  await pagina.mouse.click(640, 360); // Continuar
+  await pagina.mouse.click(640, 335); // Continuar
   await esperarCena("Local");
   await espera(900);
   await pagina.mouse.click(640, 455); // Grigori

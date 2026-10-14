@@ -2,10 +2,10 @@
 // (no torneio) e a passagem para o próximo capítulo.
 
 import Phaser from "phaser";
-import { CONTEUDO, capituloAtual, definirProgresso, forcasDoDesafio, progresso, proximoCapitulo } from "../estado";
+import { capituloAtual, definirProgresso, forcasDoDesafio, progresso, proximoCapitulo } from "../estado";
 import { t } from "../i18n/textos";
 import { pontosDoDesafio } from "../logica/conteudo";
-import { categoriaDa, forcaNoTabuleiro, performance, type ResultadoPartida } from "../logica/forca";
+import { categoriaDa, performance, type ResultadoPartida } from "../logica/forca";
 import { novaSemente } from "../logica/progresso";
 import { VOCE, classificacao, jogosAte } from "../logica/torneio";
 import { botao } from "../ui/componentes";
@@ -29,10 +29,8 @@ export class Resultado extends Phaser.Scene {
 
     // Desafio já concluído (o jogador voltou pelo "Continuar"): mostra o que ficou.
     const jaConcluido = atual.concluidos.includes(capitulo.id);
-    const partidas: ResultadoPartida[] = adversarios.map((id) => ({
-      forcaAdversario: atual.forcas[id] ?? forcaNoTabuleiro(atual.modo, CONTEUDO.adversarios[id], atual.forca),
-      pontos: atual.resultados[id] ?? 0,
-    }));
+    const forcas = forcasDoDesafio();
+    const partidas: ResultadoPartida[] = adversarios.map((id) => ({ forcaAdversario: forcas[id], pontos: atual.resultados[id] ?? 0 }));
     const forca = jaConcluido && atual.forca !== undefined ? atual.forca : performance(partidas, atual.forca);
     const categoria = categoriaDa(forca);
 
@@ -52,7 +50,7 @@ export class Resultado extends Phaser.Scene {
 
     let y = 210;
     if (torneio) {
-      const jogos = jogosAte(torneio.rodadas.length, torneio.rodadas, adversarios, atual.resultados, forcasDoDesafio(), atual.semente);
+      const jogos = jogosAte(torneio.rodadas.length, torneio.rodadas, adversarios, atual.resultados, forcas, atual.semente);
       const tabela = classificacao([VOCE, ...adversarios], jogos);
       const meus = tabela.find((l) => l.id === VOCE)!.pontos;
       const posicao = tabela.filter((l) => l.pontos > meus).length + 1;

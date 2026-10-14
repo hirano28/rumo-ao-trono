@@ -44,7 +44,7 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await pagina.reload();
   await esperarCena("Titulo");
   await espera(700);
-  await clicar(640, 360); // Continuar
+  await clicar(640, 335); // Continuar
   await esperarCena("Resultado");
   await espera(1000);
   await foto("60-resultado-cap1-seguir");
@@ -163,7 +163,7 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await pagina.reload();
   await esperarCena("Titulo");
   await espera(700);
-  await clicar(640, 360); // Continuar
+  await clicar(640, 335); // Continuar
   await esperarCena("Local");
   await espera(900);
   await foto("74-palacio-fim-do-torneio");

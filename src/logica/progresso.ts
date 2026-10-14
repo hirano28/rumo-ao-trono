@@ -29,6 +29,25 @@ export function novoProgresso(idioma: Idioma, modo: Modo, capitulo: string): Pro
   return { versao: 1, idioma, modo, capitulo, resultados: {}, forcas: {}, concluidos: [], vistos: [], semente: novaSemente() };
 }
 
+/**
+ * Começa (ou recomeça) um capítulo, escolhido na tela de capítulos: zera as
+ * partidas dele e o tira dos concluídos (para o resultado ser recalculado
+ * no fim), mas mantém o resto da carreira: força, outros capítulos, vistos.
+ */
+export function comecarCapitulo(salvo: Progresso | undefined, capitulo: string, idioma: Idioma, modo: Modo): Progresso {
+  const base = salvo ?? novoProgresso(idioma, modo, capitulo);
+  return {
+    ...base,
+    idioma,
+    modo,
+    capitulo,
+    resultados: {},
+    forcas: {},
+    semente: novaSemente(),
+    concluidos: base.concluidos.filter((c) => c !== capitulo),
+  };
+}
+
 export function novaSemente(): string {
   return Math.random().toString(36).slice(2, 10);
 }

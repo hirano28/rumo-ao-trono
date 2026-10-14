@@ -56,5 +56,15 @@
   "partida.fim_tempo_sem_material": "The flag fell, but the other side had only the king: there was no way to mate.",
   "resultado.posicao": "You finished in place {posicao} of {total}.",
   "resultado.seguir": "Continue: {capitulo}",
-  "resultado.posicao_dividida": "You shared place {posicao} of {total}."
+  "resultado.posicao_dividida": "You shared place {posicao} of {total}.",
+  "titulo.capitulos": "Chapters",
+  "capitulos.titulo": "Chapters",
+  "capitulos.concluido": "Completed",
+  "capitulos.em_andamento": "In progress",
+  "capitulos.nao_jogado": "Not played yet",
+  "capitulos.jogar": "Play",
+  "capitulos.jogar_de_novo": "Play again",
+  "capitulos.continuar": "Continue",
+  "capitulos.voltar": "‹ Back",
+  "capitulos.aviso": "Starting another chapter ends the games of the chapter in progress. Your strength and completed chapters are kept."
 }

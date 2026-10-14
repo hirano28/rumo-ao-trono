@@ -56,5 +56,15 @@
   "partida.fim_tempo_sem_material": "A bandeira caiu, mas o outro lado só tinha o rei: não havia como dar mate.",
   "resultado.posicao": "Você terminou em {posicao}º lugar entre {total}.",
   "resultado.seguir": "Seguir: {capitulo}",
-  "resultado.posicao_dividida": "Você dividiu o {posicao}º lugar, entre {total}."
+  "resultado.posicao_dividida": "Você dividiu o {posicao}º lugar, entre {total}.",
+  "titulo.capitulos": "Capítulos",
+  "capitulos.titulo": "Capítulos",
+  "capitulos.concluido": "Concluído",
+  "capitulos.em_andamento": "Em andamento",
+  "capitulos.nao_jogado": "Ainda não jogado",
+  "capitulos.jogar": "Jogar",
+  "capitulos.jogar_de_novo": "Jogar de novo",
+  "capitulos.continuar": "Continuar",
+  "capitulos.voltar": "‹ Voltar",
+  "capitulos.aviso": "Começar outro capítulo encerra as partidas do capítulo em andamento. A sua força e os capítulos concluídos continuam."
 }

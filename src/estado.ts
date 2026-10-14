@@ -49,10 +49,16 @@ export function proximoCapitulo(): Capitulo | undefined {
  * para outra.
  */
 export function forcasDoDesafio(): Record<string, number> {
+  return Object.fromEntries(capituloAtual().desafio.adversarios.map((id) => [id, forcaDoAdversario(id)]));
+}
+
+/** A força com que o adversário joga neste capítulo (a gravada, se já jogou). */
+export function forcaDoAdversario(id: string): number {
   const atual = progresso();
-  return Object.fromEntries(
-    capituloAtual().desafio.adversarios.map((id) => [id, atual.forcas[id] ?? forcaNoTabuleiro(atual.modo, CONTEUDO.adversarios[id], atual.forca)]),
-  );
+  const gravada = atual.forcas[id];
+  if (gravada !== undefined) return gravada;
+  const adversario = CONTEUDO.adversarios[id];
+  return capituloAtual().desafio.calibracao ? adversario.forcaHistorica : forcaNoTabuleiro(atual.modo, adversario, atual.forca);
 }
 
 export function capituloAtual(): Capitulo {

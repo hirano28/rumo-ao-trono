@@ -79,6 +79,8 @@ export type Cenario = "parque" | "palacio";
 export interface Desafio {
   adversarios: string[];
   pontosMinimos: number;
+  /** Desafio de calibração: os adversários jogam sempre na força histórica, mesmo rejogado. */
+  calibracao?: boolean;
   /** Sem relógio, as partidas são livres (como no parque). */
   relogio?: ControleDeTempo;
   /** Turno único: os jogos entre os outros, rodada a rodada. */
