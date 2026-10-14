@@ -33,5 +33,11 @@ Como rodar e onde mora cada coisa: `README.md`.
   inteiro e fotografa; `resultado.cjs` confere a tela de resultado;
   `pretas.cjs`, o tabuleiro virado e a promoção. Fotos vão para `fotos/`
   (fora do git).
+- O adversário humano é o Maia em ONNX (`public/maia/`). Para regerar:
+  `node ferramentas/converter_maia.mjs` (precisa do lc0 e dos pesos oficiais
+  em `C:/edson/ferramentas/lc0/`). Mexeu na codificação? Regere a referência
+  com `node ferramentas/referencia_maia.mjs`; `testes/maia.test.ts` compara a
+  rede no onnxruntime com o lc0, lance a lance. Para ler partidas inteiras
+  entre adversários: `MEDIR=1 npx vitest run testes/medicao_adversarios`.
 - Coordenadas da tela: 1280×720; o tabuleiro começa em (92, 72), com 72 px por
   casa.

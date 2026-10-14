@@ -7,7 +7,7 @@ import { CONTEUDO, guardar, progresso } from "../estado";
 import { t } from "../i18n/textos";
 import { forcaNoTabuleiro, type Pontos } from "../logica/forca";
 import type { Adversario } from "../logica/conteudo";
-import { lanceDoAdversario, type LanceUci } from "../motor/adversario";
+import { lanceDoAdversario, prepararAdversario, type LanceUci } from "../motor/adversario";
 import { motor } from "../motor/motor";
 import { CAMADA_SOBRE, botao, veu } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
@@ -52,7 +52,8 @@ export class Partida extends Phaser.Scene {
     this.cameras.main.fadeIn(500, 0, 0, 0);
     this.desenharMesa();
     this.partida = new Chess();
-    motor().novaPartida();
+    // a rede do Maia (ou o Stockfish, nos níveis altos) começa a carregar já
+    prepararAdversario(this.forcaDoAdversario);
     const origemX = 92;
     const origemY = (ALTURA - CASA * 8) / 2;
     this.tabuleiro = new Tabuleiro(this, origemX, origemY, CASA, this.ladoDoJogador, this.partida, (lance) => this.jogar(lance));
@@ -138,7 +139,7 @@ export class Partida extends Phaser.Scene {
     const inicio = performance.now();
     let lance: LanceUci;
     try {
-      lance = await lanceDoAdversario(motor(), partida, this.forcaDoAdversario);
+      lance = await lanceDoAdversario(motor, partida, this.forcaDoAdversario);
     } catch (erro) {
       // sem motor (falhou ou não respondeu), a partida segue com um lance legal ao acaso
       console.error(erro);

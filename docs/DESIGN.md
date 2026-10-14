@@ -111,12 +111,17 @@ desafio (ex.: 2 de 3 pontos; empate vale meio).
 
 ### 5.4 Adversários que jogam como gente
 
-- **Fase 1 (protótipo):** Stockfish no navegador com amostragem entre os
-  melhores lances (MultiPV) ponderada pela força alvo, mais erros ocasionais
-  proporcionais à força. Barato e controlável.
-- **Fase 2:** Maia (rede que imita humanos por faixa de rating), rodando no
-  navegador em ONNX. Para os níveis abaixo de ~1100, enfraquecimento
-  proposital.
+- **Até a força 2000: Maia** (rede treinada em milhões de partidas humanas,
+  níveis 1100 a 1900), rodando no navegador em ONNX. O adversário sorteia o
+  lance pela probabilidade humana, cortando a cauda de lances que quase
+  ninguém jogaria (núcleo de 97%). Abaixo de 1100, a rede de 1100 com a
+  política "esquentada". Assim ele abre, desenvolve e erra como gente.
+  A conversão é conferida lance a lance contra o lc0 oficial.
+- **Acima de 2000: Stockfish** no navegador com sorteio entre os melhores
+  lances (MultiPV) ponderado pela força, mais erros ocasionais.
+- **Histórico:** a primeira versão do capítulo 1 usava o Stockfish em todos os
+  níveis; os erros saíam absurdos (1...h5, Na3), não humanos. O dono apontou
+  em 14/10/2026, e o Maia entrou antes do capítulo 2.
 - **Estilo dos jogadores reais:** livro de aberturas tirado das partidas reais
   do jogador naquele período, mais ajustes de estilo (o Tal aceita mais
   complicação).

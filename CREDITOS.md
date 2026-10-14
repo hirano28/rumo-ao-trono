@@ -2,6 +2,8 @@
 
 | O quê | Origem | Licença |
 |---|---|---|
+| Maia (pesos 1100–1900) | CSSLab, Universidade de Toronto (github.com/CSSLab/maia-chess), convertidos para ONNX com o `lc0 leela2onnx` (`ferramentas/converter_maia.mjs`) | GPL-3.0 |
+| onnxruntime-web | pacote npm `onnxruntime-web` (Microsoft) | MIT |
 | Stockfish.js 18 (lite, single-threaded) | pacote npm `stockfish` (Chess.com / nmrugg), copiado para `public/motor/` no build | GPL-3.0 |
 | Peças "cburnett" (provisórias) | Colin M.L. Burnett, extraídas de `chessground@9.2.1`; ver `public/pecas/LEIAME.md` | GPLv2+ |
 | Phaser 4 | pacote npm `phaser` | MIT |
