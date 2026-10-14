@@ -8,6 +8,9 @@ real, da praça do bairro ao match pelo título mundial. Primeira época:
 > o quarto com as notícias de 1950, o parque e o desafio de três partidas.
 > O que o jogo é e por quê: [`docs/DESIGN.md`](docs/DESIGN.md).
 
+**Jogar agora:** https://hirano28.github.io/rumo-ao-trono/ (no computador, ou
+no celular deitado).
+
 ## Rodar
 
 Precisa de Node 22.12 ou mais novo.
@@ -37,7 +40,10 @@ confiança baixa, e todo texto precisa existir em português e em inglês.
 npm run build
 ```
 
-Gera `dist/` com caminhos relativos, pronto para subir como jogo HTML no
+Todo push na `main` publica sozinho no GitHub Pages, depois de passar no `tsc`
+e nos testes (`.github/workflows/publicar.yml`).
+
+O `dist/` sai com caminhos relativos, pronto também para subir como jogo HTML no
 itch.io (zipar o conteúdo de `dist/`). Não ligue a opção de SharedArrayBuffer
 do itch.io: o Stockfish usado (lite, single-threaded) não precisa dela.
 
