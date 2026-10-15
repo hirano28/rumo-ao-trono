@@ -1,0 +1,296 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <!-- O quarto do menino, Riga, outono de 1950. Arte do jogo (GPL-3.0). -->
+  <defs>
+    <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1022"/>
+      <stop offset="0.6" stop-color="#1b2540"/>
+      <stop offset="1" stop-color="#34405a"/>
+    </linearGradient>
+    <radialGradient id="lua" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f6eed6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f6eed6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="papelDeParede" width="46" height="46" patternUnits="userSpaceOnUse">
+      <rect width="46" height="46" fill="#3c3327"/>
+      <rect x="0" width="2" height="46" fill="#463b2d"/>
+      <path d="M23 9 q5 6 0 12 q-5 -6 0 -12 Z M23 25 q4 5 0 10 q-4 -5 0 -10 Z" fill="#4a3f30"/>
+      <circle cx="0" cy="0" r="2.2" fill="#4a3f30"/>
+      <circle cx="46" cy="46" r="2.2" fill="#4a3f30"/>
+    </pattern>
+    <linearGradient id="tacos" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b2717"/>
+      <stop offset="1" stop-color="#5a3c22"/>
+    </linearGradient>
+    <linearGradient id="madeira" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a5434"/>
+      <stop offset="1" stop-color="#5b3c22"/>
+    </linearGradient>
+    <linearGradient id="madeiraTampo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8f6640"/>
+      <stop offset="1" stop-color="#6e4b2c"/>
+    </linearGradient>
+    <linearGradient id="cortina" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4d1d1a"/>
+      <stop offset="0.25" stop-color="#7a2e27"/>
+      <stop offset="0.45" stop-color="#5a221e"/>
+      <stop offset="0.7" stop-color="#83332b"/>
+      <stop offset="1" stop-color="#4a1c19"/>
+    </linearGradient>
+    <linearGradient id="cupula" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#41633f"/>
+      <stop offset="1" stop-color="#26402a"/>
+    </linearGradient>
+    <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe2a0" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#ffe2a0" stop-opacity="0.06"/>
+    </linearGradient>
+    <radialGradient id="luzDaLuminaria" cx="1080" cy="420" r="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffcf7a" stop-opacity="0.34"/>
+      <stop offset="0.45" stop-color="#ffb860" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ffb860" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vinheta" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.62"/>
+    </radialGradient>
+    <linearGradient id="tapete" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5c1f1b"/>
+      <stop offset="0.5" stop-color="#7c2b24"/>
+      <stop offset="1" stop-color="#5c1f1b"/>
+    </linearGradient>
+    <filter id="borrao" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="borraoLeve"><feGaussianBlur stdDeviation="1.4"/></filter>
+    <filter id="grao" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="ruido"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.2  0 0 0 0.09 0"/>
+    </filter>
+  </defs>
+
+  <!-- parede -->
+  <rect width="1280" height="545" fill="url(#papelDeParede)"/>
+  <!-- rodapé alto e friso -->
+  <rect y="508" width="1280" height="37" fill="#2a1d12"/>
+  <rect y="504" width="1280" height="6" fill="#4a3320"/>
+  <rect y="58" width="1280" height="5" fill="#2d241a" opacity="0.6"/>
+
+  <!-- assoalho em perspectiva -->
+  <rect y="545" width="1280" height="175" fill="url(#tacos)"/>
+  <g stroke="#2e1e10" stroke-width="2" opacity="0.55">
+    <line x1="0" y1="575" x2="1280" y2="575"/>
+    <line x1="0" y1="612" x2="1280" y2="612"/>
+    <line x1="0" y1="656" x2="1280" y2="656"/>
+    <line x1="0" y1="706" x2="1280" y2="706"/>
+    <line x1="140" y1="545" x2="20" y2="575"/><line x1="420" y1="575" x2="380" y2="612"/>
+    <line x1="760" y1="545" x2="770" y2="575"/><line x1="1060" y1="575" x2="1100" y2="612"/>
+    <line x1="250" y1="612" x2="200" y2="656"/><line x1="620" y1="612" x2="610" y2="656"/>
+    <line x1="980" y1="656" x2="1010" y2="706"/><line x1="90" y1="656" x2="40" y2="706"/>
+    <line x1="470" y1="656" x2="455" y2="706"/><line x1="1220" y1="612" x2="1260" y2="656"/>
+  </g>
+
+  <!-- tapete sob a escrivaninha -->
+  <ellipse cx="850" cy="640" rx="390" ry="62" fill="url(#tapete)"/>
+  <ellipse cx="850" cy="640" rx="360" ry="50" fill="none" stroke="#c9a35a" stroke-width="3" opacity="0.55"/>
+  <ellipse cx="850" cy="640" rx="320" ry="40" fill="none" stroke="#2b120f" stroke-width="6" stroke-dasharray="14 10" opacity="0.45"/>
+
+  <!-- porta almofadada -->
+  <g>
+    <rect x="30" y="268" width="160" height="276" fill="#2b1d12"/>
+    <rect x="38" y="276" width="144" height="268" fill="#5a3b26"/>
+    <rect x="52" y="294" width="116" height="104" fill="#4c311f" stroke="#3a2516" stroke-width="3"/>
+    <rect x="52" y="414" width="116" height="114" fill="#4c311f" stroke="#3a2516" stroke-width="3"/>
+    <path d="M60 300 q30 30 0 90 M80 300 q24 40 0 90 M70 420 q26 40 0 100" stroke="#5f402a" stroke-width="2" fill="none" opacity="0.6"/>
+    <circle cx="166" cy="420" r="7" fill="#c9a35a"/>
+    <circle cx="164" cy="418" r="2.5" fill="#f2deb0"/>
+    <rect x="160" y="436" width="10" height="16" rx="2" fill="#a88545"/>
+    <!-- luz do corredor por baixo da porta -->
+    <rect x="40" y="541" width="140" height="4" fill="#ffd27a" opacity="0.55"/>
+  </g>
+
+  <!-- cômoda com o rádio VEF (estreitada para caber entre a porta e a cortina) -->
+  <g transform="translate(198 0) scale(0.88 1) translate(-206 0)">
+    <rect x="206" y="406" width="112" height="134" fill="url(#madeira)" stroke="#3a2516" stroke-width="2"/>
+    <rect x="214" y="420" width="96" height="50" fill="#6e4b2c" stroke="#3a2516" stroke-width="2"/>
+    <rect x="214" y="478" width="96" height="50" fill="#6e4b2c" stroke="#3a2516" stroke-width="2"/>
+    <rect x="252" y="440" width="20" height="5" rx="2" fill="#c9a35a"/>
+    <rect x="252" y="498" width="20" height="5" rx="2" fill="#c9a35a"/>
+    <rect x="200" y="400" width="124" height="8" fill="#7f5838"/>
+    <!-- o rádio: caixa de madeira, tecido do alto-falante, mostrador e botões -->
+    <rect x="214" y="336" width="98" height="64" rx="7" fill="#4b2f1b" stroke="#2b1a0e" stroke-width="2"/>
+    <rect x="222" y="344" width="50" height="40" rx="4" fill="#b59b70"/>
+    <path d="M226 350 h42 M226 356 h42 M226 362 h42 M226 368 h42 M226 374 h42" stroke="#8b754f" stroke-width="2"/>
+    <rect x="278" y="346" width="28" height="14" rx="2" fill="#e8d7a8"/>
+    <line x1="284" y1="349" x2="284" y2="357" stroke="#8e3b2e" stroke-width="1.5"/>
+    <circle cx="284" cy="376" r="6" fill="#2b1a0e"/><circle cx="300" cy="376" r="6" fill="#2b1a0e"/>
+    <text x="263" y="395" font-family="Georgia, serif" font-size="8" fill="#c9a35a" text-anchor="middle" letter-spacing="1">VEF</text>
+  </g>
+
+  <!-- janela: céu, lua e os telhados da cidade velha -->
+  <g>
+    <rect x="336" y="76" width="288" height="278" fill="url(#ceu)"/>
+    <circle cx="566" cy="122" r="46" fill="url(#lua)"/>
+    <circle cx="566" cy="122" r="17" fill="#f3ead2"/>
+    <circle cx="575" cy="116" r="15" fill="#1b2540"/>
+    <g fill="#f3ead2">
+      <circle cx="380" cy="98" r="1.2"/><circle cx="420" cy="130" r="0.9"/><circle cx="460" cy="92" r="1.1"/>
+      <circle cx="510" cy="150" r="0.8"/><circle cx="398" cy="170" r="0.9"/><circle cx="604" cy="186" r="1"/>
+      <circle cx="530" cy="100" r="0.8"/><circle cx="352" cy="138" r="0.7"/>
+    </g>
+    <!-- silhuetas: telhados, a torre de São Pedro (escalonada) e a do Domo -->
+    <g fill="#0c111c">
+      <path d="M336 300 L360 272 L384 300 L400 300 L400 286 L430 262 L452 286 L452 300 L470 300 Z"/>
+      <!-- São Pedro -->
+      <path d="M468 300 L468 214 L476 214 L476 196 L482 196 L482 170 L486 170 L486 150 L488 128 L490 150 L490 170 L494 170 L494 196 L500 196 L500 214 L508 214 L508 300 Z"/>
+      <!-- Domo -->
+      <path d="M540 300 L540 230 C540 214 566 214 566 230 L566 300 Z"/>
+      <path d="M546 230 C546 206 560 206 560 230 Z"/>
+      <rect x="551" y="196" width="4" height="14"/>
+      <path d="M508 300 L520 280 L534 300 Z M566 300 L582 276 L600 300 L624 300 L624 354 L336 354 L336 300 Z"/>
+    </g>
+    <g fill="#ffd27a" opacity="0.85">
+      <rect x="372" y="306" width="7" height="9"/><rect x="438" y="312" width="7" height="9"/>
+      <rect x="588" y="318" width="7" height="9"/><rect x="606" y="306" width="7" height="9"/>
+      <rect x="520" y="326" width="7" height="9"/>
+    </g>
+    <!-- caixilho de madeira -->
+    <rect x="328" y="68" width="304" height="294" fill="none" stroke="#5f402a" stroke-width="14"/>
+    <line x1="480" y1="70" x2="480" y2="360" stroke="#5f402a" stroke-width="9"/>
+    <line x1="330" y1="214" x2="630" y2="214" stroke="#5f402a" stroke-width="9"/>
+    <rect x="312" y="360" width="336" height="16" fill="#6e4b2c"/>
+    <rect x="312" y="374" width="336" height="5" fill="#3a2516"/>
+    <!-- vaso na janela -->
+    <path d="M594 360 L600 336 L622 336 L628 360 Z" fill="#8a6a43"/>
+    <path d="M611 336 C600 316 590 318 584 310 M611 336 C618 312 630 314 636 304 M611 336 C610 316 612 304 608 296" stroke="#4d5a3a" stroke-width="4" fill="none"/>
+  </g>
+  <!-- cortinas pesadas -->
+  <path d="M300 54 L362 54 C352 160 372 260 350 384 L300 392 Z" fill="url(#cortina)"/>
+  <path d="M598 54 L660 54 L660 392 L610 384 C588 260 608 160 598 54 Z" fill="url(#cortina)"/>
+  <rect x="290" y="46" width="380" height="10" rx="5" fill="#8a6a43"/>
+  <circle cx="290" cy="51" r="8" fill="#c9a35a"/><circle cx="670" cy="51" r="8" fill="#c9a35a"/>
+
+  <!-- retrato do avô -->
+  <g>
+    <rect x="712" y="140" width="96" height="120" fill="#3a2516"/>
+    <rect x="720" y="148" width="80" height="104" fill="#d9c7a0"/>
+    <ellipse cx="760" cy="206" rx="40" ry="50" fill="#bfa77c"/>
+    <circle cx="760" cy="188" r="16" fill="#6b5640"/>
+    <path d="M734 252 C736 220 784 220 786 252 Z" fill="#4b3b2c"/>
+    <path d="M744 176 C748 166 772 166 776 176" stroke="#d9c7a0" stroke-width="3" fill="none" opacity="0.5"/>
+    <line x1="760" y1="112" x2="730" y2="140" stroke="#2b1d12" stroke-width="1.5"/>
+    <line x1="760" y1="112" x2="790" y2="140" stroke="#2b1d12" stroke-width="1.5"/>
+    <circle cx="760" cy="112" r="3" fill="#c9a35a"/>
+  </g>
+
+  <!-- estante com livros -->
+  <g>
+    <rect x="872" y="276" width="276" height="12" fill="#5b3c22"/>
+    <path d="M884 288 L896 306 L908 288 Z M1112 288 L1124 306 L1136 288 Z" fill="#4a321f"/>
+    <g>
+      <rect x="892" y="214" width="20" height="62" fill="#6b2f25"/>
+      <rect x="914" y="206" width="24" height="70" fill="#2f4a3a"/>
+      <rect x="940" y="220" width="18" height="56" fill="#7d6a3e"/>
+      <rect x="960" y="200" width="26" height="76" fill="#3b3f5c"/>
+      <rect x="988" y="212" width="20" height="64" fill="#5b3a2a"/>
+      <rect x="1010" y="218" width="22" height="58" fill="#6f5d3a"/>
+      <rect x="1034" y="204" width="18" height="72" fill="#2c3a30"/>
+      <rect x="1054" y="216" width="24" height="60" fill="#7a3d2c"/>
+      <path d="M1082 276 L1112 226 L1128 232 L1098 276 Z" fill="#4d5a3a"/>
+    </g>
+    <g fill="#c9a35a" opacity="0.65">
+      <rect x="896" y="226" width="12" height="3"/><rect x="918" y="220" width="16" height="3"/>
+      <rect x="964" y="214" width="18" height="3"/><rect x="964" y="258" width="18" height="2"/>
+      <rect x="1014" y="230" width="14" height="3"/><rect x="1058" y="228" width="16" height="3"/>
+    </g>
+  </g>
+
+  <!-- brilho quente da luminária na parede -->
+  <rect width="1280" height="720" fill="url(#luzDaLuminaria)"/>
+
+  <!-- escrivaninha -->
+  <g>
+    <rect x="556" y="470" width="20" height="110" fill="#3d2716"/>
+    <rect x="1124" y="470" width="20" height="110" fill="#3d2716"/>
+    <rect x="566" y="478" width="568" height="62" fill="url(#madeira)" stroke="#3a2516" stroke-width="2"/>
+    <rect x="590" y="488" width="150" height="40" fill="#6e4b2c" stroke="#3a2516" stroke-width="2"/>
+    <rect x="958" y="488" width="150" height="40" fill="#6e4b2c" stroke="#3a2516" stroke-width="2"/>
+    <rect x="652" y="504" width="26" height="6" rx="3" fill="#c9a35a"/>
+    <rect x="1020" y="504" width="26" height="6" rx="3" fill="#c9a35a"/>
+    <path d="M532 466 L1168 466 L1176 480 L524 480 Z" fill="url(#madeiraTampo)"/>
+    <rect x="524" y="480" width="652" height="6" fill="#4a321f"/>
+    <!-- sombra no chão -->
+    <ellipse cx="850" cy="586" rx="330" ry="14" fill="#000" opacity="0.28" filter="url(#borrao)"/>
+  </g>
+
+  <!-- cone de luz da luminária -->
+  <path d="M1052 384 L1110 384 L1190 474 L700 474 Z" fill="url(#cone)" filter="url(#borrao)"/>
+  <ellipse cx="960" cy="470" rx="250" ry="12" fill="#ffe2a0" opacity="0.22" filter="url(#borrao)"/>
+
+  <!-- luminária de banqueiro -->
+  <g>
+    <ellipse cx="1100" cy="464" rx="38" ry="7" fill="#1f2d1f"/>
+    <rect x="1066" y="452" width="68" height="12" rx="4" fill="#2d3a2a"/>
+    <path d="M1100 452 L1094 412 L1080 394" stroke="#a88545" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M1040 394 C1046 366 1114 366 1120 394 Z" fill="url(#cupula)"/>
+    <ellipse cx="1080" cy="394" rx="40" ry="6" fill="#fff1c4"/>
+    <circle cx="1080" cy="368" r="4" fill="#c9a35a"/>
+  </g>
+
+  <!-- tabuleiro com algumas peças (a orelha lascada do cavalo branco) -->
+  <g>
+    <path d="M574 460 L694 460 L702 468 L566 468 Z" fill="#3d2716"/>
+    <g>
+      <path d="M582 444 L690 444 L696 460 L576 460 Z" fill="#e8d3a8"/>
+      <g fill="#a87a4f">
+        <path d="M582 444 L595.5 444 L595 448 L581 448 Z"/><path d="M609 444 L622.5 444 L622.5 448 L608.5 448 Z"/>
+        <path d="M636 444 L649.5 444 L650 448 L636 448 Z"/><path d="M663 444 L676.5 444 L677 448 L663 448 Z"/>
+        <path d="M594.5 448 L608.5 448 L608 452 L594 452 Z"/><path d="M622.5 448 L636 448 L636.5 452 L622 452 Z"/>
+        <path d="M650 448 L663 448 L664 452 L650 452 Z"/><path d="M677 448 L690.5 448 L692 452 L677.5 452 Z"/>
+        <path d="M580 452 L594 452 L593 456 L578.5 456 Z"/><path d="M608 452 L622 452 L621.5 456 L607.5 456 Z"/>
+        <path d="M636.5 452 L650 452 L650.5 456 L636.5 456 Z"/><path d="M664 452 L677.5 452 L679 456 L665 456 Z"/>
+        <path d="M593 456 L607.5 456 L607 460 L592 460 Z"/><path d="M621.5 456 L636.5 456 L636.5 460 L621.5 460 Z"/>
+        <path d="M650.5 456 L665 456 L666 460 L651 460 Z"/><path d="M679 456 L694 456 L696 460 L680.5 460 Z"/>
+      </g>
+    </g>
+    <!-- rei branco, dama preta, cavalo branco, peão preto -->
+    <g>
+      <path d="M598 452 L612 452 L610 446 L608 430 L602 430 L600 446 Z" fill="#f4ecd8" stroke="#2b2118" stroke-width="1.2"/>
+      <rect x="601" y="424" width="8" height="6" fill="#f4ecd8" stroke="#2b2118" stroke-width="1.2"/>
+      <path d="M605 414 v10 M601 418 h8" stroke="#2b2118" stroke-width="2"/>
+      <path d="M636 450 L652 450 L649 444 L647 428 L641 428 L639 444 Z" fill="#2b2118"/>
+      <path d="M638 428 L650 428 L652 420 L648 424 L644 418 L640 424 L636 420 Z" fill="#2b2118"/>
+      <path d="M662 454 L678 454 L676 446 C682 440 682 426 670 422 L664 424 L660 430 L666 432 L662 440 Z" fill="#f4ecd8" stroke="#2b2118" stroke-width="1.2"/>
+      <path d="M670 422 L672 418 L674 423" fill="#2b2118"/>
+      <path d="M686 456 L698 456 L696 450 L694 444 C697 440 694 434 690 434 C686 434 683 440 686 444 L684 450 Z" fill="#2b2118"/>
+    </g>
+  </g>
+
+  <!-- jornal dobrado -->
+  <g>
+    <path d="M688 440 L834 438 L840 464 L682 466 Z" fill="#efe4cc"/>
+    <path d="M688 440 L834 438 L836 446 L686 448 Z" fill="#d9c9a6"/>
+    <rect x="696" y="449" width="64" height="5" fill="#2b2118" opacity="0.8"/>
+    <rect x="768" y="449" width="30" height="13" fill="#6b5f50" opacity="0.6"/>
+    <path d="M696 458 h64 M696 462 h60 M804 452 h26 M804 456 h24 M804 460 h26" stroke="#2b2118" stroke-width="1.4" opacity="0.6"/>
+  </g>
+
+  <!-- revista de xadrez -->
+  <g>
+    <path d="M876 438 L986 436 L992 462 L870 464 Z" fill="#e7dcc0"/>
+    <path d="M876 438 L986 436 L988 446 L874 448 Z" fill="#8e3b2e"/>
+    <text x="931" y="445" font-family="Georgia, serif" font-size="8" fill="#efe4cc" text-anchor="middle" letter-spacing="1.5">ШАХМАТЫ В СССР</text>
+    <rect x="904" y="450" width="54" height="10" fill="none" stroke="#2b2118" stroke-width="1" opacity="0.5"/>
+    <path d="M910 452 h8 v3 h-8 Z M926 455 h8 v3 h-8 Z M942 452 h8 v3 h-8 Z" fill="#2b2118" opacity="0.5"/>
+  </g>
+
+  <!-- xícara de chá e caderno -->
+  <g>
+    <ellipse cx="1030" cy="462" rx="15" ry="4" fill="#c9b893"/>
+    <path d="M1018 446 L1042 446 L1038 462 L1022 462 Z" fill="#f4ecd8" stroke="#b8a77f" stroke-width="1"/>
+    <path d="M1042 450 C1050 450 1050 458 1040 458" stroke="#f4ecd8" stroke-width="3" fill="none"/>
+    <ellipse cx="1030" cy="446" rx="12" ry="3" fill="#7a4a24"/>
+    <path d="M1026 440 C1022 432 1032 430 1028 422 M1034 440 C1030 434 1038 430 1035 424" stroke="#efe4cc" stroke-width="1.5" fill="none" opacity="0.45" filter="url(#borraoLeve)"/>
+  </g>
+
+  <!-- vinheta e grão de papel -->
+  <rect width="1280" height="720" fill="url(#vinheta)"/>
+  <rect width="1280" height="720" filter="url(#grao)" opacity="0.9"/>
+</svg>
