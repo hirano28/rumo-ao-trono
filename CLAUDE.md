@@ -20,6 +20,15 @@ Como rodar e onde mora cada coisa: `README.md`.
 5. **Versões exatas** no `package.json`, de pacote publicado há pelo menos duas
    semanas.
 
+## Arte
+
+Vetorial, em `public/arte/` (estilo em `docs/DESIGN.md` §7). Personagem novo:
+acrescente a ficha em `ferramentas/gerar_personagens.mjs`, rode o script e
+ponha o id em `PERSONAGENS` de `src/ui/arte.ts` (o teste de conteúdo acusa a
+falta). Na cena, `y` do personagem é o chão (os pés). Os pontos clicáveis dos
+cenários (objetos do quarto, quadro e vitrine do Palácio) têm de bater com o
+desenho: mudou a arte, confira as posições e fotografe.
+
 ## Servidor
 
 Supabase, projeto `pwmtabunzjcjnnhfewno` (só deste jogo; NÃO é o do

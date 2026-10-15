@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <!-- A mesa de madeira da Seção de Xadrez, vista de cima. Arte do jogo (GPL-3.0). -->
+  <defs>
+    <linearGradient id="madeira" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5a3b22"/>
+      <stop offset="0.5" stop-color="#6e4b2c"/>
+      <stop offset="1" stop-color="#57391f"/>
+    </linearGradient>
+    <filter id="veios" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.12" numOctaves="3" seed="9"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.18  0 0 0 0 0.11  0 0 0 0 0.05  0 0 0 1.1 -0.35"/>
+    </filter>
+    <filter id="borrao"><feGaussianBlur stdDeviation="4"/></filter>
+    <radialGradient id="luz" cx="380" cy="300" r="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe2a0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#madeira)"/>
+  <rect width="1280" height="720" filter="url(#veios)" opacity="0.6"/>
+  <g stroke="#3a2516" stroke-width="2" opacity="0.5"><line x1="0" y1="180" x2="1280" y2="180"/><line x1="0" y1="540" x2="1280" y2="540"/></g>
+  <!-- planilha de anotação com lápis (sai por baixo do painel) -->
+  <g transform="translate(724 600) rotate(-6)">
+    <rect x="-6" y="4" width="120" height="150" fill="#000" opacity="0.25" filter="url(#borrao)"/>
+    <rect x="0" y="0" width="120" height="150" fill="#efe4cc"/>
+    <rect x="0" y="0" width="120" height="16" fill="#8e3b2e"/>
+    <g stroke="#8a6a43" stroke-width="1" opacity="0.6">
+      <line x1="8" y1="30" x2="112" y2="30"/><line x1="8" y1="44" x2="112" y2="44"/><line x1="8" y1="58" x2="112" y2="58"/>
+      <line x1="8" y1="72" x2="112" y2="72"/><line x1="8" y1="86" x2="112" y2="86"/><line x1="60" y1="20" x2="60" y2="140"/>
+    </g>
+    <g fill="#2b2118" opacity="0.7"><rect x="12" y="24" width="30" height="3"/><rect x="66" y="24" width="28" height="3"/><rect x="12" y="38" width="26" height="3"/><rect x="66" y="38" width="32" height="3"/></g>
+  </g>
+  <g transform="translate(700 690) rotate(-28)">
+    <rect x="0" y="0" width="120" height="8" fill="#c9a35a" stroke="#2b2118" stroke-width="1"/>
+    <path d="M120 0 L136 4 L120 8 Z" fill="#e3c79a" stroke="#2b2118" stroke-width="1"/>
+    <rect x="-10" y="0" width="10" height="8" fill="#8e3b2e"/>
+  </g>
+  <rect width="1280" height="720" fill="url(#luz)"/>
+</svg>

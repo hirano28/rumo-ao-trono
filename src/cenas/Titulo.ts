@@ -8,6 +8,7 @@ import { agendarProgresso, contaConectada, criarConta, recuperarConta } from "..
 import { perguntarApelido } from "../ui/apelido";
 import { botao } from "../ui/componentes";
 import { carregarPecas } from "../ui/tabuleiro";
+import { carregarArte, chaveDaArte } from "../ui/arte";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
 
 const CHAVE_PULOU = "rumo-ao-trono:sem-conta";
@@ -38,6 +39,7 @@ export class Titulo extends Phaser.Scene {
 
   preload(): void {
     carregarPecas(this, 128);
+    carregarArte(this);
   }
 
   create(): void {
@@ -99,14 +101,9 @@ export class Titulo extends Phaser.Scene {
     this.children.removeAll(true);
     this.cameras.main.setBackgroundColor(COR.noite);
 
-    // um tabuleiro gigante, quase apagado, ao fundo
-    const casa = 120;
-    for (let l = 0; l < 7; l++) {
-      for (let c = 0; c < 12; c++) {
-        if ((l + c) % 2 === 0) this.add.rectangle(c * casa + casa / 2 - 40, l * casa + casa / 2 - 60, casa, casa, COR.parede, 0.35);
-      }
-    }
-    this.add.rectangle(LARGURA / 2, ALTURA / 2, LARGURA, ALTURA, COR.noite, 0.55);
+    // Riga à noite, do outro lado do Daugava; um véu leve para o texto ler bem
+    this.add.image(LARGURA / 2, ALTURA / 2, chaveDaArte("titulo"));
+    this.add.rectangle(LARGURA / 2, ALTURA / 2, LARGURA, ALTURA, COR.noite, 0.3);
 
     this.add
       .text(LARGURA / 2, 170, t("titulo.nome"), {

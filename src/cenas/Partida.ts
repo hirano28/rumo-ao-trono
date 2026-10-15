@@ -14,6 +14,7 @@ import { lanceDoAdversario, prepararAdversario, type LanceUci } from "../motor/a
 import { motor } from "../motor/motor";
 import { CAMADA_SOBRE, botao, veu } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
+import { chaveDaArte } from "../ui/arte";
 import { RelogioDeXadrez } from "../ui/relogioDeXadrez";
 import { Tabuleiro, type LanceDoJogador } from "../ui/tabuleiro";
 import { trocarDeCena } from "../ui/transicao";
@@ -98,14 +99,10 @@ export class Partida extends Phaser.Scene {
     this.registrar(meu ? 0 : 1, meu ? "partida.fim_tempo_seu" : "partida.fim_tempo_dele");
   }
 
+  /** A mesa do lugar: a de pedra do parque ou a de madeira do Palácio. */
   private desenharMesa(): void {
-    const g = this.add.graphics();
-    g.fillStyle(0x8b8680).fillRect(0, 0, LARGURA, ALTURA);
-    g.fillStyle(0x7d7871);
-    for (let i = 0; i < 40; i++) {
-      g.fillCircle(Phaser.Math.Between(0, LARGURA), Phaser.Math.Between(0, ALTURA), Phaser.Math.Between(4, 18));
-    }
-    g.fillStyle(0xa4652a, 0.85).fillEllipse(1180, 660, 40, 22).fillEllipse(760, 30, 34, 18);
+    const mesa = capituloAtual().local.cenario === "parque" ? "mesa-parque" : "mesa-palacio";
+    this.add.image(LARGURA / 2, ALTURA / 2, chaveDaArte(mesa));
   }
 
   private desenharPainel(): void {

@@ -60,17 +60,15 @@ export interface ObjetoDoQuarto {
 }
 
 export interface Personagem {
+  /** Também o nome do desenho: public/arte/personagens/<id>.svg. */
   id: string;
   dialogo: string;
   adversario?: string;
-  /** Onde fica na cena (1280×720, ponto dos pés ao centro do corpo). */
+  /** Onde ficam os pés na cena (1280×720). */
   x: number;
   y: number;
-  /** Cor da roupa, "#rrggbb". */
-  roupa: string;
   /** 1 = adulto; menos para criança. */
   altura: number;
-  chapeu?: boolean;
 }
 
 /** Os cenários que a cena de local sabe desenhar. */
@@ -187,7 +185,6 @@ export function conferirConteudo(
       }
     }
     for (const personagem of capitulo.local.personagens) {
-      if (!/^#[0-9a-f]{6}$/i.test(personagem.roupa)) problemas.push(`personagem ${personagem.id} com cor de roupa inválida`);
       if (!conteudo.dialogos[personagem.dialogo]) {
         problemas.push(`personagem ${personagem.id} sem diálogo ${personagem.dialogo}`);
       }

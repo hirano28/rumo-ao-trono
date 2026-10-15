@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <!-- A Seção de Xadrez do Palácio dos Pioneiros, ala norte do Castelo de Riga, 1951. Arte do jogo (GPL-3.0). -->
+  <defs>
+    <linearGradient id="parede" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9cfb8"/>
+      <stop offset="1" stop-color="#cbbfa4"/>
+    </linearGradient>
+    <linearGradient id="paredeClara" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d3c8ae"/>
+      <stop offset="1" stop-color="#bfb295"/>
+    </linearGradient>
+    <linearGradient id="nicho" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b3a68a"/>
+      <stop offset="1" stop-color="#d4c9b0"/>
+    </linearGradient>
+    <linearGradient id="vidro" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c7d3da"/>
+      <stop offset="1" stop-color="#e9dfc6"/>
+    </linearGradient>
+    <linearGradient id="lambri" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6e4b2c"/>
+      <stop offset="1" stop-color="#4f341e"/>
+    </linearGradient>
+    <linearGradient id="tacos" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a5230"/>
+      <stop offset="1" stop-color="#946639"/>
+    </linearGradient>
+    <linearGradient id="raio" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4d6" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#fff4d6" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vinheta" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0.6" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
+    </radialGradient>
+    <pattern id="tacoEspinha" width="40" height="20" patternUnits="userSpaceOnUse">
+      <rect width="40" height="20" fill="#86592f"/>
+      <path d="M0 20 L20 0 L24 0 L4 20 Z M20 20 L40 0 L40 4 L24 20 Z" fill="#9a6b3b"/>
+      <path d="M0 0 L20 20 M20 0 L40 20" stroke="#5e3d20" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <filter id="borrao"><feGaussianBlur stdDeviation="8"/></filter>
+    <filter id="grao" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="11"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.2  0 0 0 0.08 0"/>
+    </filter>
+    <g id="janelaFunda">
+      <!-- nicho na parede grossa do castelo, com arco -->
+      <path d="M-78 300 L-78 70 C-78 0 78 0 78 70 L78 300 Z" fill="url(#nicho)"/>
+      <path d="M-58 286 L-58 80 C-58 26 58 26 58 80 L58 286 Z" fill="url(#vidro)"/>
+      <path d="M-58 286 L-58 80 C-58 26 58 26 58 80 L58 286 Z" fill="none" stroke="#efe6d2" stroke-width="7"/>
+      <path d="M0 30 V286 M-58 150 H58 M-58 214 H58" stroke="#efe6d2" stroke-width="5"/>
+      <path d="M-40 270 L-24 120 L-10 270 Z M12 270 L22 170 L32 270 Z" fill="#9fb0a4" opacity="0.35"/>
+      <rect x="-86" y="296" width="172" height="12" fill="#c2b69b"/>
+      <!-- aquecedor sob a janela -->
+      <rect x="-50" y="318" width="100" height="38" rx="4" fill="#b9b2a2" stroke="#8a8272" stroke-width="1.5"/>
+      <path d="M-40 322 v30 M-28 322 v30 M-16 322 v30 M-4 322 v30 M8 322 v30 M20 322 v30 M32 322 v30" stroke="#8a8272" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <!-- paredes e abóbada -->
+  <rect width="1280" height="470" fill="url(#paredeClara)"/>
+  <path d="M0 0 H1280 V40 C1000 70 280 70 0 40 Z" fill="#c6baa0"/>
+  <path d="M0 40 C280 70 1000 70 1280 40" stroke="#a89b80" stroke-width="3" fill="none"/>
+  <!-- pilastras -->
+  <g fill="#d0c5ab"><rect x="250" y="60" width="24" height="380"/><rect x="1006" y="60" width="24" height="380"/></g>
+
+  <!-- janelas fundas -->
+  <use href="#janelaFunda" x="130" y="62"/>
+  <use href="#janelaFunda" x="400" y="62"/>
+  <use href="#janelaFunda" x="880" y="62"/>
+  <use href="#janelaFunda" x="1150" y="62"/>
+
+  <!-- raios de luz de tarde -->
+  <g filter="url(#borrao)">
+    <path d="M72 140 L188 140 L320 640 L120 640 Z" fill="url(#raio)"/>
+    <path d="M342 140 L458 140 L590 640 L390 640 Z" fill="url(#raio)"/>
+    <path d="M822 140 L938 140 L1070 640 L870 640 Z" fill="url(#raio)"/>
+  </g>
+
+  <!-- quadro do torneio -->
+  <g>
+    <rect x="556" y="106" width="168" height="198" fill="#4a321f"/>
+    <rect x="566" y="116" width="148" height="178" fill="#efe4cc"/>
+    <rect x="566" y="116" width="148" height="18" fill="#8e3b2e"/>
+    <text x="640" y="129" font-family="Georgia, serif" font-size="9" fill="#efe4cc" text-anchor="middle" letter-spacing="1">ТУРНИРНАЯ ТАБЛИЦА</text>
+    <g stroke="#2b2118" stroke-width="1" opacity="0.55">
+      <path d="M574 152 H706 M574 172 H706 M574 192 H706 M574 212 H706 M574 232 H706 M574 252 H706"/>
+      <path d="M604 140 V262 M630 140 V262 M656 140 V262 M682 140 V262"/>
+    </g>
+    <g fill="#2b2118" opacity="0.5"><rect x="578" y="157" width="20" height="3"/><rect x="578" y="177" width="16" height="3"/><rect x="578" y="197" width="22" height="3"/><rect x="578" y="217" width="18" height="3"/><rect x="578" y="237" width="20" height="3"/></g>
+    <circle cx="640" cy="110" r="3" fill="#c9a35a"/>
+  </g>
+
+  <!-- vitrine de troféus -->
+  <g>
+    <rect x="1008" y="248" width="174" height="134" fill="#4a321f"/>
+    <rect x="1018" y="258" width="154" height="114" fill="#b9c7cc" opacity="0.45"/>
+    <rect x="1018" y="314" width="154" height="4" fill="#4a321f"/>
+    <g fill="#c9a35a" stroke="#7a5a2a" stroke-width="1">
+      <path d="M1038 312 h16 l-3 -6 h-10 Z M1046 306 v-12 M1036 286 q10 16 20 0 Z"/>
+      <path d="M1086 312 h22 l-4 -8 h-14 Z M1097 304 v-14 M1083 276 q14 22 28 0 Z"/>
+      <path d="M1138 312 h14 l-2 -5 h-10 Z M1145 307 v-10 M1137 291 q8 12 16 0 Z"/>
+    </g>
+    <g><rect x="1030" y="330" width="40" height="30" fill="#efe4cc"/><rect x="1036" y="336" width="28" height="18" fill="#6b5f50" opacity="0.6"/>
+      <rect x="1084" y="326" width="70" height="38" fill="#efe4cc"/><path d="M1092 336 h54 M1092 344 h48 M1092 352 h52" stroke="#2b2118" stroke-width="1.2" opacity="0.5"/></g>
+    <path d="M1018 258 L1060 258 L1030 372 L1018 372 Z" fill="#fff" opacity="0.18"/>
+  </g>
+
+
+  <!-- lambri -->
+  <rect y="400" width="1280" height="72" fill="url(#lambri)"/>
+  <rect y="396" width="1280" height="6" fill="#3a2516"/>
+  <g stroke="#3f2a17" stroke-width="2" opacity="0.7">
+    <path d="M40 410 v52 M200 410 v52 M360 410 v52 M520 410 v52 M680 410 v52 M840 410 v52 M1000 410 v52 M1160 410 v52"/>
+  </g>
+
+  <!-- assoalho em espinha de peixe -->
+  <rect y="470" width="1280" height="250" fill="url(#tacoEspinha)"/>
+  <rect y="470" width="1280" height="250" fill="url(#tacos)" opacity="0.45"/>
+
+  <!-- passadeira vermelha -->
+  <path d="M0 600 L1280 590 L1280 690 L0 704 Z" fill="#7a2b24" opacity="0.85"/>
+  <path d="M0 610 L1280 600 M0 694 L1280 680" stroke="#c9a35a" stroke-width="3" opacity="0.5"/>
+
+  <!-- encostos das cadeiras atrás da mesa -->
+  <g fill="#4a321f" stroke="#2b1a0e" stroke-width="1.2">
+    <path d="M196 470 h40 v30 h-6 v-24 h-28 v24 h-6 Z"/><path d="M446 470 h40 v30 h-6 v-24 h-28 v24 h-6 Z"/>
+    <path d="M696 470 h40 v30 h-6 v-24 h-28 v24 h-6 Z"/><path d="M946 470 h40 v30 h-6 v-24 h-28 v24 h-6 Z"/>
+  </g>
+
+  <!-- mesas compridas com tabuleiros e relógios (ao fundo) -->
+  <g id="mesaComprida">
+    <rect x="120" y="500" width="1040" height="18" fill="#5a3b22" stroke="#2b1a0e" stroke-width="1.5"/>
+    <rect x="130" y="518" width="16" height="44" fill="#3d2716"/><rect x="1134" y="518" width="16" height="44" fill="#3d2716"/>
+    <g id="tabuleiroComRelogio">
+      <path d="M180 500 L252 500 L246 486 L186 486 Z" fill="#e8d3a8" stroke="#2b1a0e" stroke-width="1"/>
+      <g fill="#a87a4f"><path d="M188 486 L197 486 L196 490 L187 490 Z"/><path d="M206 486 L215 486 L215 490 L205 490 Z"/><path d="M224 486 L233 486 L234 490 L224 490 Z"/>
+        <path d="M197 490 L206 490 L205 494 L196 494 Z"/><path d="M215 490 L224 490 L224 494 L215 494 Z"/><path d="M233 490 L242 490 L244 494 L234 494 Z"/>
+        <path d="M186 494 L196 494 L195 498 L185 498 Z"/><path d="M205 494 L215 494 L214 498 L205 498 Z"/><path d="M224 494 L234 494 L234 498 L224 498 Z"/></g>
+      <rect x="262" y="480" width="34" height="20" rx="3" fill="#6e4b2c" stroke="#2b1a0e" stroke-width="1"/>
+      <circle cx="272" cy="490" r="6" fill="#f4ecd8" stroke="#2b1a0e" stroke-width="0.8"/><circle cx="287" cy="490" r="6" fill="#f4ecd8" stroke="#2b1a0e" stroke-width="0.8"/>
+      <rect x="268" y="476" width="8" height="4" fill="#2b1a0e"/><rect x="283" y="478" width="8" height="2" fill="#2b1a0e"/>
+      <g fill="#2b2118"><rect x="196" y="476" width="3" height="10"/><rect x="214" y="478" width="3" height="8"/><rect x="230" y="474" width="3" height="12"/></g>
+    </g>
+    <use href="#tabuleiroComRelogio" x="250"/>
+    <use href="#tabuleiroComRelogio" x="500"/>
+    <use href="#tabuleiroComRelogio" x="750"/>
+  </g>
+
+  <!-- tabuleiro mural num cavalete, para as aulas -->
+  <g>
+    <path d="M70 640 L112 380 L120 380 L82 640 Z M190 640 L148 380 L140 380 L178 640 Z" fill="#4a321f"/>
+    <path d="M128 380 L128 660" stroke="#3a2516" stroke-width="6"/>
+    <rect x="50" y="360" width="160" height="160" fill="#3a2516"/>
+    <rect x="58" y="368" width="144" height="144" fill="#e8d3a8"/>
+    <g fill="#a87a4f">
+      <rect x="76" y="368" width="18" height="18"/><rect x="112" y="368" width="18" height="18"/><rect x="148" y="368" width="18" height="18"/><rect x="184" y="368" width="18" height="18"/>
+      <rect x="58" y="386" width="18" height="18"/><rect x="94" y="386" width="18" height="18"/><rect x="130" y="386" width="18" height="18"/><rect x="166" y="386" width="18" height="18"/>
+      <rect x="76" y="404" width="18" height="18"/><rect x="112" y="404" width="18" height="18"/><rect x="148" y="404" width="18" height="18"/><rect x="184" y="404" width="18" height="18"/>
+      <rect x="58" y="422" width="18" height="18"/><rect x="94" y="422" width="18" height="18"/><rect x="130" y="422" width="18" height="18"/><rect x="166" y="422" width="18" height="18"/>
+      <rect x="76" y="440" width="18" height="18"/><rect x="112" y="440" width="18" height="18"/><rect x="148" y="440" width="18" height="18"/><rect x="184" y="440" width="18" height="18"/>
+      <rect x="58" y="458" width="18" height="18"/><rect x="94" y="458" width="18" height="18"/><rect x="130" y="458" width="18" height="18"/><rect x="166" y="458" width="18" height="18"/>
+      <rect x="76" y="476" width="18" height="18"/><rect x="112" y="476" width="18" height="18"/><rect x="148" y="476" width="18" height="18"/><rect x="184" y="476" width="18" height="18"/>
+      <rect x="58" y="494" width="18" height="18"/><rect x="94" y="494" width="18" height="18"/><rect x="130" y="494" width="18" height="18"/><rect x="166" y="494" width="18" height="18"/>
+    </g>
+    <!-- uma posição de aula: peças planas penduradas -->
+    <g stroke="#2b2118" stroke-width="1.2">
+      <circle cx="139" cy="413" r="6" fill="#f4ecd8"/><circle cx="121" cy="431" r="6" fill="#2b2118"/>
+      <circle cx="157" cy="449" r="6" fill="#f4ecd8"/><circle cx="85" cy="395" r="6" fill="#2b2118"/>
+      <rect x="161" y="485" width="10" height="10" fill="#f4ecd8"/><rect x="98" y="372" width="10" height="10" fill="#2b2118"/>
+    </g>
+    <g font-family="Georgia, serif" font-size="9" fill="#e8d3a8" text-anchor="middle">
+      <text x="67" y="526">a</text><text x="85" y="526">b</text><text x="103" y="526">c</text><text x="121" y="526">d</text>
+      <text x="139" y="526">e</text><text x="157" y="526">f</text><text x="175" y="526">g</text><text x="193" y="526">h</text>
+    </g>
+  </g>
+
+  <!-- lustre -->
+  <g>
+    <line x1="640" y1="0" x2="640" y2="46" stroke="#5a4430" stroke-width="2"/>
+    <path d="M590 56 C600 74 680 74 690 56 Z" fill="#c9a35a" stroke="#7a5a2a" stroke-width="1.5"/>
+    <g fill="#fff1c4"><circle cx="596" cy="50" r="5"/><circle cx="618" cy="46" r="5"/><circle cx="640" cy="44" r="5"/><circle cx="662" cy="46" r="5"/><circle cx="684" cy="50" r="5"/></g>
+    <circle cx="640" cy="52" r="70" fill="#fff1c4" opacity="0.12" filter="url(#borrao)"/>
+  </g>
+
+  <rect width="1280" height="720" fill="url(#vinheta)"/>
+  <rect width="1280" height="720" filter="url(#grao)" opacity="0.9"/>
+</svg>

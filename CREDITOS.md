@@ -12,6 +12,12 @@
 | Special Elite | Google Fonts (Astigmatic) | Apache-2.0 |
 | Courier Prime | Google Fonts (Quote-Unquote Apps) | OFL 1.1 |
 
+## Arte
+
+Cenários e personagens (`public/arte/`) são originais deste projeto,
+desenhados em SVG (GPL-3.0). Os personagens saem de
+`ferramentas/gerar_personagens.mjs`.
+
 ## Conteúdo histórico
 
 Os textos das notícias e conversas são nossos, escritos a partir de fatos.

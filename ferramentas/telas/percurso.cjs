@@ -53,14 +53,14 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await esperarCena("Local");
   await espera(1000);
   await foto("06-parque");
-  await clicar(1150, 430, 700); // Marta
+  await clicar(1040, 480, 700); // Marta
   await foto("07-marta");
-  await clicar(220, 662, 500); // novidades (1ª de 4)
+  await clicar(357, 662, 500); // novidades (1ª de 4)
   await foto("08-marta-novidades");
-  await clicar(828, 662, 500); // até logo (2ª de 2)
-  await clicar(330, 470, 700); // Pēteris
+  await clicar(908, 662, 500); // até logo (2ª de 2)
+  await clicar(372, 500, 700); // Pēteris
   await foto("09-peteris");
-  await clicar(452, 662, 500); // "Vamos jogar." (1ª de 2)
+  await clicar(532, 662, 500); // "Vamos jogar." (1ª de 2)
   await esperarCena("Partida");
   await espera(1200);
   await foto("10-partida-inicio");

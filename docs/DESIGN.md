@@ -152,6 +152,16 @@ Na praça, as partidas são sem relógio, como eram de fato.
 ## 7. Apresentação
 
 - 2D ilustrado, estilo dos anos 50 (papel, tinta, tons sépia e verde-oliva).
+  Desde 15/10/2026 a arte é vetorial (SVG, em `public/arte/`): traço escuro,
+  cores chapadas com sombra lateral, luz quente, textura de papel e vinheta.
+  Cenários: título (Riga do outro lado do Daugava), quarto, parque (fachadas
+  Art Nouveau, bonde, banca), Palácio (paredes grossas do castelo, tabuleiro
+  mural no cavalete, quadro do torneio, vitrine) e as duas mesas de partida.
+  Personagens gerados por `ferramentas/gerar_personagens.mjs` a partir de uma
+  ficha (idade, cabelo, roupa de época, acessórios), em dois quadros (olhos
+  abertos e fechados): respiram e piscam na cena, e o retrato de quem fala
+  aparece na caixa de diálogo. Tal, Krūzkops e Gipslis são estilizados, sem
+  pretensão de retrato fiel. Vida no cenário: poeira na luz, folhas caindo.
 - Texto no lugar de dublagem; muito som de ambiente (relógio mecânico, peças
   batendo na madeira, conversa ao fundo, rua de Riga).
 - Tabuleiro de madeira com peças Staunton desenhadas no próprio jogo.

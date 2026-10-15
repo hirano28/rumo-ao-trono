@@ -72,3 +72,17 @@ describe("pontos do desafio", () => {
     expect(desafioCompleto({ a: 1, b: 0.5, c: 0 }, ids)).toBe(true);
   });
 });
+
+describe("arte dos personagens", () => {
+  it("todo personagem do conteúdo tem os dois desenhos e está na lista da arte", async () => {
+    const { existsSync } = await import("node:fs");
+    const { PERSONAGENS } = await import("../src/ui/arte");
+    for (const capitulo of CONTEUDO.epoca.capitulos) {
+      for (const personagem of capitulo.local.personagens) {
+        expect(PERSONAGENS as readonly string[]).toContain(personagem.id);
+        expect(existsSync(`public/arte/personagens/${personagem.id}.svg`), personagem.id).toBe(true);
+        expect(existsSync(`public/arte/personagens/${personagem.id}-piscando.svg`), personagem.id).toBe(true);
+      }
+    }
+  });
+});

@@ -147,22 +147,33 @@ export interface EscolhaDeDialogo {
   aoEscolher: () => void;
 }
 
-/** Caixa de diálogo no rodapé: quem fala, a fala e as respostas possíveis. */
+/**
+ * Caixa de diálogo no rodapé: quem fala, a fala e as respostas possíveis.
+ * Com `retrato` (a textura do personagem), o rosto e os ombros de quem fala
+ * aparecem à esquerda: a caixa cobre o personagem na cena.
+ */
 export function caixaDeDialogo(
   cena: Phaser.Scene,
   quem: string,
   fala: string,
   escolhas: readonly EscolhaDeDialogo[],
+  retrato?: string,
 ): () => void {
   const objetos: Phaser.GameObjects.GameObject[] = [];
   const altura = 250;
   const y0 = ALTURA - altura - 16;
+  const margem = retrato ? 236 : 64;
   objetos.push(veu(cena, 0.25));
   objetos.push(
     cena.add.rectangle(LARGURA / 2, y0 + altura / 2, LARGURA - 64, altura, COR.papel, 0.97).setStrokeStyle(2, COR.sepia),
   );
+  if (retrato) {
+    objetos.push(cena.add.rectangle(136, y0 + altura / 2, 176, altura - 28, COR.papelSombra).setStrokeStyle(2, COR.sepia));
+    // a cabeça e os ombros: o topo do desenho, ampliado
+    objetos.push(cena.add.image(136, y0 + 14, retrato).setOrigin(0.5, 0).setCrop(0, 0, 160, 150).setScale(1.42));
+  }
   objetos.push(
-    cena.add.text(64, y0 + 18, quem, {
+    cena.add.text(margem, y0 + 18, quem, {
       fontFamily: FONTE.titulo,
       fontSize: "24px",
       fontStyle: "600",
@@ -170,20 +181,22 @@ export function caixaDeDialogo(
     }),
   );
   objetos.push(
-    cena.add.text(64, y0 + 56, fala, {
+    cena.add.text(margem, y0 + 56, fala, {
       fontFamily: FONTE.corpo,
       fontSize: "20px",
       color: css(COR.tinta),
       lineSpacing: 6,
-      wordWrap: { width: LARGURA - 140 },
+      wordWrap: { width: LARGURA - margem - 76 },
     }),
   );
   const fechar = (): void => {
     for (const objeto of objetos) objeto.destroy();
   };
-  const larguraBotao = Math.min(360, (LARGURA - 160) / escolhas.length - 16);
+  const larguraUtil = LARGURA - margem - 76;
+  const larguraBotao = Math.min(360, larguraUtil / escolhas.length - 16);
+  const centro = margem + larguraUtil / 2;
   escolhas.forEach((escolha, i) => {
-    const x = LARGURA / 2 + (i - (escolhas.length - 1) / 2) * (larguraBotao + 16);
+    const x = centro + (i - (escolhas.length - 1) / 2) * (larguraBotao + 16);
     objetos.push(
       botao(
         cena,

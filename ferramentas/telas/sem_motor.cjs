@@ -14,9 +14,9 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await espera(1500);
   await p.mouse.click(640, 335); // Continuar
   await espera(1500);
-  await p.mouse.click(640, 455); // Grigori, que abre de brancas
+  await p.mouse.click(572, 477); // Grigori, que abre de brancas
   await espera(700);
-  await p.mouse.click(267, 662); // Vamos jogar
+  await p.mouse.click(397, 662); // Vamos jogar
   let historico = [];
   for (let i = 0; i < 60 && historico.length === 0; i++) {
     await espera(250);

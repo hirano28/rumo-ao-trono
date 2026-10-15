@@ -31,12 +31,12 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await pagina.mouse.click(640, 335); // Continuar
   await esperarCena("Local");
   await espera(900);
-  await pagina.mouse.click(640, 455); // Grigori
+  await pagina.mouse.click(572, 477); // Grigori
   await espera(600);
-  await pagina.mouse.click(640, 662); // "Que história é essa da guerra?" (2ª de 3)
+  await pagina.mouse.click(720, 662); // "Que história é essa da guerra?" (2ª de 3)
   await espera(500);
   await pagina.screenshot({ path: `${pasta}/30-grisha-guerra.png` });
-  await pagina.mouse.click(452, 662); // Vamos jogar (1ª de 2)
+  await pagina.mouse.click(532, 662); // Vamos jogar (1ª de 2)
   await esperarCena("Partida");
   // espera o primeiro lance das brancas (adversário)
   for (let i = 0; i < 50; i++) {

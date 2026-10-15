@@ -5,6 +5,7 @@ import Phaser from "phaser";
 import { CONTEUDO, capituloAtual, guardar, progresso, vistoChave } from "../estado";
 import { dataPorExtenso, t } from "../i18n/textos";
 import type { ObjetoDoQuarto } from "../logica/conteudo";
+import { chaveDaArte } from "../ui/arte";
 import { clicavel } from "../ui/clicavel";
 import { folhaDePapel, type Secao } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
@@ -25,11 +26,6 @@ export class Quarto extends Phaser.Scene {
     super("Quarto");
   }
 
-  preload(): void {
-    if (!this.textures.exists("arte-quarto")) {
-      this.load.svg("arte-quarto", `${import.meta.env.BASE_URL}arte/quarto.svg`, { width: LARGURA, height: ALTURA });
-    }
-  }
 
   create(): void {
     this.aberto = false;
@@ -86,7 +82,7 @@ export class Quarto extends Phaser.Scene {
 
   /** A ilustração do quarto (public/arte/quarto.svg) e a poeira no cone de luz da luminária. */
   private desenharQuarto(): void {
-    this.add.image(LARGURA / 2, ALTURA / 2, "arte-quarto");
+    this.add.image(LARGURA / 2, ALTURA / 2, chaveDaArte("quarto"));
     // poeira: pontinhos que sobem e descem devagar dentro da luz
     for (let i = 0; i < 18; i++) {
       const x = Phaser.Math.Between(820, 1150);

@@ -72,8 +72,8 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await clicar(110, 430);
   await esperarCena("Local");
   await espera(900);
-  await clicar(330, 470, 700); // Pēteris
-  await clicar(452, 662, 500);
+  await clicar(372, 500, 700); // Pēteris
+  await clicar(532, 662, 500);
   await esperarCena("Partida");
   saida.peterisRejogado = await forcaNaPartida();
   saida.progresso = await pagina.evaluate(() => JSON.parse(localStorage.getItem("rumo-ao-trono:progresso")));

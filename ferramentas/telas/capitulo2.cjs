@@ -65,26 +65,26 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await esperarCena("Local");
   await espera(1000);
   await foto("64-palacio");
-  await clicar(230, 445, 700); // Krūzkops
+  await clicar(262, 529, 700); // Krūzkops
   await foto("65-kruzkops");
-  await clicar(267, 662, 500); // como funciona (1ª de 3)
+  await clicar(397, 662, 500); // como funciona (1ª de 3)
   await foto("66-kruzkops-regras");
-  await clicar(828, 662, 500); // estou pronto (2ª de 2)
-  await clicar(420, 470, 700); // Tal
-  await clicar(640, 662, 500); // "é verdade… Botvinnik?" (1ª de 3 fica em 267; a 2ª em 640)
+  await clicar(908, 662, 500); // estou pronto (2ª de 2)
+  await clicar(455, 546, 700); // Tal
+  await clicar(720, 662, 500); // "é verdade… Botvinnik?" (1ª de 3 fica em 267; a 2ª em 640)
   await foto("67-tal");
-  await clicar(828, 662, 500); // até logo (2ª de 2)
+  await clicar(908, 662, 500); // até logo (2ª de 2)
   await clicar(640, 205, 800); // quadro
   await foto("68-quadro-vazio");
   await clicar(640, 620, 500);
   // Ilze (não é a rodada dela): não pode oferecer partida
-  await clicar(890, 478, 700);
+  await clicar(830, 552, 700);
   const opcoesIlze = await pagina.evaluate(() => window.jogo.scene.getScene("Local").children.list.filter((o) => o.type === "Container").length);
   await foto("69-ilze-fora-da-rodada");
-  await clicar(640, 662, 500); // a única opção, centralizada
+  await clicar(720, 662, 500); // a única opção, centralizada
   // Valdis: rodada 1
-  await clicar(770, 480, 700);
-  await clicar(452, 662, 500); // vamos jogar (1ª de 2)
+  await clicar(700, 554, 700);
+  await clicar(532, 662, 500); // vamos jogar (1ª de 2)
   await esperarCena("Partida");
   await espera(2500);
   await foto("70-partida-com-relogio");
@@ -138,8 +138,8 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await clicar(640, 620, 500);
 
   // rodada 2 (Ilze): o relógio do jogador quase no fim, para a bandeira cair
-  await clicar(890, 478, 700);
-  await clicar(452, 662, 500);
+  await clicar(830, 552, 700);
+  await clicar(532, 662, 500);
   await esperarCena("Partida");
   await espera(1500);
   await pagina.evaluate(() => {

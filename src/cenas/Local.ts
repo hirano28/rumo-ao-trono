@@ -9,6 +9,7 @@ import { dataPorExtenso, t } from "../i18n/textos";
 import { desafioCompleto, pontosDoDesafio, type Dialogo, type ObjetoDoQuarto, type Personagem } from "../logica/conteudo";
 import { classificacao, jogosAte, VOCE } from "../logica/torneio";
 import { clicavel } from "../ui/clicavel";
+import { chaveDoPersonagem } from "../ui/arte";
 import { desenharCenario, desenharPersonagem } from "../ui/cenarios";
 import { botao, caixaDeDialogo, folhaDePapel, type Secao } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
@@ -108,7 +109,7 @@ export class Local extends Phaser.Scene {
     const dialogo = CONTEUDO.dialogos[personagem.dialogo];
     const jaJogou = personagem.adversario ? progresso().resultados[personagem.adversario] !== undefined : false;
     this.add
-      .text(personagem.x, personagem.y + h / 2 + 24, t(dialogo.quem), {
+      .text(personagem.x, personagem.y + 18, t(dialogo.quem), {
         fontFamily: FONTE.corpo,
         fontSize: "17px",
         fontStyle: "600",
@@ -117,7 +118,7 @@ export class Local extends Phaser.Scene {
         padding: { x: 8, y: 2 },
       })
       .setOrigin(0.5);
-    clicavel(this, personagem.x, personagem.y, 90, h, t("local.conversar"), () => this.conversar(personagem, dialogo), {
+    clicavel(this, personagem.x, personagem.y - h / 2, h * 0.42, h, t("local.conversar"), () => this.conversar(personagem, dialogo), {
       visto: jaJogou || progresso().vistos.includes(vistoChave(personagem.id)),
     });
   }
@@ -157,6 +158,7 @@ export class Local extends Phaser.Scene {
           }
         },
       })),
+      chaveDoPersonagem(personagem.id),
     );
   }
 }

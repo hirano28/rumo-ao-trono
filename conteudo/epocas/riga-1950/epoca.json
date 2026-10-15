@@ -62,40 +62,32 @@
             "id": "peteris",
             "dialogo": "peteris",
             "adversario": "peteris",
-            "x": 330,
-            "y": 470,
-            "roupa": "#5b6b8a",
-            "altura": 0.8,
-            "chapeu": true
+            "x": 372,
+            "y": 600,
+            "altura": 0.8
           },
           {
             "id": "grisha",
             "dialogo": "grisha",
             "adversario": "grisha",
-            "x": 640,
-            "y": 455,
-            "roupa": "#5a4a3a",
-            "altura": 1,
-            "chapeu": true
+            "x": 572,
+            "y": 600,
+            "altura": 1
           },
           {
             "id": "ozols",
             "dialogo": "ozols",
             "adversario": "ozols",
-            "x": 960,
-            "y": 460,
-            "roupa": "#3a3a3a",
-            "altura": 1,
-            "chapeu": true
+            "x": 860,
+            "y": 600,
+            "altura": 1
           },
           {
             "id": "marta",
             "dialogo": "marta",
-            "x": 1150,
-            "y": 430,
-            "roupa": "#7a3d2c",
-            "altura": 0.95,
-            "chapeu": true
+            "x": 1040,
+            "y": 600,
+            "altura": 0.95
           }
         ]
       },
@@ -193,53 +185,47 @@
           {
             "id": "kruzkops",
             "dialogo": "kruzkops",
-            "x": 230,
-            "y": 445,
-            "roupa": "#3b3f5c",
+            "x": 262,
+            "y": 652,
             "altura": 1
           },
           {
             "id": "tal",
             "dialogo": "tal",
-            "x": 420,
-            "y": 470,
-            "roupa": "#6b2f25",
+            "x": 455,
+            "y": 652,
             "altura": 0.86
           },
           {
             "id": "valdis",
             "dialogo": "valdis",
             "adversario": "valdis",
-            "x": 770,
-            "y": 480,
-            "roupa": "#5b6b8a",
+            "x": 700,
+            "y": 652,
             "altura": 0.8
           },
           {
             "id": "ilze",
             "dialogo": "ilze",
             "adversario": "ilze",
-            "x": 890,
-            "y": 478,
-            "roupa": "#7d5a8a",
+            "x": 830,
+            "y": 652,
             "altura": 0.82
           },
           {
             "id": "boris",
             "dialogo": "boris",
             "adversario": "boris",
-            "x": 1010,
-            "y": 470,
-            "roupa": "#4d5a3a",
+            "x": 960,
+            "y": 652,
             "altura": 0.88
           },
           {
             "id": "gipslis",
             "dialogo": "gipslis",
             "adversario": "gipslis",
-            "x": 1140,
-            "y": 476,
-            "roupa": "#5a4a3a",
+            "x": 1100,
+            "y": 652,
             "altura": 0.85
           }
         ]
