@@ -15,8 +15,13 @@ Supabase Auth (sem e-mail, sem senha). A sessão fica no navegador
 só no navegador, e o título mostra "Salvar meu histórico".
 
 Precisa do login anônimo ligado em Authentication → Sign In / Providers →
-"Allow anonymous sign-ins". Sem ele, a criação da conta falha e o jogo segue
-sem histórico.
+"Allow anonymous sign-ins" (ligado pelo dono em 15/10/2026; no código,
+`HISTORICO_LIGADO` em `src/servidor/cliente.ts`). Sem ele, a criação da conta
+falha e o jogo segue sem histórico.
+
+Conferido em 15/10/2026: conta, progresso e partida (com PGN) chegam ao
+banco; um segundo jogador vê lista vazia e não apaga nada; sem conta, acesso
+negado.
 
 Limite do Supabase: 30 contas anônimas novas por hora por IP.
 

@@ -9,10 +9,11 @@ export const URL_DO_SERVIDOR = "https://pwmtabunzjcjnnhfewno.supabase.co";
 export const CHAVE_PUBLICAVEL = "sb_publishable_oG1k1BZGlIe4J3h4n1GPfw_8UX-cRrg";
 
 /**
- * Desligado até o login anônimo ser ligado no painel do Supabase (sem ele,
- * o jogador veria um erro ao escolher o apelido). Ver docs/SERVIDOR.md.
+ * Liga a conta por apelido e o histórico. Depende do login anônimo ligado no
+ * painel do Supabase (ligado pelo dono em 15/10/2026); sem ele, o jogador veria
+ * um erro ao escolher o apelido. Ver docs/SERVIDOR.md.
  */
-export const HISTORICO_LIGADO = false;
+export const HISTORICO_LIGADO = true;
 
 let cliente: SupabaseClient | undefined;
 
