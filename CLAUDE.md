@@ -29,6 +29,22 @@ falta). Na cena, `y` do personagem é o chão (os pés). Os pontos clicáveis do
 cenários (objetos do quarto, quadro e vitrine do Palácio) têm de bater com o
 desenho: mudou a arte, confira as posições e fotografe.
 
+## Arte pintada (Stable Diffusion XL, no PC do dono)
+
+Desde 15/10/2026 os cenários passam a ser pintados pelo SDXL a partir dos SVGs
+(img2img: o SVG segura a composição e os pontos clicáveis). Ambiente fora do
+repo: `C:/edson/ferramentas/sdxl/` (venv com torch CUDA, modelos em `hf/`).
+Fluxo: `node ferramentas/arte_ia/esbocos.cjs` (SVG → esboço PNG) →
+`ferramentas/arte_ia/gerar.py` (lote; saídas em `fotos/ia/`) → escolher a
+melhor → `ferramentas/arte_ia/finalizar.py` (para `public/arte/pintado/`) →
+pôr o nome em `PINTADOS` (`src/ui/arte.ts`) e acertar os pontos clicáveis.
+Armadilhas da GTX 1660 Super (6 GB) com 16 GB de RAM, todas já contornadas no
+`gerar.py`: NaN em fp16 (pesos em fp16, conta em fp32 por camada), o
+`safetensors` novo quebra lendo por mapeamento de memória (leitor próprio),
+U-Net direto para a GPU, textos num processo separado. Cada imagem leva ~6 min
+com o PC livre; com pouca memória livre fica muitas vezes mais lento — o dono
+prefere rodar de madrugada (`ferramentas/arte_ia/noturno.cmd`).
+
 ## Servidor
 
 Supabase, projeto `pwmtabunzjcjnnhfewno` (só deste jogo; NÃO é o do

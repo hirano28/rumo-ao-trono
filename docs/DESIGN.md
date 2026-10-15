@@ -162,6 +162,10 @@ Na praça, as partidas são sem relógio, como eram de fato.
   abertos e fechados): respiram e piscam na cena, e o retrato de quem fala
   aparece na caixa de diálogo. Tal, Krūzkops e Gipslis são estilizados, sem
   pretensão de retrato fiel. Vida no cenário: poeira na luz, folhas caindo.
+  O dono achou o SVG "desenho de paint" (15/10/2026) e aprovou a direção
+  **pintada**: os cenários e personagens passam a ser pintados pelo Stable
+  Diffusion XL no PC dele, a partir dos SVGs (que seguram a composição). O
+  quarto já está pintado; o resto sai do lote noturno.
 - Texto no lugar de dublagem; muito som de ambiente (relógio mecânico, peças
   batendo na madeira, conversa ao fundo, rua de Riga).
 - Tabuleiro de madeira com peças Staunton desenhadas no próprio jogo.

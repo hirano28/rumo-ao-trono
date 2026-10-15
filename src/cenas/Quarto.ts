@@ -11,13 +11,14 @@ import { folhaDePapel, type Secao } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
 import { trocarDeCena } from "../ui/transicao";
 
-/** Onde cada objeto fica desenhado no quarto. */
+/** Onde cada objeto está na pintura do quarto (public/arte/pintado/quarto.jpg). */
 const LUGAR: Record<string, { x: number; y: number; l: number; a: number }> = {
-  jornal: { x: 760, y: 448, l: 150, a: 34 },
-  revista: { x: 930, y: 446, l: 120, a: 30 },
-  livro: { x: 1010, y: 238, l: 200, a: 74 },
-  tabuleiro: { x: 640, y: 432, l: 120, a: 56 },
+  jornal: { x: 760, y: 456, l: 130, a: 30 },
+  revista: { x: 960, y: 456, l: 150, a: 30 },
+  livro: { x: 1012, y: 245, l: 250, a: 70 },
+  tabuleiro: { x: 625, y: 452, l: 100, a: 34 },
 };
+const PORTA = { x: 105, y: 405, l: 150, a: 280 };
 
 export class Quarto extends Phaser.Scene {
   private aberto = false;
@@ -41,7 +42,7 @@ export class Quarto extends Phaser.Scene {
         visto: progresso().vistos.includes(vistoChave(objeto.id)),
       });
     }
-    clicavel(this, 110, 430, 150, 300, t(quarto.saida), () => this.sair(), { rotuloEmCima: true, visto: true });
+    clicavel(this, PORTA.x, PORTA.y, PORTA.l, PORTA.a, t(quarto.saida), () => this.sair(), { rotuloEmCima: true, visto: true });
 
     this.add
       .text(LARGURA / 2, 30, t("quarto.dica"), {
@@ -85,8 +86,8 @@ export class Quarto extends Phaser.Scene {
     this.add.image(LARGURA / 2, ALTURA / 2, chaveDaArte("quarto"));
     // poeira: pontinhos que sobem e descem devagar dentro da luz
     for (let i = 0; i < 18; i++) {
-      const x = Phaser.Math.Between(820, 1150);
-      const y = Phaser.Math.Between(395, 465);
+      const x = Phaser.Math.Between(860, 1160);
+      const y = Phaser.Math.Between(390, 470);
       const grao = this.add.circle(x, y, Phaser.Math.FloatBetween(0.8, 1.8), 0xffe8b0, Phaser.Math.FloatBetween(0.25, 0.6));
       this.tweens.add({
         targets: grao,

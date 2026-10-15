@@ -6,6 +6,12 @@ import { ALTURA, LARGURA } from "./estilo";
 
 export const CENARIOS = ["titulo", "quarto", "parque", "palacio", "mesa-parque", "mesa-palacio"] as const;
 
+/**
+ * Cenários que já têm a versão pintada (Stable Diffusion XL, a partir do SVG;
+ * ver ferramentas/arte_ia/). Os outros ainda usam o SVG.
+ */
+export const PINTADOS: ReadonlySet<string> = new Set(["quarto"]);
+
 export const PERSONAGENS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis"] as const;
 
 /** Tamanho em que o personagem é desenhado (a cena escala pela altura da ficha). */
@@ -23,7 +29,9 @@ export function chaveDoPersonagem(id: string, piscando = false): string {
 export function carregarArte(cena: Phaser.Scene): void {
   const base = `${import.meta.env.BASE_URL}arte/`;
   for (const nome of CENARIOS) {
-    if (!cena.textures.exists(chaveDaArte(nome))) cena.load.svg(chaveDaArte(nome), `${base}${nome}.svg`, { width: LARGURA, height: ALTURA });
+    if (cena.textures.exists(chaveDaArte(nome))) continue;
+    if (PINTADOS.has(nome)) cena.load.image(chaveDaArte(nome), `${base}pintado/${nome}.jpg`);
+    else cena.load.svg(chaveDaArte(nome), `${base}${nome}.svg`, { width: LARGURA, height: ALTURA });
   }
   for (const id of PERSONAGENS) {
     for (const piscando of [false, true]) {

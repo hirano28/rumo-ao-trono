@@ -18,6 +18,11 @@ Cenários e personagens (`public/arte/`) são originais deste projeto,
 desenhados em SVG (GPL-3.0). Os personagens saem de
 `ferramentas/gerar_personagens.mjs`.
 
+As versões pintadas (`public/arte/pintado/`) foram geradas com o Stable
+Diffusion XL 1.0 (Stability AI, licença CreativeML Open RAIL++-M) e o VAE
+`madebyollin/sdxl-vae-fp16-fix`, a partir dos SVGs do projeto. Se o jogo for
+vendido, a arte gerada por IA precisa ser declarada (Steam, por exemplo).
+
 ## Conteúdo histórico
 
 Os textos das notícias e conversas são nossos, escritos a partir de fatos.
