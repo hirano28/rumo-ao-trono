@@ -66,5 +66,15 @@
   "capitulos.jogar_de_novo": "Jogar de novo",
   "capitulos.continuar": "Continuar",
   "capitulos.voltar": "‹ Voltar",
-  "capitulos.aviso": "Começar outro capítulo encerra as partidas do capítulo em andamento. A sua força e os capítulos concluídos continuam."
+  "capitulos.aviso": "Começar outro capítulo encerra as partidas do capítulo em andamento. A sua força e os capítulos concluídos continuam.",
+  "apelido.titulo": "Como você quer ser chamado?",
+  "apelido.explicacao": "Com um apelido, o jogo guarda o seu progresso e as suas partidas no servidor, e o autor do jogo pode ver o histórico de quem joga. Não pedimos e-mail nem senha.",
+  "apelido.exemplo": "Seu apelido",
+  "apelido.entrar": "Começar",
+  "apelido.entrando": "Entrando…",
+  "apelido.pular": "Jogar sem salvar o histórico",
+  "apelido.vazio": "Escreva um apelido (até 30 letras).",
+  "apelido.falhou": "Não deu para falar com o servidor agora. Tente de novo, ou jogue sem salvar o histórico (o progresso continua salvo neste aparelho).",
+  "titulo.jogando_como": "Jogando como {apelido}",
+  "titulo.salvar_historico": "Salvar meu histórico"
 }

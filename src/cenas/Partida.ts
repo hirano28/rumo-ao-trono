@@ -5,6 +5,7 @@
 import Phaser from "phaser";
 import { Chess, type Color } from "chess.js";
 import { CONTEUDO, capituloAtual, forcaDoAdversario, guardar, progresso } from "../estado";
+import { contaConectada, registrar } from "../servidor/sincronia";
 import { t } from "../i18n/textos";
 import type { Pontos } from "../logica/forca";
 import type { Adversario } from "../logica/conteudo";
@@ -261,6 +262,31 @@ export class Partida extends Phaser.Scene {
     }).setDepth(CAMADA_SOBRE));
   }
 
+  /** A partida inteira vai para o histórico do jogador no servidor (PGN com cabeçalho). */
+  private registrarNoHistorico(pontos: Pontos, motivo: string): void {
+    const voce = contaConectada()?.apelido ?? t("torneio.voce");
+    const ele = t(this.adversario.nome);
+    const brancasGanharam = (this.ladoDoJogador === "w") === (pontos === 1);
+    const resultado = pontos === 0.5 ? "1/2-1/2" : brancasGanharam ? "1-0" : "0-1";
+    this.partida.setHeader("Event", t(capituloAtual().titulo));
+    this.partida.setHeader("Site", "Rumo ao Trono");
+    this.partida.setHeader("Date", new Date().toISOString().slice(0, 10).replace(/-/g, "."));
+    this.partida.setHeader("White", this.ladoDoJogador === "w" ? voce : ele);
+    this.partida.setHeader("Black", this.ladoDoJogador === "w" ? ele : voce);
+    this.partida.setHeader("Result", resultado);
+    registrar("partidas", {
+      capitulo: progresso().capitulo,
+      adversario: this.idAdversario,
+      cor: this.ladoDoJogador,
+      modo: progresso().modo,
+      forca_adversario: Math.round(this.forcaDoAdversario),
+      resultado: pontos,
+      motivo: motivo.replace("partida.", ""),
+      lances: this.partida.history().length,
+      pgn: this.partida.pgn(),
+    });
+  }
+
   private registrar(pontos: Pontos, motivo: string): void {
     // a partida pode acabar no tabuleiro com a confirmação de abandono aberta: vale o que acabou primeiro
     if (this.terminada) return;
@@ -271,6 +297,7 @@ export class Partida extends Phaser.Scene {
     progresso().resultados[this.idAdversario] = pontos;
     progresso().forcas[this.idAdversario] = this.forcaDoAdversario;
     guardar();
+    this.registrarNoHistorico(pontos, motivo);
 
     const titulo = pontos === 1 ? "partida.voce_venceu" : pontos === 0 ? "partida.voce_perdeu" : "partida.empate";
     this.situacao.setText(t(titulo));

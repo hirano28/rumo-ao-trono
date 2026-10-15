@@ -66,5 +66,15 @@
   "capitulos.jogar_de_novo": "Play again",
   "capitulos.continuar": "Continue",
   "capitulos.voltar": "‹ Back",
-  "capitulos.aviso": "Starting another chapter ends the games of the chapter in progress. Your strength and completed chapters are kept."
+  "capitulos.aviso": "Starting another chapter ends the games of the chapter in progress. Your strength and completed chapters are kept.",
+  "apelido.titulo": "What should we call you?",
+  "apelido.explicacao": "With a nickname, the game keeps your progress and your games on the server, and the game's author can see the history of who plays. We don't ask for an email or a password.",
+  "apelido.exemplo": "Your nickname",
+  "apelido.entrar": "Start",
+  "apelido.entrando": "Signing in…",
+  "apelido.pular": "Play without saving my history",
+  "apelido.vazio": "Type a nickname (up to 30 letters).",
+  "apelido.falhou": "Couldn't reach the server right now. Try again, or play without saving your history (your progress is still saved on this device).",
+  "titulo.jogando_como": "Playing as {apelido}",
+  "titulo.salvar_historico": "Save my history"
 }

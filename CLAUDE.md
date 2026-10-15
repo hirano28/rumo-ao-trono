@@ -20,6 +20,15 @@ Como rodar e onde mora cada coisa: `README.md`.
 5. **Versões exatas** no `package.json`, de pacote publicado há pelo menos duas
    semanas.
 
+## Servidor
+
+Supabase, projeto `pwmtabunzjcjnnhfewno` (só deste jogo; NÃO é o do
+xadrez-treinamento). Tabelas, segurança e consultas em `docs/SERVIDOR.md`;
+migrações em `supabase/migracoes/` (aplicar pelo MCP do Supabase e guardar o
+SQL ali). O jogo nunca espera o servidor: o progresso vale no navegador, o
+servidor guarda cópia e histórico. Teste de conta: `ferramentas/telas/conta.cjs`
+(cria conta de teste: apague depois pelo SQL).
+
 ## Verificação
 
 - `npm run check` (tsc + Vitest) antes de todo commit.

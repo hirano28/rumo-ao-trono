@@ -7,6 +7,7 @@ import noticias from "../conteudo/epocas/riga-1950/noticias.json";
 import type { Capitulo, ConteudoDaEpoca } from "./logica/conteudo";
 import { forcaNoTabuleiro } from "./logica/forca";
 import { salvar, type Progresso } from "./logica/progresso";
+import { agendarProgresso } from "./servidor/sincronia";
 
 export const CONTEUDO: ConteudoDaEpoca = {
   epoca,
@@ -25,10 +26,14 @@ export function progresso(): Progresso {
 export function definirProgresso(novo: Progresso): void {
   progressoAtual = novo;
   salvar(novo);
+  agendarProgresso(novo);
 }
 
 export function guardar(): void {
-  if (progressoAtual) salvar(progressoAtual);
+  if (progressoAtual) {
+    salvar(progressoAtual);
+    agendarProgresso(progressoAtual);
+  }
 }
 
 /** Chave de "já visto" de um objeto ou personagem: o jornal do capítulo 2 é outro jornal. */

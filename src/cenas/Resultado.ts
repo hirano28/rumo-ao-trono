@@ -7,6 +7,7 @@ import { t } from "../i18n/textos";
 import { pontosDoDesafio } from "../logica/conteudo";
 import { categoriaDa, performance, type ResultadoPartida } from "../logica/forca";
 import { novaSemente } from "../logica/progresso";
+import { registrar } from "../servidor/sincronia";
 import { VOCE, classificacao, jogosAte } from "../logica/torneio";
 import { botao } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
@@ -90,6 +91,7 @@ export class Resultado extends Phaser.Scene {
         ALTURA - 100,
         t(capitulo.fechamento.tentar ?? "resultado.tentar_de_novo"),
         () => {
+          registrar("desafios", { capitulo: capitulo.id, pontos, aprovado: false, forca, categoria });
           definirProgresso({ ...atual, resultados: {}, forcas: {}, semente: novaSemente() });
           trocarDeCena(this, "Local");
         },
@@ -116,7 +118,10 @@ export class Resultado extends Phaser.Scene {
         wordWrap: { width: larguraDoTexto },
       })
       .setOrigin(0.5);
-    if (!jaConcluido) definirProgresso({ ...atual, forca, concluidos: [...atual.concluidos, capitulo.id] });
+    if (!jaConcluido) {
+      registrar("desafios", { capitulo: capitulo.id, pontos, aprovado: true, forca, categoria });
+      definirProgresso({ ...atual, forca, concluidos: [...atual.concluidos, capitulo.id] });
+    }
 
     const proximo = proximoCapitulo();
     if (proximo) {

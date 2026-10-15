@@ -3,12 +3,33 @@ import { CONTEUDO, definirProgresso } from "../estado";
 import { IDIOMAS, definirIdioma, idiomaAtual, t, type Idioma } from "../i18n/textos";
 import type { Modo } from "../logica/forca";
 import { carregar, novoProgresso } from "../logica/progresso";
+import { agendarProgresso, contaConectada, criarConta, recuperarConta } from "../servidor/sincronia";
+import { perguntarApelido } from "../ui/apelido";
 import { botao } from "../ui/componentes";
 import { carregarPecas } from "../ui/tabuleiro";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
 
+const CHAVE_PULOU = "rumo-ao-trono:sem-conta";
+
+function lerPulou(): boolean {
+  try {
+    return window.localStorage.getItem(CHAVE_PULOU) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function gravarPulou(): void {
+  try {
+    window.localStorage.setItem(CHAVE_PULOU, "1");
+  } catch {
+    // sem armazenamento: pergunta de novo da próxima vez
+  }
+}
+
 export class Titulo extends Phaser.Scene {
   private modo: Modo = "carreira";
+  private rotuloDaConta?: Phaser.GameObjects.GameObject;
 
   constructor() {
     super("Titulo");
@@ -25,6 +46,51 @@ export class Titulo extends Phaser.Scene {
       this.modo = salvo.modo;
     }
     this.desenhar(salvo !== undefined);
+    void this.conectar(false);
+  }
+
+  /**
+   * Na primeira vez (ou quando o jogador pede), pergunta o apelido e cria a
+   * conta anônima. Quem pulou não é perguntado de novo a cada abertura: o
+   * título mostra o botão "Salvar meu histórico".
+   */
+  private async conectar(pedido: boolean): Promise<void> {
+    if (contaConectada() || (await recuperarConta())) return this.mostrarConta();
+    if (!pedido && lerPulou()) return this.mostrarConta();
+    const resposta = await perguntarApelido(async (apelido) => {
+      const resultado = await criarConta(apelido);
+      return typeof resultado === "string" ? resultado : undefined;
+    });
+    if (resposta.apelido) {
+      const salvo = carregar();
+      if (salvo) agendarProgresso(salvo);
+    } else {
+      gravarPulou();
+    }
+    this.mostrarConta();
+  }
+
+  private mostrarConta(): void {
+    if (!this.scene.isActive()) return;
+    this.rotuloDaConta?.destroy();
+    const conta = contaConectada();
+    if (conta) {
+      this.rotuloDaConta = this.add
+        .text(30, ALTURA - 44, t("titulo.jogando_como", { apelido: conta.apelido }), {
+          fontFamily: FONTE.corpo,
+          fontSize: "16px",
+          fontStyle: "italic",
+          color: css(COR.papelSombra),
+        })
+        .setOrigin(0, 0.5);
+    } else {
+      this.rotuloDaConta = botao(this, 150, ALTURA - 44, t("titulo.salvar_historico"), () => void this.conectar(true), {
+        largura: 240,
+        altura: 36,
+        tamanho: 15,
+        claro: true,
+      });
+    }
   }
 
   private desenhar(temSalvo: boolean): void {
@@ -77,6 +143,7 @@ export class Titulo extends Phaser.Scene {
         () => {
           this.modo = modo;
           this.desenhar(temSalvo);
+          this.mostrarConta();
         },
         { largura: 210, altura: 44, tamanho: 17, claro: !escolhido },
       );
@@ -102,6 +169,7 @@ export class Titulo extends Phaser.Scene {
         () => {
           definirIdioma(idioma);
           this.desenhar(temSalvo);
+          this.mostrarConta();
         },
         { largura: 104, altura: 36, tamanho: 15, claro: !escolhido },
       );
