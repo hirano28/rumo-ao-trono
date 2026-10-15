@@ -4,7 +4,7 @@
 import type { Pontos } from "./forca";
 import type { RegraDeAdiamento } from "./adiamento";
 import type { ControleDeTempo } from "./relogio";
-import { conferirRodadas } from "./torneio";
+import { calendarioDo, conferirRodadas } from "./torneio";
 
 export type Confianca = "alta" | "media" | "baixa";
 
@@ -85,7 +85,28 @@ export interface Desafio {
   /** Partida que chega ao lance da regra é adiada, com lance secreto (só com relógio). */
   adiamento?: RegraDeAdiamento;
   /** Turno único: os jogos entre os outros, rodada a rodada. */
-  torneio?: { titulo: string; rodadas: Array<Array<[string, string]>> };
+  torneio?: Torneio;
+}
+
+/** Um acontecimento contado entre duas rodadas (no resumo das rodadas simuladas). */
+export interface EventoDoTorneio {
+  depoisDaRodada: number;
+  titulo: string;
+  texto: string;
+}
+
+export interface Torneio {
+  titulo: string;
+  /** Torneio pequeno: os jogos entre os outros, escritos à mão. */
+  rodadas?: Array<Array<[string, string]>>;
+  /**
+   * Torneio grande: todos os rivais do jogador, na ordem das rodadas. O
+   * calendário sai daqui; só os do `desafio.adversarios` são jogados de
+   * verdade, os outros jogos do jogador são simulados pela força dele, e a
+   * aprovação passa a contar os pontos do torneio inteiro.
+   */
+  ordem?: string[];
+  eventos?: EventoDoTorneio[];
 }
 
 export interface Capitulo {
@@ -97,8 +118,11 @@ export interface Capitulo {
   quarto?: { objetos: ObjetoDoQuarto[]; saida: string };
   local: { titulo: string; cenario: Cenario; personagens: Personagem[]; objetos?: ObjetoDoQuarto[] };
   desafio: Desafio;
-  /** `tentar`: o botão de quem não passou ("Voltar ao parque amanhã"). */
-  fechamento: { aprovado: string; reprovado: string; proximo: string; tentar?: string };
+  /**
+   * `tentar`: o botão de quem não passou ("Voltar ao parque amanhã").
+   * `campeao`: o texto de quem terminou o torneio em primeiro (a história muda).
+   */
+  fechamento: { aprovado: string; reprovado: string; proximo: string; tentar?: string; campeao?: string };
 }
 
 export interface Epoca {
@@ -139,6 +163,7 @@ const CAMPOS_DE_TEXTO = new Set([
   "reprovado",
   "proximo",
   "tentar",
+  "campeao",
   "abertura",
 ]);
 
@@ -201,12 +226,30 @@ export function conferirConteudo(
         problemas.push(`desafio de ${capitulo.id}: ${id} não tem personagem no local (o jogador nunca poderia jogar com ele)`);
       }
     }
-    if (capitulo.desafio.pontosMinimos > capitulo.desafio.adversarios.length) {
+    const torneio = capitulo.desafio.torneio;
+    const partidas = torneio?.ordem?.length ?? capitulo.desafio.adversarios.length;
+    if (capitulo.desafio.pontosMinimos > partidas) {
       problemas.push(`desafio de ${capitulo.id} pede mais pontos do que partidas`);
     }
-    if (capitulo.desafio.torneio) {
-      for (const problema of conferirRodadas(capitulo.desafio.torneio.rodadas, capitulo.desafio.adversarios)) {
-        problemas.push(`torneio de ${capitulo.id}: ${problema}`);
+    if (torneio) {
+      if (!torneio.rodadas && !torneio.ordem) problemas.push(`torneio de ${capitulo.id} sem rodadas nem ordem`);
+      if (torneio.ordem) {
+        for (const id of torneio.ordem) {
+          if (!conteudo.adversarios[id]) problemas.push(`torneio de ${capitulo.id} cita participante inexistente ${id}`);
+        }
+        if (new Set(torneio.ordem).size !== torneio.ordem.length) problemas.push(`torneio de ${capitulo.id}: participante repetido`);
+        const posicoes = capitulo.desafio.adversarios.map((id) => torneio.ordem!.indexOf(id));
+        if (posicoes.some((p) => p < 0)) problemas.push(`torneio de ${capitulo.id}: adversário ao vivo fora da ordem`);
+        if (posicoes.some((p, i) => i > 0 && p <= posicoes[i - 1])) {
+          problemas.push(`torneio de ${capitulo.id}: os adversários ao vivo não estão na ordem das rodadas`);
+        }
+      }
+      const { rodadas, ordem } = calendarioDo(torneio, capitulo.desafio.adversarios);
+      for (const problema of conferirRodadas(rodadas, ordem)) problemas.push(`torneio de ${capitulo.id}: ${problema}`);
+      for (const evento of torneio.eventos ?? []) {
+        if (!(evento.depoisDaRodada >= 1 && evento.depoisDaRodada <= rodadas.length)) {
+          problemas.push(`torneio de ${capitulo.id}: evento depois da rodada ${evento.depoisDaRodada}, fora do torneio`);
+        }
       }
     }
     const relogio = capitulo.desafio.relogio;

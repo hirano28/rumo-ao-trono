@@ -5,6 +5,7 @@
 // preenchendo rodada a rodada.
 
 import type { Pontos } from "./forca";
+import { calendarioCircular } from "./calendario";
 
 export const VOCE = "voce";
 
@@ -17,6 +18,30 @@ export interface Jogo {
   pretas: string;
   /** Pontos das brancas. */
   pontos: Pontos;
+  /** Jogo do próprio jogador, simulado (torneio grande, fora das rodadas jogadas). */
+  simulado?: boolean;
+}
+
+/** A descrição do torneio no conteúdo (ver Desafio.torneio). */
+export interface DescricaoDeTorneio {
+  rodadas?: Rodadas;
+  /** Torneio grande: os rivais do jogador na ordem das rodadas; o calendário sai daqui. */
+  ordem?: string[];
+}
+
+/** O calendário (dado no conteúdo ou gerado pela ordem) e a ordem dos rivais do jogador. */
+export function calendarioDo(torneio: DescricaoDeTorneio, adversarios: readonly string[]): { rodadas: Rodadas; ordem: readonly string[] } {
+  if (torneio.ordem) return { rodadas: calendarioCircular(torneio.ordem), ordem: torneio.ordem };
+  return { rodadas: torneio.rodadas ?? [], ordem: adversarios };
+}
+
+/**
+ * Quantas rodadas já estão completas: as anteriores à do próximo rival ao vivo
+ * ainda não enfrentado (as simuladas no meio já contam), ou todas.
+ */
+export function rodadasCompletas(ordem: readonly string[], totalDeRodadas: number, aoVivo: readonly string[], resultados: Readonly<Record<string, Pontos>>): number {
+  const proximo = aoVivo.find((id) => resultados[id] === undefined);
+  return proximo === undefined ? totalDeRodadas : ordem.indexOf(proximo);
 }
 
 export interface Linha {
@@ -57,20 +82,27 @@ export function jogoSimulado(semente: string, rodada: number, a: string, b: stri
   return 0;
 }
 
-/** Todos os jogos já decididos até a rodada `ate` (inclusive), com o jogador e os simulados. */
+/**
+ * Todos os jogos já decididos até a rodada `ate` (inclusive), com o jogador e os simulados.
+ * `ordem` é a sequência dos rivais do jogador, rodada a rodada. No torneio grande, os rivais
+ * fora de `aoVivo` também são simulados, com a força do jogador (`forcas[VOCE]`).
+ */
 export function jogosAte(
   ate: number,
   rodadas: Rodadas,
-  adversarios: readonly string[],
+  ordem: readonly string[],
   resultadosDoJogador: Readonly<Record<string, Pontos>>,
   forcas: Readonly<Record<string, number>>,
   semente: string,
+  aoVivo: readonly string[] = ordem,
 ): Jogo[] {
   const jogos: Jogo[] = [];
   for (let r = 0; r < Math.min(ate, rodadas.length); r++) {
-    const rival = adversarios[r];
+    const rival = ordem[r];
     if (rival !== undefined && resultadosDoJogador[rival] !== undefined) {
       jogos.push({ rodada: r + 1, brancas: VOCE, pretas: rival, pontos: resultadosDoJogador[rival] });
+    } else if (rival !== undefined && !aoVivo.includes(rival)) {
+      jogos.push({ rodada: r + 1, brancas: VOCE, pretas: rival, pontos: jogoSimulado(semente, r + 1, VOCE, rival, forcas[VOCE], forcas[rival]), simulado: true });
     }
     for (const [a, b] of rodadas[r]) {
       jogos.push({ rodada: r + 1, brancas: a, pretas: b, pontos: jogoSimulado(semente, r + 1, a, b, forcas[a], forcas[b]) });

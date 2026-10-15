@@ -8,7 +8,9 @@ real, da praça do bairro ao match pelo título mundial. Primeira época:
 > de 1950), o **capítulo 2** (o Palácio dos Pioneiros, 1951: o torneio
 > interno da turma, com relógio mecânico e tabela na parede) e o
 > **capítulo 3** (o primeiro torneio de adultos, 1952: partida adiada, lance
-> secreto no envelope e a noite de análise em casa).
+> secreto no envelope e a noite de análise em casa) e o **capítulo 4** (a
+> final do campeonato da Letônia de 1953: vinte jogadores, dezenove rodadas, as
+> partidas decisivas jogadas e o resto simulado).
 > O que o jogo é e por quê: [`docs/DESIGN.md`](docs/DESIGN.md).
 
 **Jogar agora:** https://hirano28.github.io/rumo-ao-trono/ (no computador, ou

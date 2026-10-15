@@ -98,6 +98,8 @@ PERSONAGENS = {
     "sokolov": "retired Soviet army major about 50, grey short hair, grey mustache, olive military tunic without medals",
     "zenta": "20 year old woman mathematics student, auburn hair in a bun, navy dress, grey cardigan, notebook",
     "zilber": "19 year old young man, dark combed hair, dark grey jacket, white shirt collar, confident",
+    "koblencs": "Latvian chess master about 36, dark combed hair, dark navy suit, dark red tie, calm gaze",
+    "klavins": "21 year old Latvian physics student, light brown short hair, round glasses, green wool sweater",
 }
 
 TIPOS = {"F16": torch.float16, "F32": torch.float32, "BF16": torch.bfloat16, "I64": torch.int64}

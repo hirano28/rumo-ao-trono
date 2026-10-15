@@ -13,7 +13,7 @@ export const CENARIOS = ["titulo", "quarto", "parque", "palacio", "clube", "mesa
 export const PINTADOS: ReadonlySet<string> = new Set(["quarto"]);
 
 export const PERSONAGENS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis",
-  "arbitro", "kalnins", "sokolov", "zenta", "zilber"] as const;
+  "arbitro", "kalnins", "sokolov", "zenta", "zilber", "koblencs", "klavins"] as const;
 
 /** Tamanho em que o personagem é desenhado (a cena escala pela altura da ficha). */
 export const PERSONAGEM_LARGURA = 160;

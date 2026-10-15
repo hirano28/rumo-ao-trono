@@ -497,6 +497,206 @@
         "proximo": "cap3.fechamento.proximo",
         "tentar": "cap3.fechamento.tentar"
       }
+    },
+    {
+      "id": "cap4",
+      "ano": 1953,
+      "titulo": "cap4.titulo",
+      "abertura": [
+        "cap4.abertura.p1",
+        "cap4.abertura.p2",
+        "cap4.abertura.p3",
+        "cap4.abertura.p4"
+      ],
+      "quarto": {
+        "saida": "cap4.quarto.saida",
+        "objetos": [
+          {
+            "id": "jornal",
+            "rotulo": "cap4.quarto.jornal.rotulo",
+            "cabecalho": "cap4.quarto.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1952_campeonato_urss",
+              "n1953_desempate"
+            ]
+          },
+          {
+            "id": "revista",
+            "rotulo": "cap4.quarto.revista.rotulo",
+            "cabecalho": "cap4.quarto.revista.cabecalho",
+            "tipo": "texto",
+            "texto": "cap4.quarto.revista.texto"
+          },
+          {
+            "id": "livro",
+            "rotulo": "cap4.quarto.livro.rotulo",
+            "cabecalho": "cap4.quarto.livro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap4.quarto.livro.texto"
+          },
+          {
+            "id": "tabuleiro",
+            "rotulo": "cap4.quarto.tabuleiro.rotulo",
+            "cabecalho": "cap4.quarto.tabuleiro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap4.quarto.tabuleiro.texto"
+          }
+        ]
+      },
+      "local": {
+        "titulo": "cap4.local.titulo",
+        "cenario": "clube",
+        "objetos": [
+          {
+            "id": "quadro",
+            "rotulo": "cap4.local.quadro.rotulo",
+            "cabecalho": "cap4.local.quadro.cabecalho",
+            "tipo": "tabela",
+            "x": 660,
+            "y": 180,
+            "largura": 200,
+            "altura": 200
+          },
+          {
+            "id": "aviso",
+            "rotulo": "cap3.local.aviso.rotulo",
+            "cabecalho": "cap3.local.aviso.cabecalho",
+            "tipo": "texto",
+            "texto": "cap4.local.aviso.texto",
+            "x": 815,
+            "y": 214,
+            "largura": 84,
+            "altura": 100
+          },
+          {
+            "id": "jornal",
+            "rotulo": "cap3.local.jornal.rotulo",
+            "cabecalho": "cap3.local.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1953_desempate"
+            ],
+            "x": 146,
+            "y": 546,
+            "largura": 80,
+            "altura": 36
+          }
+        ],
+        "personagens": [
+          {
+            "id": "kruzkops",
+            "dialogo": "kruzkops_1953",
+            "x": 240,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "tal",
+            "dialogo": "tal_1953",
+            "adversario": "tal53",
+            "x": 380,
+            "y": 660,
+            "altura": 0.94
+          },
+          {
+            "id": "zilber",
+            "dialogo": "zilber53",
+            "adversario": "zilber53",
+            "x": 520,
+            "y": 660,
+            "altura": 0.97
+          },
+          {
+            "id": "gipslis",
+            "dialogo": "gipslis53",
+            "adversario": "gipslis53",
+            "x": 660,
+            "y": 660,
+            "altura": 0.93
+          },
+          {
+            "id": "klavins",
+            "dialogo": "klavins",
+            "adversario": "klavins",
+            "x": 805,
+            "y": 660,
+            "altura": 0.97
+          },
+          {
+            "id": "koblencs",
+            "dialogo": "koblencs",
+            "adversario": "koblencs",
+            "x": 975,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "arbitro",
+            "dialogo": "arbitro",
+            "x": 1150,
+            "y": 660,
+            "altura": 1
+          }
+        ]
+      },
+      "desafio": {
+        "adversarios": [
+          "zilber53",
+          "gipslis53",
+          "klavins",
+          "koblencs",
+          "tal53"
+        ],
+        "pontosMinimos": 9,
+        "relogio": {
+          "minutos": 15,
+          "incremento": 0,
+          "minutosDaHistoria": 150
+        },
+        "adiamento": {
+          "noLance": 40,
+          "minutosDaHistoria": 60
+        },
+        "torneio": {
+          "titulo": "cap4.torneio.titulo",
+          "ordem": [
+            "blek",
+            "graduss",
+            "zilber53",
+            "ruja",
+            "skuja",
+            "semenkin",
+            "gipslis53",
+            "kampenuss",
+            "mileika",
+            "zdanovs",
+            "klavins",
+            "yeropov",
+            "balins",
+            "klasups",
+            "koblencs",
+            "solmanis",
+            "pasman",
+            "klovans",
+            "tal53"
+          ],
+          "eventos": [
+            {
+              "depoisDaRodada": 9,
+              "titulo": "cap4.evento.luto.titulo",
+              "texto": "cap4.evento.luto.texto"
+            }
+          ]
+        }
+      },
+      "fechamento": {
+        "aprovado": "cap4.fechamento.aprovado",
+        "reprovado": "cap4.fechamento.reprovado",
+        "campeao": "cap4.fechamento.campeao",
+        "proximo": "cap4.fechamento.proximo",
+        "tentar": "cap4.fechamento.tentar"
+      }
     }
   ]
 }

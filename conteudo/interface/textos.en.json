@@ -96,5 +96,12 @@
   "adiamento.variante": "Your analysis:",
   "adiamento.abrindo_envelope": "The arbiter checks the signatures and opens the envelope…",
   "adiamento.lance_do_envelope": "In the envelope: {lance}. The clock is running again.",
-  "local.voltar_analise": "Back to the analysis"
+  "local.voltar_analise": "Back to the analysis",
+  "torneio.rodada_n": "Round {rodada}",
+  "torneio.simulada_vitoria": "you beat {nome}",
+  "torneio.simulada_derrota": "you lost to {nome}",
+  "torneio.simulada_empate": "you drew with {nome}",
+  "torneio.resumo_uma": "Round {rodada}",
+  "torneio.resumo_varias": "Rounds {de} to {ate}",
+  "torneio.resumo_duas": "Rounds {de} and {ate}"
 }

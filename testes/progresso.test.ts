@@ -144,3 +144,10 @@ describe("capitulosLiberados", () => {
     expect([...liberados].sort()).toEqual(["cap1", "cap2", "cap3"]);
   });
 });
+
+describe("resumos de rodada do torneio grande", () => {
+  it("recomeçar o capítulo apaga as marcas de resumo dele e mantém o resto", () => {
+    const p = { ...novoProgresso("pt-BR", "carreira", "cap4"), vistos: ["cap4:rodadas:6", "cap4:quadro", "cap3:rodadas:2"] };
+    expect(comecarCapitulo(p, "cap4", "pt-BR", "carreira").vistos).toEqual(["cap4:quadro", "cap3:rodadas:2"]);
+  });
+});

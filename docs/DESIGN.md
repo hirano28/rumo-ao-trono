@@ -72,8 +72,9 @@ e `docs/pesquisa/fatos_1951_cap2.md`). A ficha do capítulo 2 corrigiu o
 roteiro: quem dava aula de xadrez no Palácio era Jānis Krūzkops (1946–1960),
 não Koblencs; em 1951 Koblencs é mestre e adversário de Tal, não treinador.
 
-Capítulos 1 e 2 no ar (14/10/2026); capítulo 3 (o torneio dos adultos, com
-partida adiada) em 15/10/2026, com a ficha `docs/pesquisa/fatos_1952_1953.md`.
+Capítulos 1 e 2 no ar (14/10/2026); capítulos 3 (o torneio dos adultos, com
+partida adiada) e 4 (a final da Letônia de 1953, torneio grande) em
+15/10/2026, com a ficha `docs/pesquisa/fatos_1952_1953.md`.
 
 ### 4.2.2 O arco da história (rascunho de 15/10/2026)
 
@@ -110,6 +111,17 @@ entre os outros são simulados pela expectativa do Elo, com chance de empate
 que cai com a diferença de força, e um resultado fixo por jogo salvo (semente
 no progresso). A tabela fica num quadro na parede e só mostra as rodadas já
 jogadas; a rodada de folga do jogador entra na classificação final.
+
+**Torneio grande** (desde o capítulo 4): ninguém joga dezenove partidas. O
+conteúdo dá a ordem dos rivais do jogador, rodada a rodada (`torneio.ordem`);
+o calendário dos outros sai do método do círculo (tabelas de Berger,
+`src/logica/calendario.ts`). Só as partidas decisivas (`desafio.adversarios`)
+são jogadas; as outras do jogador são simuladas como as dos outros, com a
+força dele no começo do capítulo. Ao voltar ao salão, uma folha conta as
+rodadas que passaram (os resultados simulados e os acontecimentos entre as
+rodadas, `torneio.eventos`). A aprovação conta os pontos do torneio inteiro; a
+força calculada no fim conta só as partidas jogadas. Quem termina em primeiro
+lê o fechamento de campeão: é ali que a história alternativa (§4.3) começa.
 
 ### 4.3 História alternativa
 

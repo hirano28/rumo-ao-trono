@@ -75,5 +75,138 @@
     "forcaHistorica": 1950,
     "degrau": 100,
     "corDoJogador": "pretas"
+  },
+  "blek": {
+    "nome": "adv.blek.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1850,
+    "degrau": -50,
+    "corDoJogador": "brancas"
+  },
+  "graduss": {
+    "nome": "adv.graduss.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1850,
+    "degrau": -75,
+    "corDoJogador": "brancas"
+  },
+  "zilber53": {
+    "nome": "adv.zilber53.nome",
+    "apresentacao": "adv.zilber53.apresentacao",
+    "forcaHistorica": 2100,
+    "degrau": 50,
+    "corDoJogador": "brancas"
+  },
+  "ruja": {
+    "nome": "adv.ruja.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1850,
+    "degrau": -50,
+    "corDoJogador": "brancas"
+  },
+  "skuja": {
+    "nome": "adv.skuja.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1900,
+    "degrau": -25,
+    "corDoJogador": "brancas"
+  },
+  "semenkin": {
+    "nome": "adv.semenkin.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1900,
+    "degrau": -25,
+    "corDoJogador": "brancas"
+  },
+  "gipslis53": {
+    "nome": "adv.gipslis53.nome",
+    "apresentacao": "adv.gipslis53.apresentacao",
+    "forcaHistorica": 2050,
+    "degrau": 50,
+    "corDoJogador": "pretas"
+  },
+  "kampenuss": {
+    "nome": "adv.kampenuss.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1950,
+    "degrau": 0,
+    "corDoJogador": "brancas"
+  },
+  "mileika": {
+    "nome": "adv.mileika.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 2000,
+    "degrau": 0,
+    "corDoJogador": "brancas"
+  },
+  "zdanovs": {
+    "nome": "adv.zdanovs.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 2000,
+    "degrau": 25,
+    "corDoJogador": "brancas"
+  },
+  "klavins": {
+    "nome": "adv.klavins.nome",
+    "apresentacao": "adv.klavins.apresentacao",
+    "forcaHistorica": 2200,
+    "degrau": 100,
+    "corDoJogador": "brancas"
+  },
+  "yeropov": {
+    "nome": "adv.yeropov.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1950,
+    "degrau": 0,
+    "corDoJogador": "brancas"
+  },
+  "balins": {
+    "nome": "adv.balins.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 1950,
+    "degrau": 0,
+    "corDoJogador": "brancas"
+  },
+  "klasups": {
+    "nome": "adv.klasups.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 2050,
+    "degrau": 50,
+    "corDoJogador": "brancas"
+  },
+  "koblencs": {
+    "nome": "adv.koblencs.nome",
+    "apresentacao": "adv.koblencs.apresentacao",
+    "forcaHistorica": 2350,
+    "degrau": 175,
+    "corDoJogador": "pretas"
+  },
+  "solmanis": {
+    "nome": "adv.solmanis.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 2150,
+    "degrau": 75,
+    "corDoJogador": "brancas"
+  },
+  "pasman": {
+    "nome": "adv.pasman.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 2150,
+    "degrau": 75,
+    "corDoJogador": "brancas"
+  },
+  "klovans": {
+    "nome": "adv.klovans.nome",
+    "apresentacao": "adv.finalista.apresentacao",
+    "forcaHistorica": 2050,
+    "degrau": 50,
+    "corDoJogador": "brancas"
+  },
+  "tal53": {
+    "nome": "adv.tal53.nome",
+    "apresentacao": "adv.tal53.apresentacao",
+    "forcaHistorica": 2350,
+    "degrau": 200,
+    "corDoJogador": "brancas"
   }
 }

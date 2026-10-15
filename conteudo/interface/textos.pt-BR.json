@@ -96,5 +96,12 @@
   "adiamento.variante": "A sua análise:",
   "adiamento.abrindo_envelope": "O árbitro confere as assinaturas e abre o envelope…",
   "adiamento.lance_do_envelope": "No envelope: {lance}. O relógio volta a andar.",
-  "local.voltar_analise": "Voltar à análise"
+  "local.voltar_analise": "Voltar à análise",
+  "torneio.rodada_n": "Rodada {rodada}",
+  "torneio.simulada_vitoria": "você venceu {nome}",
+  "torneio.simulada_derrota": "você perdeu para {nome}",
+  "torneio.simulada_empate": "você empatou com {nome}",
+  "torneio.resumo_uma": "A rodada {rodada}",
+  "torneio.resumo_varias": "As rodadas {de} a {ate}",
+  "torneio.resumo_duas": "As rodadas {de} e {ate}"
 }

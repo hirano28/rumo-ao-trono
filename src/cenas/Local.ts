@@ -4,10 +4,20 @@
 // os adversários na ordem das rodadas e a tabela fica na parede.
 
 import Phaser from "phaser";
-import { CONTEUDO, capituloAtual, forcasDoDesafio, guardar, progresso, vistoChave } from "../estado";
+import {
+  CONTEUDO,
+  capituloAtual,
+  guardar,
+  jogosDoTorneio,
+  pontosDoJogador,
+  progresso,
+  rodadasJogadas,
+  torneioAtual,
+  vistoChave,
+} from "../estado";
 import { dataPorExtenso, t } from "../i18n/textos";
-import { desafioCompleto, pontosDoDesafio, type Dialogo, type ObjetoDoQuarto, type Personagem } from "../logica/conteudo";
-import { classificacao, jogosAte, VOCE } from "../logica/torneio";
+import { desafioCompleto, type Dialogo, type ObjetoDoQuarto, type Personagem } from "../logica/conteudo";
+import { classificacao, VOCE } from "../logica/torneio";
 import { clicavel } from "../ui/clicavel";
 import { chaveDoPersonagem } from "../ui/arte";
 import { desenharCenario, desenharPersonagem } from "../ui/cenarios";
@@ -57,6 +67,56 @@ export class Local extends Phaser.Scene {
       const rotulo = capitulo.desafio.torneio ? "local.ver_classificacao" : "local.fim_do_dia";
       botao(this, LARGURA / 2, ALTURA - 50, t(rotulo), () => trocarDeCena(this, "Resultado"), { largura: 440 });
     }
+
+    // torneio grande: as rodadas que passaram fora da tela, contadas numa folha (antes de qualquer clique)
+    this.resumirRodadas();
+  }
+
+  /**
+   * As rodadas completas desde a última vez que o jogador olhou: os jogos dele
+   * que foram simulados e o que aconteceu entre as rodadas. Ao fechar a folha,
+   * fica marcado nos vistos com a semente do torneio ("cap4:rodadas:<semente>:9"):
+   * não conta duas vezes, e um torneio novo (semente nova) conta tudo de novo.
+   */
+  private resumirRodadas(): void {
+    const capitulo = capituloAtual();
+    const torneio = capitulo.desafio.torneio;
+    if (!torneio?.ordem || this.ocupado) return;
+    const prefixo = vistoChave(`rodadas:${progresso().semente}:`);
+    const vista = Math.max(0, ...progresso().vistos.filter((v) => v.startsWith(prefixo)).map((v) => Number(v.slice(prefixo.length)) || 0));
+    const ate = rodadasJogadas();
+    if (ate <= vista) return;
+    const secoes: Secao[] = [];
+    const meus = jogosDoTorneio(ate).filter((j) => j.simulado && j.rodada > vista);
+    const linhas = meus.map((j) => {
+      const rival = t(CONTEUDO.adversarios[j.pretas].nome);
+      const como = j.pontos === 1 ? "torneio.simulada_vitoria" : j.pontos === 0 ? "torneio.simulada_derrota" : "torneio.simulada_empate";
+      return `${t("torneio.rodada_n", { rodada: j.rodada })}: ${t(como, { nome: rival })}`;
+    });
+    if (linhas.length) secoes.push({ texto: linhas.join("\n") });
+    for (const evento of torneio.eventos ?? []) {
+      if (evento.depoisDaRodada > vista && evento.depoisDaRodada <= ate) secoes.push({ titulo: t(evento.titulo), texto: t(evento.texto) });
+    }
+    const marcar = (): void => {
+      progresso().vistos.push(`${prefixo}${ate}`);
+      guardar();
+    };
+    if (secoes.length === 0) return marcar();
+    this.ocupado = true;
+    // a partida ao vivo que acabou de ser jogada não entra na folha, nem no título
+    const rodadasNaFolha = [
+      ...meus.map((j) => j.rodada),
+      ...(torneio.eventos ?? []).filter((e) => e.depoisDaRodada > vista && e.depoisDaRodada <= ate).map((e) => e.depoisDaRodada),
+    ];
+    const de = Math.min(...rodadasNaFolha);
+    const cabecalho =
+      de === ate
+        ? t("torneio.resumo_uma", { rodada: ate })
+        : t(de + 1 === ate ? "torneio.resumo_duas" : "torneio.resumo_varias", { de, ate });
+    folhaDePapel(this, cabecalho, secoes, t("comum.fechar"), () => {
+      marcar();
+      this.ocupado = false;
+    });
   }
 
   /** No torneio, o adversário da rodada em curso; fora dele, qualquer um ainda não enfrentado. */
@@ -75,12 +135,13 @@ export class Local extends Phaser.Scene {
     const capitulo = capituloAtual();
     const { desafio } = capitulo;
     const feitos = desafio.adversarios.filter((id) => progresso().resultados[id] !== undefined).length;
-    const pontos = pontosDoDesafio(progresso().resultados, desafio.adversarios);
+    const pontos = pontosDoJogador();
     const proximo = desafio.adversarios.find((id) => progresso().resultados[id] === undefined);
-    const texto = desafio.torneio
+    const torneio = torneioAtual();
+    const texto = torneio
       ? t(proximo ? "local.placar_torneio" : "local.placar_torneio_fim", {
-          rodada: feitos + 1,
-          total: desafio.torneio.rodadas.length,
+          rodada: rodadasJogadas() + 1,
+          total: torneio.rodadas.length,
           adversario: proximo ? t(CONTEUDO.adversarios[proximo].nome) : "",
           pontos: formatarPontos(pontos),
         })
@@ -119,14 +180,12 @@ export class Local extends Phaser.Scene {
     });
   }
 
-  /** A tabela do torneio até a rodada que o jogador já jogou. */
+  /** A tabela do torneio até a última rodada completa. */
   private secoesDaTabela(): Secao[] {
-    const { desafio } = capituloAtual();
-    if (!desafio.torneio) return [{ texto: "" }];
-    const atual = progresso();
-    const feitas = desafio.adversarios.filter((id) => atual.resultados[id] !== undefined).length;
-    const jogos = jogosAte(feitas, desafio.torneio.rodadas, desafio.adversarios, atual.resultados, forcasDoDesafio(), atual.semente);
-    return [{ texto: tabelaEmTexto(classificacao([VOCE, ...desafio.adversarios], jogos)), monoespacada: true }];
+    const torneio = torneioAtual();
+    if (!torneio) return [{ texto: "" }];
+    const tabela = classificacao([VOCE, ...torneio.ordem], jogosDoTorneio());
+    return [{ texto: tabelaEmTexto(tabela), monoespacada: true, miuda: tabela.length > 12 }];
   }
 
   private desenharPersonagem(personagem: Personagem): void {

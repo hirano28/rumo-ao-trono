@@ -33,6 +33,7 @@ em `conteudo/epocas/<época>/noticias.json` e na ficha
 Personagens do parque (Pēteris, Grigori Lvovich, senhor Ozols, dona Marta), da
 turma do Palácio (Valdis, Ilze, Boris) e do torneio de adultos (Arvīds
 Kalniņš, major Sokolov, Zenta Liepiņa, o árbitro) são fictícios. Mikhail Tal,
-Jānis Krūzkops, Aivars Gipslis e Israel Zilber existiram; as cenas e falas deles são ficção,
+Jānis Krūzkops, Aivars Gipslis, Israel Zilber, Aleksandrs Koblencs, Jānis
+Kļaviņš e os outros finalistas do campeonato da Letônia de 1953 existiram; as cenas e falas deles são ficção,
 escrita a partir do que eles próprios contaram ou do que as fontes da ficha
 registram (por exemplo, Tal chegando ao Palácio atrás do grupo de teatro).

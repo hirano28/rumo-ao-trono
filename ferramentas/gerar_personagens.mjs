@@ -45,6 +45,11 @@ const PERSONAGENS = {
     meia: "#3b2e26", sapato: "#2b1d12", casaquinho: "#7d7468", avental: "#3d4a66", caderno: true },
   zilber: { idade: "jovem", pele: "media", cabelo: { estilo: "penteado", cor: "#231915" }, roupa: "jaqueta", corRoupa: "#3d3f48",
     calca: "#2b2b30", sapato: "#1f1712", gola: "#efe4cc" },
+  // capítulo 4: a final do campeonato da Letônia (1953)
+  koblencs: { idade: "adulto", pele: "clara", cabelo: { estilo: "penteado", cor: "#3a2a1e" }, roupa: "terno", corRoupa: "#2f3340",
+    calca: "#262833", sapato: "#1f1712", gravata: "#5a2a2a" },
+  klavins: { idade: "jovem", pele: "rosada", cabelo: { estilo: "curto", cor: "#b8935a" }, roupa: "sueter", corRoupa: "#3f5a4a",
+    calca: "#33302c", sapato: "#2b1d12", gola: "#efe4cc", oculos: true },
 };
 
 /** Medidas do corpo por idade (a cena ainda escala pela altura da ficha). */

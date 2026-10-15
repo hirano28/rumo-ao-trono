@@ -49,6 +49,7 @@ export function comecarCapitulo(salvo: Progresso | undefined, capitulo: string, 
     forcas: {},
     semente: novaSemente(),
     concluidos: base.concluidos.filter((c) => c !== capitulo),
+    vistos: semResumosDeRodada(base.vistos, capitulo),
   };
 }
 
@@ -68,6 +69,11 @@ export function capitulosLiberados(ordem: readonly string[], salvo?: Progresso):
     }
   });
   return liberados;
+}
+
+/** Os vistos sem as marcas de resumo de rodada do capítulo (que se contam de novo num torneio novo). */
+export function semResumosDeRodada(vistos: readonly string[], capitulo: string): string[] {
+  return vistos.filter((v) => !v.startsWith(`${capitulo}:rodadas:`));
 }
 
 export function novaSemente(): string {

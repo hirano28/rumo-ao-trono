@@ -1,5 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { VOCE, classificacao, conferirRodadas, expectativa, jogoSimulado, jogosAte, sorteioFixo, type Rodadas } from "../src/logica/torneio";
+import {
+  VOCE,
+  calendarioDo,
+  classificacao,
+  conferirRodadas,
+  expectativa,
+  jogoSimulado,
+  jogosAte,
+  rodadasCompletas,
+  sorteioFixo,
+  type Rodadas,
+} from "../src/logica/torneio";
 
 const ADVERSARIOS = ["a", "b", "c", "d"];
 // o jogador enfrenta a, b, c, d nas rodadas 1–4 e folga na 5
@@ -77,5 +88,34 @@ describe("estabilidade do quadro", () => {
       (j) => j.rodada === 1 && j.brancas === "b",
     )!;
     expect(noFim.pontos).toBe(naRodada1.pontos);
+  });
+});
+
+describe("torneio grande (jogos do jogador simulados fora das rodadas ao vivo)", () => {
+  const ORDEM = ["p1", "p2", "vivo1", "p3", "vivo2"];
+  const AO_VIVO = ["vivo1", "vivo2"];
+  const FORCAS_G = { [VOCE]: 1500, p1: 1400, p2: 1500, p3: 1600, vivo1: 1550, vivo2: 1650 };
+
+  it("as rodadas completas vão até a do próximo rival ao vivo", () => {
+    expect(rodadasCompletas(ORDEM, 5, AO_VIVO, {})).toBe(2);
+    expect(rodadasCompletas(ORDEM, 5, AO_VIVO, { vivo1: 1 })).toBe(4);
+    expect(rodadasCompletas(ORDEM, 5, AO_VIVO, { vivo1: 1, vivo2: 0 })).toBe(5);
+  });
+
+  it("os jogos do jogador fora das rodadas ao vivo são simulados com a força dele; os ao vivo esperam o resultado", () => {
+    const { rodadas, ordem } = calendarioDo({ ordem: ORDEM }, AO_VIVO);
+    const jogos = jogosAte(5, rodadas, ordem, { vivo1: 1 }, FORCAS_G, "s", AO_VIVO);
+    const meus = jogos.filter((j) => j.brancas === VOCE);
+    expect(meus.map((j) => j.pretas)).toEqual(["p1", "p2", "vivo1", "p3"]);
+    expect(meus.filter((j) => j.simulado).map((j) => j.pretas)).toEqual(["p1", "p2", "p3"]);
+    expect(meus.find((j) => j.pretas === "vivo1")).toMatchObject({ pontos: 1 });
+    expect(meus.find((j) => j.pretas === "vivo1")?.simulado).toBeUndefined();
+    // a mesma semente dá a mesma tabela
+    expect(jogosAte(5, rodadas, ordem, { vivo1: 1 }, FORCAS_G, "s", AO_VIVO)).toEqual(jogos);
+  });
+
+  it("no torneio pequeno (todos ao vivo), nada do jogador é simulado", () => {
+    const jogos = jogosAte(5, RODADAS, ADVERSARIOS, { a: 1 }, FORCAS, "x");
+    expect(jogos.some((j) => j.simulado)).toBe(false);
   });
 });

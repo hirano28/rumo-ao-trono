@@ -62,6 +62,8 @@ export interface Secao {
   texto: string;
   /** Texto em colunas (tabela de torneio): fonte de máquina de escrever. */
   monoespacada?: boolean;
+  /** Letra menor, para a tabela de um torneio grande caber na folha. */
+  miuda?: boolean;
 }
 
 /**
@@ -124,9 +126,9 @@ export function folhaDePapel(
     }
     const corpo = cena.add.text(x0 + 40, y, secao.texto, {
       fontFamily: secao.monoespacada ? FONTE.colunas : FONTE.corpo,
-      fontSize: secao.monoespacada ? "19px" : "18px",
+      fontSize: secao.miuda ? "15px" : secao.monoespacada ? "19px" : "18px",
       color: css(COR.tinta),
-      lineSpacing: 5,
+      lineSpacing: secao.miuda ? 1 : 5,
       wordWrap: { width: largura - 80 },
     });
     objetos.push(corpo);

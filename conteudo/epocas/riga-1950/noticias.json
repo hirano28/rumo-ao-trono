@@ -102,5 +102,29 @@
     "texto": "not.n1952_jogos_helsinque.texto",
     "fonte": "https://en.wikipedia.org/wiki/Soviet_Union_at_the_1952_Summer_Olympics ; https://en.wikipedia.org/wiki/Maigonis_Valdmanis (docs/pesquisa/fatos_1952_1953.md: J-01)",
     "confianca": "alta"
+  },
+  {
+    "id": "n1952_campeonato_urss",
+    "data": "1952-12",
+    "titulo": "not.n1952_campeonato_urss.titulo",
+    "texto": "not.n1952_campeonato_urss.texto",
+    "fonte": "https://en.wikipedia.org/wiki/1952_USSR_Chess_Championship ; https://www.chessgames.com/perl/chess.pl?tid=79527 (docs/pesquisa/fatos_1952_1953.md: J-05)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1953_desempate",
+    "data": "1953-02",
+    "titulo": "not.n1953_desempate.titulo",
+    "texto": "not.n1953_desempate.texto",
+    "fonte": "https://en.wikipedia.org/wiki/1952_USSR_Chess_Championship (docs/pesquisa/fatos_1952_1953.md: J-05)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1953_luto",
+    "data": "1953-03-06",
+    "titulo": "not.n1953_luto.titulo",
+    "texto": "not.n1953_luto.texto",
+    "fonte": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Joseph_Stalin (docs/pesquisa/fatos_1952_1953.md: Q-04)",
+    "confianca": "alta"
   }
 ]
