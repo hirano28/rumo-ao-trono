@@ -4,7 +4,7 @@
 import Phaser from "phaser";
 import { ALTURA, LARGURA } from "./estilo";
 
-export const CENARIOS = ["titulo", "quarto", "parque", "palacio", "mesa-parque", "mesa-palacio"] as const;
+export const CENARIOS = ["titulo", "quarto", "parque", "palacio", "clube", "mesa-parque", "mesa-palacio"] as const;
 
 /**
  * Cenários que já têm a versão pintada (Stable Diffusion XL, a partir do SVG;
@@ -12,7 +12,8 @@ export const CENARIOS = ["titulo", "quarto", "parque", "palacio", "mesa-parque",
  */
 export const PINTADOS: ReadonlySet<string> = new Set(["quarto"]);
 
-export const PERSONAGENS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis"] as const;
+export const PERSONAGENS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis",
+  "arbitro", "kalnins", "sokolov", "zenta", "zilber"] as const;
 
 /** Tamanho em que o personagem é desenhado (a cena escala pela altura da ficha). */
 export const PERSONAGEM_LARGURA = 160;

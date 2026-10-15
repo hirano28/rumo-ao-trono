@@ -1,5 +1,6 @@
 // Os lugares da história: a ilustração do cenário, a vida dele (folhas
-// caindo no parque, poeira na luz do Palácio) e os personagens, que respiram
+// caindo no parque, poeira na luz do Palácio, fumaça no clube) e os
+// personagens, que respiram
 // e piscam.
 
 import Phaser from "phaser";
@@ -13,6 +14,7 @@ const ESCALA_DO_PERSONAGEM = 0.82;
 export function desenharCenario(cena: Phaser.Scene, cenario: Cenario): void {
   cena.add.image(LARGURA / 2, ALTURA / 2, chaveDaArte(cenario));
   if (cenario === "parque") folhasCaindo(cena);
+  else if (cenario === "clube") fumacaNoAr(cena);
   else poeiraNaLuz(cena);
 }
 
@@ -63,6 +65,29 @@ function folhasCaindo(cena: Phaser.Scene): void {
       });
     };
     cena.time.delayedCall(i * 900, cair);
+  }
+}
+
+/** Fumaça de cigarro subindo devagar sobre as mesas, sob as luminárias. */
+function fumacaNoAr(cena: Phaser.Scene): void {
+  for (let i = 0; i < 14; i++) {
+    const fio = cena.add.circle(0, 0, Phaser.Math.Between(10, 22), 0xd8d2c4, 0).setDepth(40);
+    const subir = () => {
+      if (!fio.active) return;
+      const x = Phaser.Math.Between(120, LARGURA - 120);
+      fio.setPosition(x, Phaser.Math.Between(430, 520)).setAlpha(0).setScale(0.6);
+      cena.tweens.add({
+        targets: fio,
+        x: x + Phaser.Math.Between(-60, 60),
+        y: Phaser.Math.Between(120, 260),
+        scale: Phaser.Math.FloatBetween(1.6, 2.6),
+        alpha: { from: 0.12, to: 0 },
+        duration: Phaser.Math.Between(9000, 15000),
+        ease: "Sine.easeOut",
+        onComplete: () => cena.time.delayedCall(Phaser.Math.Between(0, 3000), subir),
+      });
+    };
+    cena.time.delayedCall(i * 700, subir);
   }
 }
 

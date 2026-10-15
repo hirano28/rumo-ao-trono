@@ -1,6 +1,8 @@
 // Uma partida contra um adversário do desafio. No parque não há relógio,
 // como era de fato; no clube, o relógio mecânico conta o tempo da história
-// (DESIGN.md §6).
+// (DESIGN.md §6). Nos torneios de adultos, a partida que chega ao fim da
+// sessão é adiada: lance secreto no envelope, noite de análise em casa
+// (cena Adiamento) e retomada com mais tempo no relógio.
 
 import Phaser from "phaser";
 import { Chess, type Color } from "chess.js";
@@ -9,6 +11,7 @@ import { contaConectada, registrar } from "../servidor/sincronia";
 import { t } from "../i18n/textos";
 import type { Pontos } from "../logica/forca";
 import type { Adversario } from "../logica/conteudo";
+import { horaDeAdiar, posicaoDaAdiada, rotuloDoLance, type PartidaAdiada } from "../logica/adiamento";
 import { Relogio, type Lado } from "../logica/relogio";
 import { lanceDoAdversario, prepararAdversario, type LanceUci } from "../motor/adversario";
 import { motor } from "../motor/motor";
@@ -39,17 +42,24 @@ export class Partida extends Phaser.Scene {
   private fecharConfirmacao?: () => void;
   private relogio?: Relogio;
   private mostradores?: RelogioDeXadrez;
+  /** A partida veio do envelope (não se adia de novo). */
+  private retomada?: PartidaAdiada;
+  /** A sessão acabou e o próximo lance do jogador vai no envelope. */
+  private selando = false;
 
   constructor() {
     super("Partida");
   }
 
-  init(dados: { adversario: string }): void {
+  init(dados: { adversario: string; retomar?: boolean }): void {
     this.idAdversario = dados.adversario;
     this.adversario = CONTEUDO.adversarios[dados.adversario];
     this.ladoDoJogador = this.adversario.corDoJogador === "brancas" ? "w" : "b";
     this.forcaDoAdversario = forcaDoAdversario(dados.adversario);
     this.terminada = false;
+    this.selando = false;
+    const adiada = progresso().adiada;
+    this.retomada = dados.retomar && adiada?.adversario === dados.adversario ? adiada : undefined;
     this.numero++;
   }
 
@@ -57,17 +67,16 @@ export class Partida extends Phaser.Scene {
     this.cameras.main.setBackgroundColor(0x2b3a26);
     this.cameras.main.fadeIn(500, 0, 0, 0);
     this.desenharMesa();
-    this.partida = new Chess();
+    this.partida = this.retomada ? posicaoDaAdiada(this.retomada) : new Chess();
     // a rede do Maia (ou o Stockfish, nos níveis altos) começa a carregar já
     prepararAdversario(this.forcaDoAdversario);
     const origemX = 92;
     const origemY = (ALTURA - CASA * 8) / 2;
     this.tabuleiro = new Tabuleiro(this, origemX, origemY, CASA, this.ladoDoJogador, this.partida, (lance) => this.jogar(lance));
     const controle = capituloAtual().desafio.relogio;
-    this.relogio = controle ? new Relogio(controle) : undefined;
+    this.relogio = controle ? new Relogio(controle, undefined, this.retomada?.restanteMs) : undefined;
     this.mostradores = undefined;
     this.desenharPainel();
-    this.relogio?.iniciar("w");
     // com a aba escondida o jogo para (e o adversário com ele): o relógio também
     const pausar = () => this.relogio?.pausar();
     const retomar = () => this.relogio?.retomar();
@@ -77,7 +86,38 @@ export class Partida extends Phaser.Scene {
       this.game.events.off(Phaser.Core.Events.HIDDEN, pausar);
       this.game.events.off(Phaser.Core.Events.VISIBLE, retomar);
     });
+    if (this.retomada) return this.abrirEnvelope(this.retomada);
+    this.relogio?.iniciar("w");
     this.proximaVez();
+  }
+
+  /**
+   * Retomada: o árbitro abre o envelope e faz o lance secreto no tabuleiro;
+   * cada um ganha a hora a mais, e o relógio volta a andar para o outro lado.
+   */
+  private abrirEnvelope(adiada: PartidaAdiada): void {
+    const numero = this.numero;
+    const anterior = this.partida.history({ verbose: true }).at(-1);
+    if (anterior) this.tabuleiro.marcarUltimo(anterior.from, anterior.to);
+    this.tabuleiro.desenhar();
+    this.atualizarLances();
+    const regra = capituloAtual().desafio.adiamento;
+    if (regra) this.relogio?.acrescentar(regra.minutosDaHistoria);
+    const lance = rotuloDoLance(this.partida.moveNumber(), adiada.quemSelou, adiada.selado);
+    this.situacao.setText(t("adiamento.abrindo_envelope"));
+    this.time.delayedCall(1800, () => {
+      if (numero !== this.numero || this.terminada) return;
+      // o envelope fica guardado até o resultado: quem recarregar volta a esta retomada
+      const feito = this.partida.move(adiada.selado);
+      this.tabuleiro.marcarUltimo(feito.from, feito.to);
+      this.atualizarLances();
+      this.tabuleiro.desenhar();
+      this.situacao.setText(t("adiamento.lance_do_envelope", { lance }));
+      this.relogio?.iniciar(this.partida.turn());
+      this.time.delayedCall(1400, () => {
+        if (numero === this.numero && !this.terminada) this.proximaVez();
+      });
+    });
   }
 
   update(): void {
@@ -101,6 +141,7 @@ export class Partida extends Phaser.Scene {
 
   /** A mesa do lugar: a de pedra do parque ou a de madeira do Palácio. */
   private desenharMesa(): void {
+    // o clube tem mesa de madeira, como a do Palácio
     const mesa = capituloAtual().local.cenario === "parque" ? "mesa-parque" : "mesa-palacio";
     this.add.image(LARGURA / 2, ALTURA / 2, chaveDaArte(mesa));
   }
@@ -153,6 +194,7 @@ export class Partida extends Phaser.Scene {
   private proximaVez(): void {
     this.atualizarLances();
     if (this.partida.isGameOver()) return this.encerrar();
+    if (horaDeAdiar(this.partida, capituloAtual().desafio.adiamento, this.retomada !== undefined)) return this.fimDaSessao();
     const vezDoJogador = this.partida.turn() === this.ladoDoJogador;
     this.situacao.setText(
       vezDoJogador
@@ -166,6 +208,13 @@ export class Partida extends Phaser.Scene {
   private jogar(lance: LanceDoJogador): void {
     if (this.terminada) return;
     const feito = this.partida.move(lance);
+    if (this.selando && !this.partida.isGameOver()) {
+      // o lance vai para o papel, não para o tabuleiro
+      this.partida.undo();
+      this.tabuleiro.liberar(false);
+      return this.lacrar(feito.san);
+    }
+    this.selando = false;
     this.relogio?.apertar();
     this.tabuleiro.marcarUltimo(feito.from, feito.to);
     this.proximaVez();
@@ -196,6 +245,95 @@ export class Partida extends Phaser.Scene {
       this.tabuleiro.marcarUltimo(feito.from, feito.to);
       this.proximaVez();
     });
+  }
+
+  /** Acabou a sessão: quem tem a vez escreve o lance secreto. */
+  private fimDaSessao(): void {
+    if (this.partida.turn() === this.ladoDoJogador) {
+      this.selando = true;
+      this.situacao.setText(t("adiamento.selar_sua_vez"));
+      this.tabuleiro.liberar(true);
+      return;
+    }
+    this.situacao.setText(t("adiamento.selar_dele", { nome: t(this.adversario.nome) }));
+    this.tabuleiro.liberar(false);
+    void this.selarPeloAdversario();
+  }
+
+  private async selarPeloAdversario(): Promise<void> {
+    const numero = this.numero;
+    const partida = this.partida;
+    const inicio = performance.now();
+    let lance: LanceUci;
+    try {
+      lance = await lanceDoAdversario(motor, partida, this.forcaDoAdversario);
+    } catch (erro) {
+      console.error(erro);
+      const legais = partida.moves({ verbose: true });
+      lance = legais[Math.floor(Math.random() * legais.length)];
+    }
+    const valeAinda = (): boolean => numero === this.numero && partida === this.partida && !this.terminada;
+    if (!valeAinda()) return;
+    // escrever o lance secreto leva o mesmo tempo que jogar: apertado no relógio, ele escreve logo
+    let espera = PENSAR_MINIMO_MS + Math.random() * PENSAR_VARIACAO_MS - (performance.now() - inicio);
+    if (this.relogio) espera = Math.min(espera, this.relogio.restanteMs(partida.turn()) / 30);
+    this.time.delayedCall(Math.max(0, espera), () => {
+      if (!valeAinda()) return;
+      const feito = partida.move(lance);
+      if (partida.isGameOver()) {
+        // lance que acaba a partida não vai para o envelope: é jogado
+        this.relogio?.apertar();
+        this.tabuleiro.marcarUltimo(feito.from, feito.to);
+        return this.proximaVez();
+      }
+      partida.undo();
+      this.lacrar(feito.san);
+    });
+  }
+
+  /** O lance secreto vai para o envelope; a partida fica guardada até a retomada. */
+  private lacrar(selado: string): void {
+    this.fecharConfirmacao?.();
+    this.selando = false;
+    this.terminada = true;
+    this.relogio?.pausar();
+    const quemSelou = this.partida.turn();
+    const restante = (lado: Lado): number => this.relogio?.restanteMs(lado) ?? 0;
+    progresso().adiada = {
+      capitulo: progresso().capitulo,
+      adversario: this.idAdversario,
+      lances: this.partida.history(),
+      selado,
+      quemSelou,
+      restanteMs: { w: restante("w"), b: restante("b") },
+    };
+    guardar();
+    const meu = quemSelou === this.ladoDoJogador;
+    const lance = rotuloDoLance(this.partida.moveNumber(), quemSelou, selado);
+    this.situacao.setText(t("adiamento.adiada"));
+    veu(this, 0.45);
+    this.add.rectangle(LARGURA / 2, ALTURA / 2, 660, 390, COR.papel).setStrokeStyle(3, COR.sepia).setDepth(CAMADA_SOBRE);
+    this.add
+      .text(LARGURA / 2, ALTURA / 2 - 150, t("adiamento.titulo"), {
+        fontFamily: FONTE.titulo,
+        fontSize: "36px",
+        fontStyle: "800",
+        color: css(COR.tinta),
+      })
+      .setOrigin(0.5)
+      .setDepth(CAMADA_SOBRE);
+    this.add
+      .text(LARGURA / 2, ALTURA / 2 - 5, t(meu ? "adiamento.envelope_seu" : "adiamento.envelope_dele", { lance, nome: t(this.adversario.nome) }), {
+        fontFamily: FONTE.corpo,
+        fontSize: "19px",
+        color: css(COR.tinta),
+        align: "center",
+        lineSpacing: 6,
+        wordWrap: { width: 570 },
+      })
+      .setOrigin(0.5)
+      .setDepth(CAMADA_SOBRE);
+    botao(this, LARGURA / 2, ALTURA / 2 + 145, t("adiamento.ir_para_casa"), () => trocarDeCena(this, "Adiamento")).setDepth(CAMADA_SOBRE);
   }
 
   private atualizarLances(): void {
@@ -289,8 +427,10 @@ export class Partida extends Phaser.Scene {
     if (this.terminada) return;
     this.fecharConfirmacao?.();
     this.terminada = true;
+    this.selando = false;
     this.relogio?.parar();
     this.tabuleiro.liberar(false);
+    delete progresso().adiada;
     progresso().resultados[this.idAdversario] = pontos;
     progresso().forcas[this.idAdversario] = this.forcaDoAdversario;
     guardar();

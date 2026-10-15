@@ -31,6 +31,28 @@ export class Local extends Phaser.Scene {
     for (const personagem of capitulo.local.personagens) this.desenharPersonagem(personagem);
     this.desenharPlacar();
 
+    // envelope de um adversário que não está mais no desafio (conteúdo mudou): não vale
+    const adiada = progresso().adiada;
+    if (adiada && !capitulo.desafio.adversarios.includes(adiada.adversario)) {
+      delete progresso().adiada;
+      guardar();
+    }
+    if (progresso().adiada) {
+      const { adversario } = progresso().adiada!;
+      botao(
+        this,
+        LARGURA / 2 - 150,
+        ALTURA - 50,
+        t("local.retomar_adiada", { adversario: t(CONTEUDO.adversarios[adversario].nome) }),
+        () => trocarDeCena(this, "Partida", { adversario, retomar: true }),
+        { largura: 520 },
+      );
+      botao(this, LARGURA / 2 + 280, ALTURA - 50, t("local.voltar_analise"), () => trocarDeCena(this, "Adiamento"), {
+        largura: 300,
+        claro: true,
+      });
+    }
+
     if (desafioCompleto(progresso().resultados, capitulo.desafio.adversarios)) {
       const rotulo = capitulo.desafio.torneio ? "local.ver_classificacao" : "local.fim_do_dia";
       botao(this, LARGURA / 2, ALTURA - 50, t(rotulo), () => trocarDeCena(this, "Resultado"), { largura: 440 });
@@ -42,6 +64,9 @@ export class Local extends Phaser.Scene {
     const { desafio } = capituloAtual();
     const resultados = progresso().resultados;
     if (resultados[adversario] !== undefined) return false;
+    // com uma partida no envelope, só ela pode ser jogada
+    const adiada = progresso().adiada;
+    if (adiada) return adiada.adversario === adversario;
     if (!desafio.torneio) return true;
     return desafio.adversarios.find((id) => resultados[id] === undefined) === adversario;
   }
@@ -154,7 +179,8 @@ export class Local extends Phaser.Scene {
           if (opcao.vai) return this.mostrarNo(personagem, dialogo, opcao.vai);
           this.ocupado = false;
           if (opcao.acao === "jogar" && personagem.adversario) {
-            trocarDeCena(this, "Partida", { adversario: personagem.adversario });
+            const retomar = progresso().adiada?.adversario === personagem.adversario;
+            trocarDeCena(this, "Partida", { adversario: personagem.adversario, retomar });
           }
         },
       })),

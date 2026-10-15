@@ -9,4 +9,6 @@ echo ===== inicio %date% %time% >> fotos\ia\noturno.log
 %PY% ferramentas\arte_ia\gerar.py --cenas parque palacio titulo mesa-parque mesa-palacio --forca 0.55 --sementes 5 6 --evitar "television, tv screen, bed, naive art" >> fotos\ia\noturno.log 2>&1
 echo ===== cenarios terminados %date% %time% >> fotos\ia\noturno.log
 %PY% ferramentas\arte_ia\gerar.py --personagens peteris grisha ozols marta kruzkops tal valdis ilze boris gipslis --forca 0.65 --sementes 1 2 >> fotos\ia\noturno.log 2>&1
+%PY% ferramentas\arte_ia\gerar.py --cenas clube --forca 0.55 --sementes 5 6 --evitar "television, tv screen, bed, naive art, mountains" >> fotos\ia\noturno.log 2>&1
+%PY% ferramentas\arte_ia\gerar.py --personagens arbitro kalnins sokolov zenta zilber --forca 0.65 --sementes 1 2 >> fotos\ia\noturno.log 2>&1
 echo ===== fim %date% %time% >> fotos\ia\noturno.log

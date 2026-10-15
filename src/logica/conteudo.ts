@@ -2,6 +2,7 @@
 // O código do jogo não sabe que é 1950: tudo vem destes dados.
 
 import type { Pontos } from "./forca";
+import type { RegraDeAdiamento } from "./adiamento";
 import type { ControleDeTempo } from "./relogio";
 import { conferirRodadas } from "./torneio";
 
@@ -72,7 +73,7 @@ export interface Personagem {
 }
 
 /** Os cenários que a cena de local sabe desenhar. */
-export type Cenario = "parque" | "palacio";
+export type Cenario = "parque" | "palacio" | "clube";
 
 export interface Desafio {
   adversarios: string[];
@@ -81,6 +82,8 @@ export interface Desafio {
   calibracao?: boolean;
   /** Sem relógio, as partidas são livres (como no parque). */
   relogio?: ControleDeTempo;
+  /** Partida que chega ao lance da regra é adiada, com lance secreto (só com relógio). */
+  adiamento?: RegraDeAdiamento;
   /** Turno único: os jogos entre os outros, rodada a rodada. */
   torneio?: { titulo: string; rodadas: Array<Array<[string, string]>> };
 }
@@ -179,7 +182,7 @@ export function conferirConteudo(
   }
 
   for (const capitulo of conteudo.epoca.capitulos) {
-    for (const objeto of capitulo.quarto?.objetos ?? []) {
+    for (const objeto of [...(capitulo.quarto?.objetos ?? []), ...(capitulo.local.objetos ?? [])]) {
       for (const id of objeto.noticias ?? []) {
         if (!idsDeNoticia.has(id)) problemas.push(`objeto ${objeto.id} cita notícia inexistente ${id}`);
       }
@@ -209,6 +212,11 @@ export function conferirConteudo(
     const relogio = capitulo.desafio.relogio;
     if (relogio && !(relogio.minutos > 0 && relogio.incremento >= 0 && relogio.minutosDaHistoria > 0)) {
       problemas.push(`relógio de ${capitulo.id} inválido`);
+    }
+    const adiamento = capitulo.desafio.adiamento;
+    if (adiamento && !relogio) problemas.push(`adiamento de ${capitulo.id} sem relógio`);
+    if (adiamento && !(Number.isInteger(adiamento.noLance) && adiamento.noLance > 0 && adiamento.minutosDaHistoria > 0)) {
+      problemas.push(`adiamento de ${capitulo.id} inválido`);
     }
   }
 

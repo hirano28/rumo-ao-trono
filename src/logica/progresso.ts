@@ -3,6 +3,7 @@
 
 import type { Modo, Pontos } from "./forca";
 import { IDIOMAS, type Idioma } from "../i18n/textos";
+import { normalizarAdiada, type PartidaAdiada } from "./adiamento";
 
 export interface Progresso {
   versao: 1;
@@ -21,6 +22,8 @@ export interface Progresso {
   vistos: string[];
   /** Fixa os resultados simulados do torneio deste jogo. */
   semente: string;
+  /** A partida adiada do desafio em curso, com o lance secreto, até a retomada. */
+  adiada?: PartidaAdiada;
 }
 
 const CHAVE = "rumo-ao-trono:progresso";
@@ -31,11 +34,12 @@ export function novoProgresso(idioma: Idioma, modo: Modo, capitulo: string): Pro
 
 /**
  * Começa (ou recomeça) um capítulo, escolhido na tela de capítulos: zera as
- * partidas dele e o tira dos concluídos (para o resultado ser recalculado
+ * partidas dele (e a adiada) e o tira dos concluídos (para o resultado ser recalculado
  * no fim), mas mantém o resto da carreira: força, outros capítulos, vistos.
  */
 export function comecarCapitulo(salvo: Progresso | undefined, capitulo: string, idioma: Idioma, modo: Modo): Progresso {
-  const base = salvo ?? novoProgresso(idioma, modo, capitulo);
+  const base: Progresso = { ...(salvo ?? novoProgresso(idioma, modo, capitulo)) };
+  delete base.adiada; // o envelope era do desafio anterior
   return {
     ...base,
     idioma,
@@ -126,6 +130,11 @@ export function normalizar(dado: unknown): Progresso | undefined {
   // antes dos capítulos, os vistos não tinham prefixo: eram todos do capítulo 1
   progresso.vistos = textos(d.vistos).map((v) => (v.includes(":") ? v : `cap1:${v}`));
   if (typeof d.semente === "string" && d.semente) progresso.semente = d.semente;
+  const adiada = normalizarAdiada(d.adiada);
+  // envelope de outro capítulo, ou de partida que já tem resultado, não vale mais
+  if (adiada && adiada.capitulo === progresso.capitulo && progresso.resultados[adiada.adversario] === undefined) {
+    progresso.adiada = adiada;
+  }
   return progresso;
 }
 

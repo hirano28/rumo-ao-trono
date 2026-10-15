@@ -34,6 +34,17 @@ const PERSONAGENS = {
     calca: "#33302c", sapato: "#2b1d12", gola: "#efe4cc" },
   gipslis: { idade: "jovem", pele: "clara", cabelo: { estilo: "curto", cor: "#8a6a43" }, roupa: "sueter", corRoupa: "#5a4a3a",
     calca: "#30334a", sapato: "#2b1d12", gola: "#efe4cc" },
+  // capítulo 3: o torneio de adultos (1952)
+  arbitro: { idade: "idoso", pele: "clara", cabelo: { estilo: "calvo", cor: "#b8b2a6" }, roupa: "terno", corRoupa: "#4a4744",
+    calca: "#33302c", sapato: "#1f1712", gravata: "#2b2b33", oculos: true, bigode: "#b8b2a6" },
+  kalnins: { idade: "adulto", pele: "rosada", cabelo: { estilo: "penteado", cor: "#c9a868" }, roupa: "jaqueta", corRoupa: "#6b5a44",
+    calca: "#3d3a34", sapato: "#2b1d12", gola: "#efe4cc", oculos: true },
+  sokolov: { idade: "adulto", pele: "media", cabelo: { estilo: "curto", cor: "#8f8a80" }, roupa: "uniforme", corRoupa: "#56603f",
+    calca: "#3c4230", sapato: "#1f1712", bigode: "#8f8a80" },
+  zenta: { idade: "jovem", pele: "clara", cabelo: { estilo: "coque", cor: "#8a5a32" }, roupa: "vestido", corRoupa: "#34405a",
+    meia: "#3b2e26", sapato: "#2b1d12", casaquinho: "#7d7468", avental: "#3d4a66", caderno: true },
+  zilber: { idade: "jovem", pele: "media", cabelo: { estilo: "penteado", cor: "#231915" }, roupa: "jaqueta", corRoupa: "#3d3f48",
+    calca: "#2b2b30", sapato: "#1f1712", gola: "#efe4cc" },
 };
 
 /** Medidas do corpo por idade (a cena ainda escala pela altura da ficha). */

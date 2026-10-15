@@ -289,6 +289,214 @@
         "proximo": "cap2.fechamento.proximo",
         "tentar": "cap2.fechamento.tentar"
       }
+    },
+    {
+      "id": "cap3",
+      "ano": 1952,
+      "titulo": "cap3.titulo",
+      "abertura": [
+        "cap3.abertura.p1",
+        "cap3.abertura.p2",
+        "cap3.abertura.p3",
+        "cap3.abertura.p4"
+      ],
+      "quarto": {
+        "saida": "cap3.quarto.saida",
+        "objetos": [
+          {
+            "id": "jornal",
+            "rotulo": "cap3.quarto.jornal.rotulo",
+            "cabecalho": "cap3.quarto.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1952_interzonal",
+              "n1952_jogos_helsinque"
+            ]
+          },
+          {
+            "id": "revista",
+            "rotulo": "cap3.quarto.revista.rotulo",
+            "cabecalho": "cap3.quarto.revista.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1952_letonia",
+              "n1952_semifinal_riga"
+            ]
+          },
+          {
+            "id": "livro",
+            "rotulo": "cap3.quarto.livro.rotulo",
+            "cabecalho": "cap3.quarto.livro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap3.quarto.livro.texto"
+          },
+          {
+            "id": "tabuleiro",
+            "rotulo": "cap3.quarto.tabuleiro.rotulo",
+            "cabecalho": "cap3.quarto.tabuleiro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap3.quarto.tabuleiro.texto"
+          }
+        ]
+      },
+      "local": {
+        "titulo": "cap3.local.titulo",
+        "cenario": "clube",
+        "objetos": [
+          {
+            "id": "quadro",
+            "rotulo": "cap3.local.quadro.rotulo",
+            "cabecalho": "cap3.local.quadro.cabecalho",
+            "tipo": "tabela",
+            "x": 660,
+            "y": 180,
+            "largura": 200,
+            "altura": 200
+          },
+          {
+            "id": "aviso",
+            "rotulo": "cap3.local.aviso.rotulo",
+            "cabecalho": "cap3.local.aviso.cabecalho",
+            "tipo": "texto",
+            "texto": "cap3.local.aviso.texto",
+            "x": 815,
+            "y": 214,
+            "largura": 84,
+            "altura": 100
+          },
+          {
+            "id": "jornal",
+            "rotulo": "cap3.local.jornal.rotulo",
+            "cabecalho": "cap3.local.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1952_helsinque"
+            ],
+            "x": 146,
+            "y": 546,
+            "largura": 80,
+            "altura": 36
+          }
+        ],
+        "personagens": [
+          {
+            "id": "ozols",
+            "dialogo": "ozols_clube",
+            "x": 255,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "tal",
+            "dialogo": "tal_clube",
+            "x": 395,
+            "y": 660,
+            "altura": 0.92
+          },
+          {
+            "id": "kalnins",
+            "dialogo": "kalnins",
+            "adversario": "kalnins",
+            "x": 540,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "sokolov",
+            "dialogo": "sokolov",
+            "adversario": "sokolov",
+            "x": 685,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "zenta",
+            "dialogo": "zenta",
+            "adversario": "zenta",
+            "x": 830,
+            "y": 660,
+            "altura": 0.93
+          },
+          {
+            "id": "zilber",
+            "dialogo": "zilber",
+            "adversario": "zilber",
+            "x": 975,
+            "y": 660,
+            "altura": 0.97
+          },
+          {
+            "id": "arbitro",
+            "dialogo": "arbitro",
+            "x": 1120,
+            "y": 660,
+            "altura": 1
+          }
+        ]
+      },
+      "desafio": {
+        "adversarios": [
+          "kalnins",
+          "sokolov",
+          "zenta",
+          "zilber"
+        ],
+        "pontosMinimos": 2.5,
+        "relogio": {
+          "minutos": 15,
+          "incremento": 0,
+          "minutosDaHistoria": 150
+        },
+        "adiamento": {
+          "noLance": 40,
+          "minutosDaHistoria": 60
+        },
+        "torneio": {
+          "titulo": "cap3.torneio.titulo",
+          "rodadas": [
+            [
+              [
+                "sokolov",
+                "zenta"
+              ]
+            ],
+            [
+              [
+                "kalnins",
+                "zilber"
+              ]
+            ],
+            [
+              [
+                "sokolov",
+                "zilber"
+              ]
+            ],
+            [
+              [
+                "kalnins",
+                "zenta"
+              ]
+            ],
+            [
+              [
+                "kalnins",
+                "sokolov"
+              ],
+              [
+                "zenta",
+                "zilber"
+              ]
+            ]
+          ]
+        }
+      },
+      "fechamento": {
+        "aprovado": "cap3.fechamento.aprovado",
+        "reprovado": "cap3.fechamento.reprovado",
+        "proximo": "cap3.fechamento.proximo",
+        "tentar": "cap3.fechamento.tentar"
+      }
     }
   ]
 }

@@ -43,6 +43,8 @@ export class Tabuleiro extends Phaser.GameObjects.Container {
     lado: Color,
     private readonly partida: Chess,
     private readonly aoJogar: (lance: LanceDoJogador) => void,
+    /** Tabuleiro de análise: a mão mexe as peças de quem tiver a vez, dos dois lados. */
+    private readonly livre = false,
   ) {
     super(cena, x, y);
     this.casa = casa;
@@ -61,6 +63,10 @@ export class Tabuleiro extends Phaser.GameObjects.Container {
 
   marcarUltimo(from: Square, to: Square): void {
     this.ultimo = { from, to };
+  }
+
+  esquecerUltimo(): void {
+    this.ultimo = undefined;
   }
 
   desenhar(): void {
@@ -158,7 +164,7 @@ export class Tabuleiro extends Phaser.GameObjects.Container {
         return;
       }
     }
-    this.selecionada = peca && peca.color === this.partida.turn() && peca.color === this.lado ? casa : undefined;
+    this.selecionada = peca && peca.color === this.partida.turn() && (this.livre || peca.color === this.lado) ? casa : undefined;
     this.desenhar();
   }
 
@@ -169,7 +175,7 @@ export class Tabuleiro extends Phaser.GameObjects.Container {
     const filhos: Phaser.GameObjects.GameObject[] = [fundo];
     opcoes.forEach((tipo, i) => {
       const imagem = this.scene.add
-        .image((i - 1.5) * this.casa * 1.05, 0, this.lado + tipo)
+        .image((i - 1.5) * this.casa * 1.05, 0, this.partida.turn() + tipo)
         .setDisplaySize(this.casa * 0.95, this.casa * 0.95)
         .setInteractive({ useHandCursor: true });
       imagem.on("pointerup", () => {

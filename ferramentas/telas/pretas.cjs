@@ -8,6 +8,8 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 (async () => {
   const navegador = await chromium.launch();
   const pagina = await navegador.newPage({ viewport: { width: 1280, height: 720 } });
+  // sem a pergunta do apelido (a conta tem o seu próprio percurso, conta.cjs)
+  await pagina.addInitScript(() => localStorage.setItem("rumo-ao-trono:sem-conta", "1"));
   const erros = [];
   pagina.on("pageerror", (e) => erros.push(String(e)));
   const cena = () => pagina.evaluate(() => window.jogo.scene.getScenes(true).map((s) => s.scene.key).join(","));

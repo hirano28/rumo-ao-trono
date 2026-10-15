@@ -92,7 +92,7 @@ export class Resultado extends Phaser.Scene {
         t(capitulo.fechamento.tentar ?? "resultado.tentar_de_novo"),
         () => {
           registrar("desafios", { capitulo: capitulo.id, pontos, aprovado: false, forca, categoria });
-          definirProgresso({ ...atual, resultados: {}, forcas: {}, semente: novaSemente() });
+          definirProgresso({ ...atual, resultados: {}, forcas: {}, semente: novaSemente(), adiada: undefined });
           trocarDeCena(this, "Local");
         },
         { largura: 420 },
@@ -131,7 +131,7 @@ export class Resultado extends Phaser.Scene {
         ALTURA - 70,
         t("resultado.seguir", { capitulo: t(proximo.titulo) }),
         () => {
-          definirProgresso({ ...progresso(), capitulo: proximo.id, resultados: {}, forcas: {}, semente: novaSemente() });
+          definirProgresso({ ...progresso(), capitulo: proximo.id, resultados: {}, forcas: {}, semente: novaSemente(), adiada: undefined });
           trocarDeCena(this, "Abertura", undefined, 800);
         },
         { largura: 560, tamanho: 19 },

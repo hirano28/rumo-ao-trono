@@ -71,6 +71,10 @@ CENAS = {
         "chess club hall in an old castle, white walls, deep arched windows with light rays, parquet floor, "
         "red runner carpet, long table with chessboards and chess clocks, demonstration board on an easel"
     ),
+    "clube": (
+        "smoky chess tournament hall at dusk, men at wooden tables with chessboards and clocks, hanging metal lamps, "
+        "green painted wall panels, tall windows with red curtains, large tournament crosstable on wall, arbiter desk"
+    ),
     "titulo": "Riga old town skyline at night across the Daugava river, church spires, lit windows, moon, reflections",
     "mesa-parque": "top-down view of a weathered granite table with fallen autumn leaves",
     "mesa-palacio": "top-down view of an old polished wooden table, chess scoresheet and pencil, lamplight",
@@ -89,6 +93,11 @@ PERSONAGENS = {
     "ilze": "14 year old girl, auburn braids with white ribbons, brown school uniform dress, black apron, notebook",
     "boris": "15 year old confident boy, dark hair, olive green jacket, white collar, dark trousers",
     "gipslis": "14 year old thoughtful boy, light brown hair, brown wool sweater, white collar, navy trousers",
+    "arbitro": "elderly chess arbiter, bald, grey mustache, round glasses, grey suit, dark tie, serious",
+    "kalnins": "Latvian engineer about 35, blond combed hair, glasses, brown jacket, white shirt collar",
+    "sokolov": "retired Soviet army major about 50, grey short hair, grey mustache, olive military tunic without medals",
+    "zenta": "20 year old woman mathematics student, auburn hair in a bun, navy dress, grey cardigan, notebook",
+    "zilber": "19 year old young man, dark combed hair, dark grey jacket, white shirt collar, confident",
 }
 
 TIPOS = {"F16": torch.float16, "F32": torch.float32, "BF16": torch.bfloat16, "I64": torch.int64}

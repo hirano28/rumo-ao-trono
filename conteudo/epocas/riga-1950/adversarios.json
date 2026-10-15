@@ -47,5 +47,33 @@
     "forcaHistorica": 1450,
     "degrau": 75,
     "corDoJogador": "pretas"
+  },
+  "kalnins": {
+    "nome": "adv.kalnins.nome",
+    "apresentacao": "adv.kalnins.apresentacao",
+    "forcaHistorica": 1450,
+    "degrau": -100,
+    "corDoJogador": "brancas"
+  },
+  "sokolov": {
+    "nome": "adv.sokolov.nome",
+    "apresentacao": "adv.sokolov.apresentacao",
+    "forcaHistorica": 1550,
+    "degrau": -25,
+    "corDoJogador": "pretas"
+  },
+  "zenta": {
+    "nome": "adv.zenta.nome",
+    "apresentacao": "adv.zenta.apresentacao",
+    "forcaHistorica": 1600,
+    "degrau": 25,
+    "corDoJogador": "brancas"
+  },
+  "zilber": {
+    "nome": "adv.zilber.nome",
+    "apresentacao": "adv.zilber.apresentacao",
+    "forcaHistorica": 1950,
+    "degrau": 100,
+    "corDoJogador": "pretas"
   }
 }

@@ -28,10 +28,11 @@ vendido, a arte gerada por IA precisa ser declarada (Steam, por exemplo).
 Os textos das notícias e conversas são nossos, escritos a partir de fatos.
 Nenhum texto ou foto de jornal da época foi copiado. A fonte de cada fato está
 em `conteudo/epocas/<época>/noticias.json` e na ficha
-`docs/pesquisa/fatos_1950_1960.md`.
+`docs/pesquisa/fatos_1950_1960.md` (e nas fichas de 1951 e de 1952–1953).
 
-Personagens do parque (Pēteris, Grigori Lvovich, senhor Ozols, dona Marta) e
-da turma do Palácio (Valdis, Ilze, Boris) são fictícios. Mikhail Tal, Jānis
-Krūzkops e Aivars Gipslis existiram; as cenas e falas deles são ficção,
+Personagens do parque (Pēteris, Grigori Lvovich, senhor Ozols, dona Marta), da
+turma do Palácio (Valdis, Ilze, Boris) e do torneio de adultos (Arvīds
+Kalniņš, major Sokolov, Zenta Liepiņa, o árbitro) são fictícios. Mikhail Tal,
+Jānis Krūzkops, Aivars Gipslis e Israel Zilber existiram; as cenas e falas deles são ficção,
 escrita a partir do que eles próprios contaram ou do que as fontes da ficha
 registram (por exemplo, Tal chegando ao Palácio atrás do grupo de teatro).

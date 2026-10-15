@@ -1,9 +1,10 @@
 // Esboço de cada personagem para o SDXL: o desenho SVG atual, grande, de pé,
 // num fundo cinza claro liso (832×1216, o retrato do SDXL).
-// Uso: node ferramentas/arte_ia/esbocos_personagens.cjs
+// Uso: node ferramentas/arte_ia/esbocos_personagens.cjs [id ...]
 const { chromium } = require("C:/edson/projetos/chess-ai-pipeline/frontend/node_modules/playwright");
 const fs = require("fs");
-const IDS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis"];
+const TODOS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis", "arbitro", "kalnins", "sokolov", "zenta", "zilber"];
+const IDS = process.argv.slice(2).length ? process.argv.slice(2) : TODOS;
 (async () => {
   fs.mkdirSync("fotos/esbocos/personagens", { recursive: true });
   const b = await chromium.launch();

@@ -62,5 +62,45 @@
     "texto": "not.n1951_match_fim.texto",
     "fonte": "https://en.wikipedia.org/wiki/World_Chess_Championship_1951 (ficha cap. 2: N-01, N-02)",
     "confianca": "alta"
+  },
+  {
+    "id": "n1952_helsinque",
+    "data": "1952-08",
+    "titulo": "not.n1952_helsinque.titulo",
+    "texto": "not.n1952_helsinque.texto",
+    "fonte": "https://en.wikipedia.org/wiki/10th_Chess_Olympiad ; https://olimpbase.org/1952/1952in.html (ficha 4-04)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1952_interzonal",
+    "data": "1952-10",
+    "titulo": "not.n1952_interzonal.titulo",
+    "texto": "not.n1952_interzonal.texto",
+    "fonte": "https://www.olimpbase.org/ind-wcc/wc1954-iz.html ; https://en.wikipedia.org/wiki/Alexander_Kotov (ficha 4-05)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1952_letonia",
+    "data": "1952-03",
+    "titulo": "not.n1952_letonia.titulo",
+    "texto": "not.n1952_letonia.texto",
+    "fonte": "https://en.wikipedia.org/wiki/Latvian_Chess_Championship ; https://chessgames.com/perl/chesscollection?user=Bokke ; https://en.wikipedia.org/wiki/Israel_Zilber (docs/pesquisa/fatos_1952_1953.md: A-03, A-05)",
+    "confianca": "media"
+  },
+  {
+    "id": "n1952_semifinal_riga",
+    "data": "1952-06",
+    "titulo": "not.n1952_semifinal_riga.titulo",
+    "texto": "not.n1952_semifinal_riga.texto",
+    "fonte": "https://www.olimpbase.org/ind-urs/urssemi-1952r.html (docs/pesquisa/fatos_1952_1953.md: A-07, A-08)",
+    "confianca": "media"
+  },
+  {
+    "id": "n1952_jogos_helsinque",
+    "data": "1952-08",
+    "titulo": "not.n1952_jogos_helsinque.titulo",
+    "texto": "not.n1952_jogos_helsinque.texto",
+    "fonte": "https://en.wikipedia.org/wiki/Soviet_Union_at_the_1952_Summer_Olympics ; https://en.wikipedia.org/wiki/Maigonis_Valdmanis (docs/pesquisa/fatos_1952_1953.md: J-01)",
+    "confianca": "alta"
   }
 ]

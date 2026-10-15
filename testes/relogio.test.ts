@@ -93,3 +93,15 @@ describe("Relogio pausado (aba escondida)", () => {
     expect(relogio.restanteMs("w")).toBe(900_000);
   });
 });
+
+describe("Relogio antes de iniciar", () => {
+  it("reexibir a aba antes do primeiro iniciar não põe o relógio para andar", () => {
+    let agora = 0;
+    const relogio = new Relogio({ minutos: 15, incremento: 0, minutosDaHistoria: 150 }, () => agora, { w: 60_000, b: 60_000 });
+    relogio.pausar();
+    relogio.retomar();
+    agora += 5_000;
+    expect(relogio.restanteMs("w")).toBe(60_000);
+    expect(relogio.restanteMs("b")).toBe(60_000);
+  });
+});

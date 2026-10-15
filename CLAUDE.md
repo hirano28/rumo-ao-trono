@@ -68,7 +68,10 @@ servidor guarda cópia e histórico. Teste de conta: `ferramentas/telas/conta.cj
   `pretas.cjs`, o tabuleiro virado e a promoção; `capitulo2.cjs`, a passagem
   de capítulo, o Palácio, o torneio, o relógio e a bandeira; `sem_motor.cjs`,
   a partida seguindo sem motor; `capitulos.cjs`, a tela de capítulos (entrar
-  direto no 2, rejogar o 1 na força histórica). Fotos vão para `fotos/`
+  direto no 2, rejogar o 1 na força histórica); `capitulo3.cjs`, o salão do
+  torneio de adultos e a partida adiada nos dois sentidos (você sela, ele
+  sela), com recarga da página no meio da noite. Os percursos marcam "jogar
+  sem conta" para a pergunta do apelido não cobrir a tela. Fotos vão para `fotos/`
   (fora do git).
 - O adversário humano é o Maia em ONNX (`public/maia/`). Para regerar:
   `node ferramentas/converter_maia.mjs` (precisa do lc0 e dos pesos oficiais

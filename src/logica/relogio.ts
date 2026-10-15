@@ -19,17 +19,29 @@ export class Relogio {
   private vez: Lado = "w";
   private desde?: number;
   private parado = false;
+  /** Antes do primeiro `iniciar`, nada anda (nem ao reexibir a aba). */
+  private iniciado = false;
 
   constructor(
     private readonly controle: ControleDeTempo,
     private readonly agora: () => number = () => performance.now(),
+    /** Na retomada de uma partida adiada: o que restava a cada um. */
+    restante?: Record<Lado, number>,
   ) {
     const ms = controle.minutos * 60_000;
-    this.restante = { w: ms, b: ms };
+    this.restante = restante ? { ...restante } : { w: ms, b: ms };
+  }
+
+  /** Tempo da história somado aos dois lados (a hora a mais da retomada). */
+  acrescentar(minutosDaHistoria: number): void {
+    const ms = (minutosDaHistoria * this.controle.minutos * 60_000) / this.controle.minutosDaHistoria;
+    this.restante.w += ms;
+    this.restante.b += ms;
   }
 
   /** Começa a contar para quem joga (o relógio é apertado no primeiro lance). */
   iniciar(vez: Lado): void {
+    this.iniciado = true;
     this.vez = vez;
     this.desde = this.agora();
   }
@@ -54,7 +66,7 @@ export class Relogio {
   }
 
   retomar(): void {
-    if (!this.parado && this.desde === undefined) this.desde = this.agora();
+    if (this.iniciado && !this.parado && this.desde === undefined) this.desde = this.agora();
   }
 
   /** Milissegundos reais que restam a um lado, sem passar de zero. */

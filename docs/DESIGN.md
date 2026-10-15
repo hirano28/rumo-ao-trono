@@ -59,19 +59,48 @@ de qualquer carreira real) e o jogador pode tentar de novo.
 |---|-----|-------|---------|
 | 1 | 1950 | Quarto e praça do bairro | 3 partidas contra iniciantes (800/900/1050) |
 | 2 | 1951 | Palácio dos Pioneiros (Castelo de Riga) | Torneio interno da turma de Jānis Krūzkops, com relógio |
-| 3 | 1952–53 | Clube de Riga | Torneio de clube; 3ª → 2ª categoria |
-| 4 | 1954–55 | Campeonato de Riga / da Letônia | 1ª categoria, candidato a mestre |
-| 5 | 1956–57 | Semifinal e final do campeonato da URSS | Mestre do esporte |
-| 6 | 1958 | Interzonal de Portorož | Vaga no Candidatos |
-| 7 | 1959 | Candidatos (Iugoslávia) | Direito de desafiar o campeão |
-| 8 | 1960 | Match em Moscou | O título |
+| 3 | 1952 | Torneio de adultos de Riga | Primeiro torneio de adultos, com partida adiada |
+| 4 | 1953 | Final do campeonato da Letônia | Candidato a mestre |
+| 5 | 1954 | Match pelo título de mestre | Mestre do esporte |
+| 6 | 1957 | Final do campeonato da URSS | Entre os melhores do país |
+| 7 | 1958 | Interzonal de Portorož | Vaga no Candidatos |
+| 8 | 1959 | Candidatos (Iugoslávia) | Direito de desafiar o campeão |
+| 9 | 1960 | Match em Moscou | O título |
 
 Os anos e lugares seguem as fichas de fatos (`docs/pesquisa/fatos_1950_1960.md`
 e `docs/pesquisa/fatos_1951_cap2.md`). A ficha do capítulo 2 corrigiu o
 roteiro: quem dava aula de xadrez no Palácio era Jānis Krūzkops (1946–1960),
 não Koblencs; em 1951 Koblencs é mestre e adversário de Tal, não treinador.
 
-Capítulos 1 e 2 no ar (14/10/2026).
+Capítulos 1 e 2 no ar (14/10/2026); capítulo 3 (o torneio dos adultos, com
+partida adiada) em 15/10/2026, com a ficha `docs/pesquisa/fatos_1952_1953.md`.
+
+### 4.2.2 O arco da história (rascunho de 15/10/2026)
+
+A linha que amarra os capítulos é **você e o Misha**: dois garotos do mesmo
+Palácio, um ano de diferença, que crescem um à sombra do outro. O Tal
+histórico anda sempre meio passo à frente (as fichas dizem onde ele estava em
+cada ano); a pergunta do jogo é se você o alcança. Cada capítulo também
+apresenta uma prática de torneio da época, de modo que a mecânica nova é ela
+mesma um pedaço da história.
+
+| # | Quando | Você | O Tal histórico | Mecânica nova |
+|---|---|---|---|---|
+| 1 | out 1950 | 13 anos, o parque | campeão juvenil da Letônia | partidas livres, calibração |
+| 2 | mai 1951 | 14, o Palácio | já joga torneios de adultos | relógio, torneio em turno único |
+| 3 | out 1952 | 15, primeiro torneio de adultos | 7º no campeonato letão; perde para Zilber | **partida adiada**, lance secreto, análise em casa |
+| 4 | 1953 | 16, final do campeonato da Letônia | campeão letão aos 16 | **rodadas decisivas jogadas, as outras simuladas** (torneio de 20) |
+| 5 | 1954 | 17, o match pelo título de mestre | match com Saigin, +4 −2 =8 | **match** (série contra um só adversário) |
+| 6 | 1957 | 20, final do campeonato da URSS, Moscou | campeão da URSS aos 20 | os gigantes: Keres, Bronstein, Spassky, Petrosian |
+| 7 | 1958 | 21, Interzonal de Portorož | 1º; Fischer, 15 anos, se classifica | o mundo de fora: viagem, imprensa estrangeira |
+| 8 | 1959 | 22, Candidatos (Bled, Zagreb, Belgrado) | 1º; 4 a 0 em Fischer | você e o Misha disputando a mesma vaga |
+| 9 | 1960 | 23, o match em Moscou | campeão do mundo | o match pelo título |
+
+A partir do capítulo 4 a história alternativa (§4.3) passa a valer de fato:
+se você termina à frente do Tal, as notícias seguintes dizem isso. **Decisão
+em aberto (do dono):** quem senta do outro lado no match final — Botvinnik
+(você tomou a vaga do Tal no Candidatos) ou o próprio Tal (campeão em 1960,
+você o desafia depois). O capítulo 9 só precisa dela quando chegar a vez dele.
 
 ### 4.2.1 Torneios
 
@@ -144,8 +173,16 @@ desafio (ex.: 2 de 3 pontos; empate vale meio).
 Cada desafio define o **relógio da história** (ex.: 2 horas por jogador) e o
 **relógio real** (ex.: 15 min). A tela mostra um relógio mecânico com
 ponteiros, no tempo da história: a bandeira cai às 6:00. Sem incremento,
-porque relógio de 1951 não tinha (o incremento faria o tempo passar de 2h00). Partidas longas podem ter **adiamento** com lance
-secreto (a partir do capítulo de clube).
+porque relógio de 1951 não tinha (o incremento faria o tempo passar de 2h00).
+
+**Adiamento** (desde o capítulo 3, 15/10/2026): nos torneios de adultos, a
+partida que chega ao 40º lance das pretas é adiada. Quem tem a vez escreve o
+lance secreto (o jogador faz o lance, que vai para o envelope e não para o
+tabuleiro; o adversário escolhe o dele sem mostrar). À noite, em casa, a
+posição fica montada no tabuleiro do avô para analisar, mexendo os dois lados;
+quem selou analisa depois do próprio lance. Na retomada o árbitro abre o
+envelope, faz o lance, e cada um ganha mais uma hora da história. O envelope
+fica guardado no progresso: dá para fechar o jogo e voltar de manhã.
 
 Na praça, as partidas são sem relógio, como eram de fato.
 
