@@ -3,6 +3,7 @@ import { CONTEUDO, definirProgresso } from "../estado";
 import { IDIOMAS, definirIdioma, idiomaAtual, t, type Idioma } from "../i18n/textos";
 import type { Modo } from "../logica/forca";
 import { carregar, novoProgresso } from "../logica/progresso";
+import { HISTORICO_LIGADO } from "../servidor/cliente";
 import { agendarProgresso, contaConectada, criarConta, recuperarConta } from "../servidor/sincronia";
 import { perguntarApelido } from "../ui/apelido";
 import { botao } from "../ui/componentes";
@@ -55,6 +56,7 @@ export class Titulo extends Phaser.Scene {
    * título mostra o botão "Salvar meu histórico".
    */
   private async conectar(pedido: boolean): Promise<void> {
+    if (!HISTORICO_LIGADO) return;
     if (contaConectada() || (await recuperarConta())) return this.mostrarConta();
     if (!pedido && lerPulou()) return this.mostrarConta();
     const resposta = await perguntarApelido(async (apelido) => {
@@ -71,7 +73,7 @@ export class Titulo extends Phaser.Scene {
   }
 
   private mostrarConta(): void {
-    if (!this.scene.isActive()) return;
+    if (!HISTORICO_LIGADO || !this.scene.isActive()) return;
     this.rotuloDaConta?.destroy();
     const conta = contaConectada();
     if (conta) {

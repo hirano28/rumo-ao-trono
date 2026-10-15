@@ -1,6 +1,6 @@
-// A tela de capítulos: (a) sem jogo salvo, entra direto no capítulo 2 e os
-// adversários jogam na força histórica; (b) com a carreira no capítulo 2,
-// rejoga o capítulo 1 e o parque continua na força histórica (calibração).
+// A tela de capítulos: (a) sem jogo salvo, o capítulo 2 está trancado e o
+// clique não faz nada; (b) com a carreira no capítulo 2, rejoga o capítulo 1
+// e o parque continua na força histórica (calibração).
 // Uso: node ferramentas/telas/capitulos.cjs <url> <pasta-de-fotos>
 const { chromium } = require("C:/edson/projetos/chess-ai-pipeline/frontend/node_modules/playwright");
 
@@ -43,17 +43,9 @@ const espera = (ms) => new Promise((r) => setTimeout(r, ms));
   await esperarCena("Capitulos");
   await espera(500);
   await pagina.screenshot({ path: `${pasta}/81-capitulos-vazio.png` });
-  await clicar(970, 330, 600); // Jogar o capítulo 2 (segundo cartão)
-  await pularAbertura();
-  await esperarCena("Quarto");
-  await espera(800);
-  await clicar(110, 430); // porta
-  await esperarCena("Local");
-  await espera(900);
-  await clicar(770, 480, 700); // Valdis
-  await clicar(452, 662, 500); // jogar a rodada
-  await esperarCena("Partida");
-  saida.valdisSemForca = await forcaNaPartida();
+  await clicar(970, 330, 1000); // onde estaria o botão do capítulo 2, trancado
+  saida.cap2Trancado = (await cena()) === "Capitulos";
+  await clicar(130, 670); // voltar
 
   // (b) carreira no capítulo 2, com o 1 concluído: rejoga o capítulo 1
   await pagina.evaluate(() =>

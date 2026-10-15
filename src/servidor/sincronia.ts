@@ -5,7 +5,7 @@
 
 import { enfileirar, gravarFila, lerFila, type Pendente, type TabelaDoHistorico } from "../logica/fila";
 import type { Progresso } from "../logica/progresso";
-import { servidor } from "./cliente";
+import { HISTORICO_LIGADO, servidor } from "./cliente";
 
 const ESPERA_DO_PROGRESSO_MS = 2000;
 
@@ -91,6 +91,7 @@ async function inserir(pendente: Pendente): Promise<boolean> {
 
 /** Registra no histórico; sem conta ou sem conexão, guarda para mandar depois. */
 export function registrar(tabela: TabelaDoHistorico, linha: Record<string, unknown>): void {
+  if (!HISTORICO_LIGADO) return;
   const pendente = { tabela, linha };
   void inserir(pendente)
     .then((foi) => {

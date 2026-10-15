@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { carregar, comecarCapitulo, normalizar, novoProgresso, salvar, type Armazenamento } from "../src/logica/progresso";
+import { capitulosLiberados, carregar, comecarCapitulo, normalizar, novoProgresso, salvar, type Armazenamento } from "../src/logica/progresso";
 
 function memoria(): Armazenamento & { dados: Map<string, string> } {
   const dados = new Map<string, string>();
@@ -117,5 +117,30 @@ describe("comecarCapitulo", () => {
     expect(p.forcas).toEqual({});
     expect(p.vistos).toEqual(["cap1:jornal"]);
     expect(p.semente).not.toBe(salvo.semente);
+  });
+});
+
+describe("capitulosLiberados", () => {
+  const ordem = ["cap1", "cap2", "cap3"];
+
+  it("sem jogo salvo, só o primeiro", () => {
+    expect([...capitulosLiberados(ordem)]).toEqual(["cap1"]);
+  });
+
+  it("o capítulo 1 em andamento não libera o 2", () => {
+    expect(capitulosLiberados(ordem, novoProgresso("pt-BR", "carreira", "cap1")).has("cap2")).toBe(false);
+  });
+
+  it("o capítulo 1 vencido libera o 2, e não o 3", () => {
+    const salvo = { ...novoProgresso("pt-BR", "carreira", "cap2"), concluidos: ["cap1"] };
+    const liberados = capitulosLiberados(ordem, salvo);
+    expect(liberados.has("cap2")).toBe(true);
+    expect(liberados.has("cap3")).toBe(false);
+  });
+
+  it("rejogando o 1 depois de vencer o 2, o 2 e o 3 continuam liberados", () => {
+    const salvo = { ...novoProgresso("pt-BR", "carreira", "cap1"), concluidos: ["cap2"] };
+    const liberados = capitulosLiberados(ordem, salvo);
+    expect([...liberados].sort()).toEqual(["cap1", "cap2", "cap3"]);
   });
 });

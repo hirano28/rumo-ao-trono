@@ -76,5 +76,6 @@
   "apelido.vazio": "Type a nickname (up to 30 letters).",
   "apelido.falhou": "Couldn't reach the server right now. Try again, or play without saving your history (your progress is still saved on this device).",
   "titulo.jogando_como": "Playing as {apelido}",
-  "titulo.salvar_historico": "Save my history"
+  "titulo.salvar_historico": "Save my history",
+  "capitulos.trancado": "🔒 Locked: win the previous chapter first"
 }

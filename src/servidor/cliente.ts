@@ -8,6 +8,12 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 export const URL_DO_SERVIDOR = "https://pwmtabunzjcjnnhfewno.supabase.co";
 export const CHAVE_PUBLICAVEL = "sb_publishable_oG1k1BZGlIe4J3h4n1GPfw_8UX-cRrg";
 
+/**
+ * Desligado até o login anônimo ser ligado no painel do Supabase (sem ele,
+ * o jogador veria um erro ao escolher o apelido). Ver docs/SERVIDOR.md.
+ */
+export const HISTORICO_LIGADO = false;
+
 let cliente: SupabaseClient | undefined;
 
 export function servidor(): SupabaseClient {

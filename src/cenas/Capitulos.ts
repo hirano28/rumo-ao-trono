@@ -1,12 +1,12 @@
-// A tela de capítulos: qualquer capítulo publicado pode ser jogado direto, e
-// os concluídos podem ser jogados de novo. Quem entra num capítulo sem força
-// calculada enfrenta os adversários na força histórica, e o desafio calibra.
+// A tela de capítulos: o capítulo seguinte a um vencido fica liberado, os
+// concluídos podem ser jogados de novo, e os futuros ficam trancados até o
+// anterior ser vencido.
 
 import Phaser from "phaser";
 import { CONTEUDO, definirProgresso } from "../estado";
 import { idiomaAtual, t } from "../i18n/textos";
 import type { Modo } from "../logica/forca";
-import { carregar, comecarCapitulo } from "../logica/progresso";
+import { capitulosLiberados, carregar, comecarCapitulo } from "../logica/progresso";
 import { botao } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
 import { trocarDeCena } from "../ui/transicao";
@@ -29,24 +29,38 @@ export class Capitulos extends Phaser.Scene {
       .text(LARGURA / 2, 70, t("capitulos.titulo"), { fontFamily: FONTE.titulo, fontSize: "52px", fontStyle: "800", color: css(COR.papel) })
       .setOrigin(0.5);
 
+    const liberados = capitulosLiberados(
+      CONTEUDO.epoca.capitulos.map((c) => c.id),
+      salvo,
+    );
     CONTEUDO.epoca.capitulos.forEach((capitulo, i) => {
       const y = 190 + i * 140;
       const concluido = salvo?.concluidos.includes(capitulo.id) ?? false;
       const emAndamento = !concluido && salvo?.capitulo === capitulo.id;
-      this.add.rectangle(LARGURA / 2, y, 920, 116, COR.papel, 0.96).setStrokeStyle(2, concluido ? COR.dourado : COR.sepia);
+      const trancado = !liberados.has(capitulo.id);
+      this.add
+        .rectangle(LARGURA / 2, y, 920, 116, trancado ? COR.parede : COR.papel, 0.96)
+        .setStrokeStyle(2, concluido ? COR.dourado : COR.sepia);
       this.add.text(LARGURA / 2 - 430, y - 36, t(capitulo.titulo), {
         fontFamily: FONTE.titulo,
         fontSize: "26px",
         fontStyle: "600",
-        color: css(COR.tinta),
+        color: css(trancado ? COR.papelSombra : COR.tinta),
         wordWrap: { width: 600 },
       });
-      const estado = concluido ? "capitulos.concluido" : emAndamento ? "capitulos.em_andamento" : "capitulos.nao_jogado";
+      const estado = trancado
+        ? "capitulos.trancado"
+        : concluido
+          ? "capitulos.concluido"
+          : emAndamento
+            ? "capitulos.em_andamento"
+            : "capitulos.nao_jogado";
       this.add.text(LARGURA / 2 - 430, y + 16, `${concluido ? "✓ " : ""}${t(estado)}`, {
         fontFamily: FONTE.maquina,
         fontSize: "17px",
-        color: css(concluido ? COR.oliva : COR.sepia),
+        color: css(trancado ? COR.papel : concluido ? COR.oliva : COR.sepia),
       });
+      if (trancado) return;
       const rotulo = concluido ? "capitulos.jogar_de_novo" : emAndamento ? "capitulos.continuar" : "capitulos.jogar";
       botao(
         this,
@@ -59,6 +73,7 @@ export class Capitulos extends Phaser.Scene {
             trocarDeCena(this, "Local");
             return;
           }
+          if (!capitulosLiberados(CONTEUDO.epoca.capitulos.map((c) => c.id), carregar()).has(capitulo.id)) return;
           definirProgresso(comecarCapitulo(salvo, capitulo.id, idiomaAtual(), salvo?.modo ?? this.modo));
           trocarDeCena(this, "Abertura", undefined, 700);
         },

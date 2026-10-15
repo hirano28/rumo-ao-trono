@@ -76,5 +76,6 @@
   "apelido.vazio": "Escreva um apelido (até 30 letras).",
   "apelido.falhou": "Não deu para falar com o servidor agora. Tente de novo, ou jogue sem salvar o histórico (o progresso continua salvo neste aparelho).",
   "titulo.jogando_como": "Jogando como {apelido}",
-  "titulo.salvar_historico": "Salvar meu histórico"
+  "titulo.salvar_historico": "Salvar meu histórico",
+  "capitulos.trancado": "🔒 Trancado: vença o capítulo anterior"
 }

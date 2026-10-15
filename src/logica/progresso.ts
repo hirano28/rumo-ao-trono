@@ -48,6 +48,24 @@ export function comecarCapitulo(salvo: Progresso | undefined, capitulo: string, 
   };
 }
 
+/**
+ * Os capítulos que o jogador pode abrir: o primeiro, os já concluídos, o que
+ * está em andamento e o seguinte a um concluído. Capítulo futuro fica
+ * trancado até o anterior ser vencido.
+ */
+export function capitulosLiberados(ordem: readonly string[], salvo?: Progresso): Set<string> {
+  const liberados = new Set<string>(ordem.slice(0, 1));
+  if (!salvo) return liberados;
+  liberados.add(salvo.capitulo);
+  ordem.forEach((id, i) => {
+    if (salvo.concluidos.includes(id)) {
+      liberados.add(id);
+      if (ordem[i + 1]) liberados.add(ordem[i + 1]);
+    }
+  });
+  return liberados;
+}
+
 export function novaSemente(): string {
   return Math.random().toString(36).slice(2, 10);
 }
