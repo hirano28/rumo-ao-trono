@@ -5,8 +5,10 @@ import adversarios from "../conteudo/epocas/riga-1950/adversarios.json";
 import dialogos from "../conteudo/epocas/riga-1950/dialogos.json";
 import noticias from "../conteudo/epocas/riga-1950/noticias.json";
 import { pontosDoDesafio, type Capitulo, type ConteudoDaEpoca } from "./logica/conteudo";
-import { forcaNoTabuleiro } from "./logica/forca";
+import { forcaNoTabuleiro, maiorCategoria, type Categoria } from "./logica/forca";
 import { VOCE, calendarioDo, jogosAte, rodadasCompletas, type Jogo, type Rodadas } from "./logica/torneio";
+import { adversarioDaPartida, corNaPartida, partidasCompletas, partidasDoMatch, type PartidaDoMatch } from "./logica/match";
+import type { Adversario } from "./logica/conteudo";
 import { salvar, type Progresso } from "./logica/progresso";
 import { agendarProgresso } from "./servidor/sincronia";
 
@@ -42,6 +44,22 @@ export function vistoChave(id: string): string {
   return `${progresso().capitulo}:${id}`;
 }
 
+/**
+ * O título conquistado até o capítulo atual (inclusive, se `aprovadoAgora`):
+ * o maior `desafio.conquista` dos capítulos vencidos que vêm antes dele na
+ * época. Um título de 1954 não aparece quando se rejoga 1953.
+ */
+export function conquistaAte(aprovadoAgora: boolean): Categoria | undefined {
+  const capitulos = CONTEUDO.epoca.capitulos;
+  const atual = capitulos.findIndex((c) => c.id === progresso().capitulo);
+  let conquista: Categoria | undefined;
+  capitulos.forEach((capitulo, i) => {
+    const vale = i < atual ? progresso().concluidos.includes(capitulo.id) : i === atual && aprovadoAgora;
+    if (vale && capitulo.desafio.conquista) conquista = maiorCategoria(conquista ?? "iniciante", capitulo.desafio.conquista);
+  });
+  return conquista;
+}
+
 /** O capítulo seguinte ao atual, se houver. */
 export function proximoCapitulo(): Capitulo | undefined {
   const capitulos = CONTEUDO.epoca.capitulos;
@@ -56,7 +74,7 @@ export function proximoCapitulo(): Capitulo | undefined {
  */
 export function forcasDoDesafio(): Record<string, number> {
   const { desafio } = capituloAtual();
-  const ids = desafio.torneio?.ordem ?? desafio.adversarios;
+  const ids = desafio.match ? [desafio.match.adversario, ...desafio.adversarios] : (desafio.torneio?.ordem ?? desafio.adversarios);
   const forcas: Record<string, number> = Object.fromEntries(ids.map((id) => [id, forcaDoAdversario(id)]));
   // a força do jogador nos jogos simulados dele (torneio grande): a do começo do capítulo
   forcas[VOCE] = progresso().forcas[VOCE] ?? progresso().forca ?? FORCA_SEM_CALIBRACAO;
@@ -88,9 +106,29 @@ export function jogosDoTorneio(ate = rodadasJogadas()): Jogo[] {
   return jogosAte(ate, torneio.rodadas, torneio.ordem, atual.resultados, forcasDoDesafio(), atual.semente, capituloAtual().desafio.adversarios);
 }
 
-/** Pontos do jogador no desafio; no torneio grande, contando os jogos simulados. */
+/** As partidas do match até a última decidida (jogadas e simuladas), ou nada fora de um match. */
+export function partidasDoMatchAtual(ate?: number): PartidaDoMatch[] {
+  const { desafio } = capituloAtual();
+  if (!desafio.match) return [];
+  const atual = progresso();
+  const limite = ate ?? partidasCompletas(desafio.match, desafio.adversarios, atual.resultados);
+  return partidasDoMatch(desafio.match, desafio.adversarios, atual.resultados, forcasDoDesafio(), atual.semente, limite);
+}
+
+/** A ficha do adversário de uma partida (o id pode ser "adversario@numero", no match). */
+export function adversarioDe(id: string): Adversario {
+  return CONTEUDO.adversarios[adversarioDaPartida(id)];
+}
+
+/** A cor do jogador numa partida (no match, alterna). */
+export function ladoDoJogadorEm(id: string): "w" | "b" {
+  return corNaPartida(id, adversarioDe(id).corDoJogador) === "brancas" ? "w" : "b";
+}
+
+/** Pontos do jogador no desafio; no torneio grande e no match, contando os jogos simulados. */
 export function pontosDoJogador(): number {
   const { desafio } = capituloAtual();
+  if (desafio.match) return partidasDoMatchAtual().reduce((soma, p) => soma + p.pontos, 0);
   if (!desafio.torneio?.ordem) return pontosDoDesafio(progresso().resultados, desafio.adversarios);
   return jogosDoTorneio().reduce((soma, j) => soma + (j.brancas === VOCE ? j.pontos : j.pretas === VOCE ? 1 - j.pontos : 0), 0);
 }
@@ -98,7 +136,7 @@ export function pontosDoJogador(): number {
 /** Partidas do desafio (no torneio grande, todas as rodadas do jogador). */
 export function partidasDoDesafio(): number {
   const { desafio } = capituloAtual();
-  return desafio.torneio?.ordem?.length ?? desafio.adversarios.length;
+  return desafio.match?.partidas ?? desafio.torneio?.ordem?.length ?? desafio.adversarios.length;
 }
 
 /** A força com que o adversário joga neste capítulo (a gravada, se já jogou). */
@@ -106,7 +144,7 @@ export function forcaDoAdversario(id: string): number {
   const atual = progresso();
   const gravada = atual.forcas[id];
   if (gravada !== undefined) return gravada;
-  const adversario = CONTEUDO.adversarios[id];
+  const adversario = adversarioDe(id);
   return capituloAtual().desafio.calibracao ? adversario.forcaHistorica : forcaNoTabuleiro(atual.modo, adversario, atual.forca);
 }
 

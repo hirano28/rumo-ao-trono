@@ -74,7 +74,21 @@ não Koblencs; em 1951 Koblencs é mestre e adversário de Tal, não treinador.
 
 Capítulos 1 e 2 no ar (14/10/2026); capítulos 3 (o torneio dos adultos, com
 partida adiada) e 4 (a final da Letônia de 1953, torneio grande) em
-15/10/2026, com a ficha `docs/pesquisa/fatos_1952_1953.md`.
+15/10/2026, com a ficha `docs/pesquisa/fatos_1952_1953.md`; capítulo 5 (o
+match de mestre de 1954) em 16/10/2026, com a ficha `docs/pesquisa/fatos_1954.md`.
+
+### 4.2.3 Match
+
+Um desafio pode ser um match contra um só adversário (`desafio.match`), como o
+match pelo título de mestre. Cada partida tem id próprio, `adversario@n`, e as
+cores se alternam (a da ficha nas ímpares). Só as partidas decisivas
+(`desafio.adversarios`) são jogadas; as outras são simuladas pela força dos
+dois, com a semente do progresso, e uma folha no salão conta as que passaram.
+O quadro mostra o placar partida a partida. A aprovação conta o match inteiro.
+O desafio pode dar um título (`desafio.conquista`, ex.: mestre do esporte).
+O título vale dali em diante: a tela de resultado mostra o maior título dos
+capítulos vencidos até o atual, e a força calculada não o rebaixa (rejogar um
+capítulo anterior não mostra o título que veio depois).
 
 ### 4.2.2 O arco da história (rascunho de 15/10/2026)
 

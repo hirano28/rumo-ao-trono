@@ -50,6 +50,9 @@ const PERSONAGENS = {
     calca: "#262833", sapato: "#1f1712", gravata: "#5a2a2a" },
   klavins: { idade: "jovem", pele: "rosada", cabelo: { estilo: "curto", cor: "#b8935a" }, roupa: "sueter", corRoupa: "#3f5a4a",
     calca: "#33302c", sapato: "#2b1d12", gola: "#efe4cc", oculos: true },
+  // capítulo 5: o examinador do match de mestre (1954)
+  kalvaitis: { idade: "adulto", pele: "clara", cabelo: { estilo: "curto", cor: "#7a7268" }, roupa: "terno", corRoupa: "#5a4a3a",
+    calca: "#3a3028", sapato: "#1f1712", gravata: "#2f3a4a", bigode: "#6a625a" },
 };
 
 /** Medidas do corpo por idade (a cena ainda escala pela altura da ficha). */

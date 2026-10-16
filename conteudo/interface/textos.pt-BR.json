@@ -103,5 +103,22 @@
   "torneio.simulada_empate": "você empatou com {nome}",
   "torneio.resumo_uma": "A rodada {rodada}",
   "torneio.resumo_varias": "As rodadas {de} a {ate}",
-  "torneio.resumo_duas": "As rodadas {de} e {ate}"
+  "torneio.resumo_duas": "As rodadas {de} e {ate}",
+  "local.placar_match": "Match, partida {partida} de {total}: você {voce} × {ele} {nome}",
+  "local.placar_match_fim": "Match encerrado: você {voce} × {ele} {nome}",
+  "local.ver_resultado_match": "Ver o resultado do match",
+  "dlg.op.proxima_partida": "Vamos à próxima partida.",
+  "match.partida": "Partida",
+  "match.partida_n": "Partida {partida}",
+  "match.total": "Total",
+  "match.simulada_vitoria": "você venceu",
+  "match.simulada_derrota": "{nome} venceu",
+  "match.simulada_empate": "empate",
+  "match.placar_parcial": "No match: você {voce} × {ele} {nome}",
+  "match.resumo_uma": "A partida {partida}",
+  "match.resumo_duas": "As partidas {de} e {ate}",
+  "match.resumo_varias": "As partidas {de} a {ate}",
+  "resultado.placar_match": "Você {voce} × {ele} {nome}",
+  "resultado.titulo": "Você agora é {categoria}",
+  "dlg.op.retomar_adiada": "Vamos abrir o envelope."
 }

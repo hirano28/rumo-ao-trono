@@ -1,7 +1,8 @@
 // O formato do conteúdo de uma época e a conferência dele (DESIGN.md §9).
 // O código do jogo não sabe que é 1950: tudo vem destes dados.
 
-import type { Pontos } from "./forca";
+import type { Categoria, Pontos } from "./forca";
+import { adversarioDaPartida, numeroDaPartida, type DescricaoDeMatch } from "./match";
 import type { RegraDeAdiamento } from "./adiamento";
 import type { ControleDeTempo } from "./relogio";
 import { calendarioDo, conferirRodadas } from "./torneio";
@@ -86,6 +87,13 @@ export interface Desafio {
   adiamento?: RegraDeAdiamento;
   /** Turno único: os jogos entre os outros, rodada a rodada. */
   torneio?: Torneio;
+  /**
+   * Match contra um só adversário: `adversarios` são as partidas jogadas,
+   * "adversario@numero"; as outras são simuladas, e a aprovação conta o match inteiro.
+   */
+  match?: DescricaoDeMatch;
+  /** O que o desafio vencido dá, além da força (ex.: o título de mestre do match). */
+  conquista?: Categoria;
 }
 
 /** Um acontecimento contado entre duas rodadas (no resumo das rodadas simuladas). */
@@ -216,18 +224,28 @@ export function conferirConteudo(
       if (!conteudo.dialogos[personagem.dialogo]) {
         problemas.push(`personagem ${personagem.id} sem diálogo ${personagem.dialogo}`);
       }
-      if (personagem.adversario && !conteudo.adversarios[personagem.adversario]) {
+      if (personagem.adversario && !conteudo.adversarios[adversarioDaPartida(personagem.adversario)]) {
         problemas.push(`personagem ${personagem.id} cita adversário inexistente ${personagem.adversario}`);
       }
     }
     for (const id of capitulo.desafio.adversarios) {
-      if (!conteudo.adversarios[id]) problemas.push(`desafio de ${capitulo.id} cita adversário inexistente ${id}`);
-      if (!capitulo.local.personagens.some((p) => p.adversario === id)) {
+      if (!conteudo.adversarios[adversarioDaPartida(id)]) problemas.push(`desafio de ${capitulo.id} cita adversário inexistente ${id}`);
+      if (!capitulo.local.personagens.some((p) => p.adversario === adversarioDaPartida(id))) {
         problemas.push(`desafio de ${capitulo.id}: ${id} não tem personagem no local (o jogador nunca poderia jogar com ele)`);
       }
     }
     const torneio = capitulo.desafio.torneio;
-    const partidas = torneio?.ordem?.length ?? capitulo.desafio.adversarios.length;
+    const match = capitulo.desafio.match;
+    const partidas = match?.partidas ?? torneio?.ordem?.length ?? capitulo.desafio.adversarios.length;
+    if (match) {
+      if (!conteudo.adversarios[match.adversario]) problemas.push(`match de ${capitulo.id} contra adversário inexistente ${match.adversario}`);
+      const numeros = capitulo.desafio.adversarios.map((id) => (adversarioDaPartida(id) === match.adversario ? numeroDaPartida(id) : undefined));
+      if (numeros.some((n) => n === undefined || !Number.isInteger(n) || n < 1 || n > match.partidas)) {
+        problemas.push(`match de ${capitulo.id}: partida ao vivo fora do match`);
+      }
+      if (numeros.some((n, i) => i > 0 && (n ?? 0) <= (numeros[i - 1] ?? 0))) problemas.push(`match de ${capitulo.id}: partidas fora de ordem`);
+      if (torneio) problemas.push(`desafio de ${capitulo.id} com torneio e match ao mesmo tempo`);
+    }
     if (capitulo.desafio.pontosMinimos > partidas) {
       problemas.push(`desafio de ${capitulo.id} pede mais pontos do que partidas`);
     }

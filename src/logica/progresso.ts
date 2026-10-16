@@ -71,9 +71,9 @@ export function capitulosLiberados(ordem: readonly string[], salvo?: Progresso):
   return liberados;
 }
 
-/** Os vistos sem as marcas de resumo de rodada do capítulo (que se contam de novo num torneio novo). */
+/** Os vistos sem as marcas de resumo de rodada ou de partida do capítulo (que se contam de novo num desafio novo). */
 export function semResumosDeRodada(vistos: readonly string[], capitulo: string): string[] {
-  return vistos.filter((v) => !v.startsWith(`${capitulo}:rodadas:`));
+  return vistos.filter((v) => !v.startsWith(`${capitulo}:rodadas:`) && !v.startsWith(`${capitulo}:partidas:`));
 }
 
 export function novaSemente(): string {

@@ -208,5 +208,12 @@
     "forcaHistorica": 2350,
     "degrau": 200,
     "corDoJogador": "brancas"
+  },
+  "kalvaitis": {
+    "nome": "adv.kalvaitis.nome",
+    "apresentacao": "adv.kalvaitis.apresentacao",
+    "forcaHistorica": 2250,
+    "degrau": -25,
+    "corDoJogador": "brancas"
   }
 }

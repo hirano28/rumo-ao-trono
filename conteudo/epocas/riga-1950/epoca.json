@@ -697,6 +697,164 @@
         "proximo": "cap4.fechamento.proximo",
         "tentar": "cap4.fechamento.tentar"
       }
+    },
+    {
+      "id": "cap5",
+      "ano": 1954,
+      "titulo": "cap5.titulo",
+      "abertura": [
+        "cap5.abertura.p1",
+        "cap5.abertura.p2",
+        "cap5.abertura.p3",
+        "cap5.abertura.p4"
+      ],
+      "quarto": {
+        "saida": "cap5.quarto.saida",
+        "objetos": [
+          {
+            "id": "jornal",
+            "rotulo": "cap4.quarto.jornal.rotulo",
+            "cabecalho": "cap4.quarto.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1954_kiev",
+              "n1954_botvinnik_smyslov"
+            ]
+          },
+          {
+            "id": "revista",
+            "rotulo": "cap4.quarto.revista.rotulo",
+            "cabecalho": "cap4.quarto.revista.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1954_letonia"
+            ]
+          },
+          {
+            "id": "livro",
+            "rotulo": "cap5.quarto.livro.rotulo",
+            "cabecalho": "cap5.quarto.livro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap5.quarto.livro.texto"
+          },
+          {
+            "id": "tabuleiro",
+            "rotulo": "cap4.quarto.tabuleiro.rotulo",
+            "cabecalho": "cap4.quarto.tabuleiro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap5.quarto.tabuleiro.texto"
+          }
+        ]
+      },
+      "local": {
+        "titulo": "cap5.local.titulo",
+        "cenario": "clube",
+        "objetos": [
+          {
+            "id": "quadro",
+            "rotulo": "cap5.local.quadro.rotulo",
+            "cabecalho": "cap5.local.quadro.cabecalho",
+            "tipo": "tabela",
+            "x": 660,
+            "y": 180,
+            "largura": 200,
+            "altura": 200
+          },
+          {
+            "id": "aviso",
+            "rotulo": "cap3.local.aviso.rotulo",
+            "cabecalho": "cap3.local.aviso.cabecalho",
+            "tipo": "texto",
+            "texto": "cap5.local.aviso.texto",
+            "x": 815,
+            "y": 214,
+            "largura": 84,
+            "altura": 100
+          },
+          {
+            "id": "jornal",
+            "rotulo": "cap3.local.jornal.rotulo",
+            "cabecalho": "cap3.local.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1954_nova_york"
+            ],
+            "x": 146,
+            "y": 546,
+            "largura": 80,
+            "altura": 36
+          }
+        ],
+        "personagens": [
+          {
+            "id": "ozols",
+            "dialogo": "ozols_1954",
+            "x": 270,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "kruzkops",
+            "dialogo": "kruzkops_1954",
+            "x": 440,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "tal",
+            "dialogo": "tal_1954",
+            "x": 610,
+            "y": 660,
+            "altura": 0.96
+          },
+          {
+            "id": "kalvaitis",
+            "dialogo": "kalvaitis",
+            "adversario": "kalvaitis",
+            "x": 820,
+            "y": 660,
+            "altura": 1
+          },
+          {
+            "id": "arbitro",
+            "dialogo": "arbitro",
+            "x": 1080,
+            "y": 660,
+            "altura": 1
+          }
+        ]
+      },
+      "desafio": {
+        "adversarios": [
+          "kalvaitis@1",
+          "kalvaitis@4",
+          "kalvaitis@8",
+          "kalvaitis@11",
+          "kalvaitis@14"
+        ],
+        "pontosMinimos": 7.5,
+        "relogio": {
+          "minutos": 15,
+          "incremento": 0,
+          "minutosDaHistoria": 150
+        },
+        "adiamento": {
+          "noLance": 40,
+          "minutosDaHistoria": 60
+        },
+        "match": {
+          "titulo": "cap5.match.titulo",
+          "adversario": "kalvaitis",
+          "partidas": 14
+        },
+        "conquista": "mestre"
+      },
+      "fechamento": {
+        "aprovado": "cap5.fechamento.aprovado",
+        "reprovado": "cap5.fechamento.reprovado",
+        "proximo": "cap5.fechamento.proximo",
+        "tentar": "cap5.fechamento.tentar"
+      }
     }
   ]
 }

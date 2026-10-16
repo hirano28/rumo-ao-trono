@@ -6,7 +6,8 @@
 
 import Phaser from "phaser";
 import { Chess, type Color } from "chess.js";
-import { CONTEUDO, capituloAtual, forcaDoAdversario, guardar, progresso } from "../estado";
+import { adversarioDe, capituloAtual, forcaDoAdversario, guardar, ladoDoJogadorEm, progresso } from "../estado";
+import { numeroDaPartida } from "../logica/match";
 import { contaConectada, registrar } from "../servidor/sincronia";
 import { t } from "../i18n/textos";
 import type { Pontos } from "../logica/forca";
@@ -53,8 +54,8 @@ export class Partida extends Phaser.Scene {
 
   init(dados: { adversario: string; retomar?: boolean }): void {
     this.idAdversario = dados.adversario;
-    this.adversario = CONTEUDO.adversarios[dados.adversario];
-    this.ladoDoJogador = this.adversario.corDoJogador === "brancas" ? "w" : "b";
+    this.adversario = adversarioDe(dados.adversario);
+    this.ladoDoJogador = ladoDoJogadorEm(dados.adversario);
     this.forcaDoAdversario = forcaDoAdversario(dados.adversario);
     this.terminada = false;
     this.selando = false;
@@ -405,6 +406,8 @@ export class Partida extends Phaser.Scene {
     const resultado = pontos === 0.5 ? "1/2-1/2" : brancasGanharam ? "1-0" : "0-1";
     this.partida.setHeader("Event", t(capituloAtual().titulo));
     this.partida.setHeader("Site", "Rumo ao Trono");
+    const numero = numeroDaPartida(this.idAdversario);
+    if (numero !== undefined) this.partida.setHeader("Round", String(numero));
     this.partida.setHeader("Date", new Date().toISOString().slice(0, 10).replace(/-/g, "."));
     this.partida.setHeader("White", this.ladoDoJogador === "w" ? voce : ele);
     this.partida.setHeader("Black", this.ladoDoJogador === "w" ? ele : voce);

@@ -5,7 +5,7 @@
 
 import Phaser from "phaser";
 import type { Chess } from "chess.js";
-import { CONTEUDO, capituloAtual, progresso } from "../estado";
+import { adversarioDe, capituloAtual, ladoDoJogadorEm, progresso } from "../estado";
 import { t } from "../i18n/textos";
 import { posicaoDaAdiada, posicaoParaAnalisar, rotuloDoLance } from "../logica/adiamento";
 import { chaveDaArte } from "../ui/arte";
@@ -39,8 +39,8 @@ export class Adiamento extends Phaser.Scene {
     this.add.rectangle(LARGURA / 2, ALTURA / 2, LARGURA, ALTURA, 0x05070d, 0.72);
     this.add.circle(1010, 420, 260, COR.luz, 0.07);
 
-    const adversario = CONTEUDO.adversarios[adiada.adversario];
-    const ladoDoJogador = adversario.corDoJogador === "brancas" ? "w" : "b";
+    const adversario = adversarioDe(adiada.adversario);
+    const ladoDoJogador = ladoDoJogadorEm(adiada.adversario);
     this.analise = posicaoParaAnalisar(adiada, ladoDoJogador);
     this.lancesDoEnvelope = this.analise.history().length;
     const origemY = (ALTURA - CASA * 8) / 2;

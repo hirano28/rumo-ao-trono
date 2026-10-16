@@ -126,5 +126,37 @@
     "texto": "not.n1953_luto.texto",
     "fonte": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Joseph_Stalin (docs/pesquisa/fatos_1952_1953.md: Q-04)",
     "confianca": "alta"
+  },
+  {
+    "id": "n1954_kiev",
+    "data": "1954-02",
+    "titulo": "not.n1954_kiev.titulo",
+    "texto": "not.n1954_kiev.texto",
+    "fonte": "https://en.wikipedia.org/wiki/1954_USSR_Chess_Championship (docs/pesquisa/fatos_1954.md: W-01)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1954_letonia",
+    "data": "1954-03",
+    "titulo": "not.n1954_letonia.titulo",
+    "texto": "not.n1954_letonia.texto",
+    "fonte": "https://en.wikipedia.org/wiki/J%C4%81nis_Klov%C4%81ns ; https://chessgames.com/perl/chesscollection?user=Bokke (docs/pesquisa/fatos_1954.md: L-01, L-02)",
+    "confianca": "media"
+  },
+  {
+    "id": "n1954_botvinnik_smyslov",
+    "data": "1954-05",
+    "titulo": "not.n1954_botvinnik_smyslov.titulo",
+    "texto": "not.n1954_botvinnik_smyslov.texto",
+    "fonte": "https://en.wikipedia.org/wiki/World_Chess_Championship_1954 (docs/pesquisa/fatos_1954.md: W-02)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1954_nova_york",
+    "data": "1954-06",
+    "titulo": "not.n1954_nova_york.titulo",
+    "texto": "not.n1954_nova_york.texto",
+    "fonte": "(docs/pesquisa/fatos_1954.md: W-03)",
+    "confianca": "alta"
   }
 ]

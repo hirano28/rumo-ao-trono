@@ -100,6 +100,7 @@ PERSONAGENS = {
     "zilber": "19 year old young man, dark combed hair, dark grey jacket, white shirt collar, confident",
     "koblencs": "Latvian chess master about 36, dark combed hair, dark navy suit, dark red tie, calm gaze",
     "klavins": "21 year old Latvian physics student, light brown short hair, round glasses, green wool sweater",
+    "kalvaitis": "Lithuanian chess master in his forties, short greying hair, grey mustache, brown suit, dark tie, reserved",
 }
 
 TIPOS = {"F16": torch.float16, "F32": torch.float32, "BF16": torch.bfloat16, "I64": torch.int64}

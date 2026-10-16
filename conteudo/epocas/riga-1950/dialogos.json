@@ -1247,5 +1247,194 @@
         ]
       }
     }
+  },
+  "ozols_1954": {
+    "quem": "dlg.ozols_clube.quem",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.ozols_1954.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.ozols_1954.op_match",
+            "vai": "match"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "match": {
+        "fala": "dlg.ozols_1954.match",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "kruzkops_1954": {
+    "quem": "dlg.kruzkops_1953.quem",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.kruzkops_1954.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.kruzkops_1954.op_regra",
+            "vai": "regra"
+          },
+          {
+            "texto": "dlg.kruzkops_1954.op_comissao",
+            "vai": "comissao"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "regra": {
+        "fala": "dlg.kruzkops_1954.regra",
+        "opcoes": [
+          {
+            "texto": "dlg.kruzkops_1954.op_comissao",
+            "vai": "comissao"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "comissao": {
+        "fala": "dlg.kruzkops_1954.comissao",
+        "opcoes": [
+          {
+            "texto": "dlg.kruzkops_1954.op_regra",
+            "vai": "regra"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "tal_1954": {
+    "quem": "dlg.tal.quem",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.tal_1954.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.tal_1954.op_saigin",
+            "vai": "saigin"
+          },
+          {
+            "texto": "dlg.tal_1954.op_gambito",
+            "vai": "gambito"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "saigin": {
+        "fala": "dlg.tal_1954.saigin",
+        "opcoes": [
+          {
+            "texto": "dlg.tal_1954.op_gambito",
+            "vai": "gambito"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      },
+      "gambito": {
+        "fala": "dlg.tal_1954.gambito",
+        "opcoes": [
+          {
+            "texto": "dlg.tal_1954.op_saigin",
+            "vai": "saigin"
+          },
+          {
+            "texto": "dlg.op.ate_logo",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
+  },
+  "kalvaitis": {
+    "quem": "adv.kalvaitis.nome",
+    "inicio": "inicio",
+    "nos": {
+      "inicio": {
+        "fala": "dlg.kalvaitis.inicio",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar_partida_match",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.kalvaitis.op_vilnius",
+            "vai": "vilnius"
+          },
+          {
+            "texto": "dlg.op.ainda_nao",
+            "acao": "sair"
+          }
+        ]
+      },
+      "vilnius": {
+        "fala": "dlg.kalvaitis.vilnius",
+        "opcoes": [
+          {
+            "texto": "dlg.op.jogar_partida_match",
+            "acao": "jogar"
+          },
+          {
+            "texto": "dlg.op.ainda_nao",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_vitoria": {
+        "fala": "dlg.kalvaitis.depois_vitoria",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_amanha",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_derrota": {
+        "fala": "dlg.kalvaitis.depois_derrota",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_amanha",
+            "acao": "sair"
+          }
+        ]
+      },
+      "depois_empate": {
+        "fala": "dlg.kalvaitis.depois_empate",
+        "opcoes": [
+          {
+            "texto": "dlg.op.ate_amanha",
+            "acao": "sair"
+          }
+        ]
+      }
+    }
   }
 }

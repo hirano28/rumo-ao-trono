@@ -60,6 +60,17 @@ export function performance(resultados: readonly ResultadoPartida[], forcaAnteri
   return Math.round(comPiso);
 }
 
+/** A maior de duas categorias (um título conquistado nunca é rebaixado pela força). */
+export function maiorCategoria(a: Categoria, b?: Categoria): Categoria {
+  if (!b) return a;
+  return CATEGORIAS.indexOf(b) > CATEGORIAS.indexOf(a) ? b : a;
+}
+
+/** Categoria que já é título (candidato a mestre para cima): "você agora é mestre do esporte". */
+export function ehTitulo(categoria: Categoria): boolean {
+  return CATEGORIAS.indexOf(categoria) >= CATEGORIAS.indexOf("candidato_a_mestre");
+}
+
 export function categoriaDa(forca: number): Categoria {
   for (const [limite, categoria] of LIMITES) {
     if (forca >= limite) return categoria;

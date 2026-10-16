@@ -4,9 +4,12 @@
 import Phaser from "phaser";
 import {
   capituloAtual,
+  conquistaAte,
   definirProgresso,
   forcasDoDesafio,
+  adversarioDe,
   jogosDoTorneio,
+  partidasDoMatchAtual,
   partidasDoDesafio,
   pontosDoJogador,
   progresso,
@@ -14,14 +17,15 @@ import {
   torneioAtual,
 } from "../estado";
 import { t } from "../i18n/textos";
-import { categoriaDa, performance, type ResultadoPartida } from "../logica/forca";
+import { categoriaDa, ehTitulo, maiorCategoria, performance, type ResultadoPartida } from "../logica/forca";
+import { placarDoMatch } from "../logica/match";
 import { novaSemente, semResumosDeRodada } from "../logica/progresso";
 import { registrar } from "../servidor/sincronia";
 import { VOCE, classificacao } from "../logica/torneio";
 import { botao } from "../ui/componentes";
 import { ALTURA, COR, FONTE, LARGURA, css } from "../ui/estilo";
 import { trocarDeCena } from "../ui/transicao";
-import { formatarPontos, tabelaEmTexto } from "./Local";
+import { formatarPontos, placarDoMatchEmTexto, tabelaEmTexto } from "./Local";
 
 export class Resultado extends Phaser.Scene {
   constructor() {
@@ -45,11 +49,15 @@ export class Resultado extends Phaser.Scene {
     const forca = jaConcluido && atual.forca !== undefined ? atual.forca : performance(partidas, atual.forca);
     // a tabela final não pode mudar quando a força do jogador mudar: as forças do torneio ficam gravadas
     for (const [id, valor] of Object.entries(forcas)) atual.forcas[id] ??= valor;
-    const categoria = categoriaDa(forca);
+    // o desafio vencido pode dar um título (o match de mestre), acima do que a força diz
+    // o título vencido até aqui (o do match de mestre, por exemplo) não é rebaixado pela força
+    const categoria = maiorCategoria(categoriaDa(forca), conquistaAte(aprovado));
+    const match = capitulo.desafio.match;
 
-    // no torneio, o texto fica à esquerda e a tabela final à direita
-    const centro = torneio ? 400 : LARGURA / 2;
-    const larguraDoTexto = torneio ? 640 : 860;
+    // no torneio e no match, o texto fica à esquerda e a tabela final à direita
+    const lateral = torneio !== undefined || match !== undefined;
+    const centro = lateral ? 400 : LARGURA / 2;
+    const larguraDoTexto = lateral ? 640 : 860;
 
     this.add.text(centro, 90, t(capitulo.titulo), { fontFamily: FONTE.maquina, fontSize: "22px", color: css(COR.dourado) }).setOrigin(0.5);
     this.add
@@ -92,6 +100,26 @@ export class Resultado extends Phaser.Scene {
         .setOrigin(0, 0);
     }
 
+    if (match) {
+      const partidas = partidasDoMatchAtual(match.partidas);
+      const { voce, ele } = placarDoMatch(partidas);
+      const nome = t(adversarioDe(match.adversario).nome);
+      this.add
+        .text(centro, y, t("resultado.placar_match", { voce: formatarPontos(voce), ele: formatarPontos(ele), nome }), {
+          fontFamily: FONTE.corpo,
+          fontSize: "22px",
+          fontStyle: "italic",
+          color: css(COR.papelSombra),
+        })
+        .setOrigin(0.5);
+      y += 40;
+      this.add.rectangle(1010, 330, 470, 400, COR.papel, 0.97).setStrokeStyle(2, COR.sepia);
+      this.add.text(1010, 160, t(match.titulo), { fontFamily: FONTE.titulo, fontSize: "22px", fontStyle: "800", color: css(COR.tinta), align: "center", wordWrap: { width: 440 } }).setOrigin(0.5);
+      this.add
+        .text(1010, 190, placarDoMatchEmTexto(match.partidas, partidas), { fontFamily: FONTE.colunas, fontSize: "15px", color: css(COR.tinta), lineSpacing: 1 })
+        .setOrigin(0.5, 0);
+    }
+
     const narrativa = this.add
       .text(centro, y + 20, t(fechamento(capitulo.fechamento, aprovado, campeao)), {
         fontFamily: FONTE.corpo,
@@ -130,7 +158,7 @@ export class Resultado extends Phaser.Scene {
     }
 
     this.add
-      .text(centro, y, t("resultado.categoria", { categoria: t(`categoria.${categoria}`) }), {
+      .text(centro, y, t(ehTitulo(categoria) ? "resultado.titulo" : "resultado.categoria", { categoria: t(`categoria.${categoria}`) }), {
         fontFamily: FONTE.titulo,
         fontSize: "28px",
         fontStyle: "600",

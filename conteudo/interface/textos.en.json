@@ -103,5 +103,22 @@
   "torneio.simulada_empate": "you drew with {nome}",
   "torneio.resumo_uma": "Round {rodada}",
   "torneio.resumo_varias": "Rounds {de} to {ate}",
-  "torneio.resumo_duas": "Rounds {de} and {ate}"
+  "torneio.resumo_duas": "Rounds {de} and {ate}",
+  "local.placar_match": "Match, game {partida} of {total}: you {voce} × {ele} {nome}",
+  "local.placar_match_fim": "Match over: you {voce} × {ele} {nome}",
+  "local.ver_resultado_match": "See the result of the match",
+  "dlg.op.proxima_partida": "On to the next game.",
+  "match.partida": "Game",
+  "match.partida_n": "Game {partida}",
+  "match.total": "Total",
+  "match.simulada_vitoria": "you won",
+  "match.simulada_derrota": "{nome} won",
+  "match.simulada_empate": "draw",
+  "match.placar_parcial": "In the match: you {voce} × {ele} {nome}",
+  "match.resumo_uma": "Game {partida}",
+  "match.resumo_duas": "Games {de} and {ate}",
+  "match.resumo_varias": "Games {de} to {ate}",
+  "resultado.placar_match": "You {voce} × {ele} {nome}",
+  "resultado.titulo": "You are now a {categoria}",
+  "dlg.op.retomar_adiada": "Let's open the envelope."
 }

@@ -72,7 +72,8 @@ servidor guarda cópia e histórico. Teste de conta: `ferramentas/telas/conta.cj
   torneio de adultos e a partida adiada nos dois sentidos (você sela, ele
   sela), com recarga da página no meio da noite; `capitulo4.cjs`, o torneio
   grande (resumo das rodadas simuladas, o luto de março, a tabela de vinte e o
-  resultado). Os percursos marcam "jogar
+  resultado); `capitulo5.cjs`, o match de mestre (cores alternadas, resumo das
+  partidas simuladas, a próxima partida oferecida pelo examinador, o título). Os percursos marcam "jogar
   sem conta" para a pergunta do apelido não cobrir a tela. Fotos vão para `fotos/`
   (fora do git).
 - O adversário humano é o Maia em ONNX (`public/maia/`). Para regerar:
