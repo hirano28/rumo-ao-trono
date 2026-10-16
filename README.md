@@ -10,8 +10,10 @@ real, da praça do bairro ao match pelo título mundial. Primeira época:
 > **capítulo 3** (o primeiro torneio de adultos, 1952: partida adiada, lance
 > secreto no envelope e a noite de análise em casa) e o **capítulo 4** (a
 > final do campeonato da Letônia de 1953: vinte jogadores, dezenove rodadas, as
-> partidas decisivas jogadas e o resto simulado) e o **capítulo 5** (o match
-> de catorze partidas pelo título de mestre, 1954).
+> partidas decisivas jogadas e o resto simulado), o **capítulo 5** (o match
+> de catorze partidas pelo título de mestre, 1954) e o **capítulo 6** (a final
+> do campeonato da URSS, Moscou 1957, contra Keres, Bronstein, Spassky,
+> Petrosian e o próprio Tal).
 > O que o jogo é e por quê: [`docs/DESIGN.md`](docs/DESIGN.md).
 
 **Jogar agora:** https://hirano28.github.io/rumo-ao-trono/ (no computador, ou

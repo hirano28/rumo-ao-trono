@@ -3,7 +3,7 @@
 // Uso: node ferramentas/arte_ia/esbocos_personagens.cjs [id ...]
 const { chromium } = require("C:/edson/projetos/chess-ai-pipeline/frontend/node_modules/playwright");
 const fs = require("fs");
-const TODOS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis", "arbitro", "kalnins", "sokolov", "zenta", "zilber", "koblencs", "klavins", "kalvaitis"];
+const TODOS = ["peteris", "grisha", "ozols", "marta", "kruzkops", "tal", "valdis", "ilze", "boris", "gipslis", "arbitro", "kalnins", "sokolov", "zenta", "zilber", "koblencs", "klavins", "kalvaitis", "keres", "bronstein", "spassky", "petrosian"];
 const IDS = process.argv.slice(2).length ? process.argv.slice(2) : TODOS;
 (async () => {
   fs.mkdirSync("fotos/esbocos/personagens", { recursive: true });

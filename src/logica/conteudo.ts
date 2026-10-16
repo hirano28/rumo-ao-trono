@@ -74,7 +74,7 @@ export interface Personagem {
 }
 
 /** Os cenários que a cena de local sabe desenhar. */
-export type Cenario = "parque" | "palacio" | "clube";
+export type Cenario = "parque" | "palacio" | "clube" | "moscou";
 
 export interface Desafio {
   adversarios: string[];

@@ -4,7 +4,7 @@
 const { chromium } = require("C:/edson/projetos/chess-ai-pipeline/frontend/node_modules/playwright");
 const fs = require("fs");
 const url = process.argv[2] ?? "http://localhost:5180/";
-const CENAS = process.argv.slice(3).length ? process.argv.slice(3) : ["titulo", "quarto", "parque", "palacio", "clube", "mesa-parque", "mesa-palacio"];
+const CENAS = process.argv.slice(3).length ? process.argv.slice(3) : ["titulo", "quarto", "parque", "palacio", "clube", "moscou", "mesa-parque", "mesa-palacio"];
 (async () => {
   fs.mkdirSync("fotos/esbocos", { recursive: true });
   const b = await chromium.launch();

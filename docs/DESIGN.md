@@ -75,7 +75,8 @@ não Koblencs; em 1951 Koblencs é mestre e adversário de Tal, não treinador.
 Capítulos 1 e 2 no ar (14/10/2026); capítulos 3 (o torneio dos adultos, com
 partida adiada) e 4 (a final da Letônia de 1953, torneio grande) em
 15/10/2026, com a ficha `docs/pesquisa/fatos_1952_1953.md`; capítulo 5 (o
-match de mestre de 1954) em 16/10/2026, com a ficha `docs/pesquisa/fatos_1954.md`.
+match de mestre de 1954) e 6 (a final da URSS de 1957) em 16/10/2026, com as
+fichas `docs/pesquisa/fatos_1954.md` e `docs/pesquisa/fatos_1955_1957.md`.
 
 ### 4.2.3 Match
 

@@ -855,6 +855,196 @@
         "proximo": "cap5.fechamento.proximo",
         "tentar": "cap5.fechamento.tentar"
       }
+    },
+    {
+      "id": "cap6",
+      "ano": 1957,
+      "titulo": "cap6.titulo",
+      "abertura": [
+        "cap6.abertura.p1",
+        "cap6.abertura.p2",
+        "cap6.abertura.p3",
+        "cap6.abertura.p4"
+      ],
+      "quarto": {
+        "saida": "cap6.quarto.saida",
+        "objetos": [
+          {
+            "id": "jornal",
+            "rotulo": "cap4.quarto.jornal.rotulo",
+            "cabecalho": "cap4.quarto.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1956_olimpiada",
+              "n1956_fischer"
+            ]
+          },
+          {
+            "id": "revista",
+            "rotulo": "cap4.quarto.revista.rotulo",
+            "cabecalho": "cap4.quarto.revista.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1956_amsterda"
+            ]
+          },
+          {
+            "id": "livro",
+            "rotulo": "cap5.quarto.livro.rotulo",
+            "cabecalho": "cap5.quarto.livro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap6.quarto.livro.texto"
+          },
+          {
+            "id": "tabuleiro",
+            "rotulo": "cap4.quarto.tabuleiro.rotulo",
+            "cabecalho": "cap4.quarto.tabuleiro.cabecalho",
+            "tipo": "texto",
+            "texto": "cap6.quarto.tabuleiro.texto"
+          }
+        ]
+      },
+      "local": {
+        "titulo": "cap6.local.titulo",
+        "cenario": "moscou",
+        "objetos": [
+          {
+            "id": "quadro",
+            "rotulo": "cap6.local.quadro.rotulo",
+            "cabecalho": "cap6.local.quadro.cabecalho",
+            "tipo": "tabela",
+            "x": 212,
+            "y": 375,
+            "largura": 128,
+            "altura": 150
+          },
+          {
+            "id": "mural",
+            "rotulo": "cap6.local.mural.rotulo",
+            "cabecalho": "cap6.local.mural.cabecalho",
+            "tipo": "texto",
+            "texto": "cap6.local.mural.texto",
+            "x": 500,
+            "y": 175,
+            "largura": 116,
+            "altura": 130
+          },
+          {
+            "id": "jornal",
+            "rotulo": "cap3.local.jornal.rotulo",
+            "cabecalho": "cap3.local.jornal.cabecalho",
+            "tipo": "noticias",
+            "noticias": [
+              "n1955_gotemburgo"
+            ],
+            "x": 146,
+            "y": 586,
+            "largura": 80,
+            "altura": 36
+          }
+        ],
+        "personagens": [
+          {
+            "id": "tal",
+            "dialogo": "tal_1957",
+            "adversario": "tal57",
+            "x": 300,
+            "y": 668,
+            "altura": 0.97
+          },
+          {
+            "id": "spassky",
+            "dialogo": "spassky57",
+            "adversario": "spassky57",
+            "x": 455,
+            "y": 668,
+            "altura": 0.97
+          },
+          {
+            "id": "petrosian",
+            "dialogo": "petrosian57",
+            "adversario": "petrosian57",
+            "x": 610,
+            "y": 668,
+            "altura": 0.97
+          },
+          {
+            "id": "keres",
+            "dialogo": "keres57",
+            "adversario": "keres57",
+            "x": 765,
+            "y": 668,
+            "altura": 1.03
+          },
+          {
+            "id": "bronstein",
+            "dialogo": "bronstein57",
+            "adversario": "bronstein57",
+            "x": 920,
+            "y": 668,
+            "altura": 0.98
+          },
+          {
+            "id": "arbitro",
+            "dialogo": "arbitro_1957",
+            "x": 1090,
+            "y": 668,
+            "altura": 1
+          }
+        ]
+      },
+      "desafio": {
+        "adversarios": [
+          "spassky57",
+          "petrosian57",
+          "keres57",
+          "tal57",
+          "bronstein57"
+        ],
+        "pontosMinimos": 10.5,
+        "relogio": {
+          "minutos": 15,
+          "incremento": 0,
+          "minutosDaHistoria": 150
+        },
+        "adiamento": {
+          "noLance": 40,
+          "minutosDaHistoria": 60
+        },
+        "torneio": {
+          "titulo": "cap6.torneio.titulo",
+          "ordem": [
+            "nezhmetdinov",
+            "tarasov",
+            "khasin",
+            "spassky57",
+            "bannik",
+            "klaman",
+            "boleslavsky",
+            "petrosian57",
+            "antoshin",
+            "furman",
+            "keres57",
+            "aronin",
+            "taimanov",
+            "stolyar",
+            "kholmov",
+            "tolush",
+            "mikenas",
+            "tal57",
+            "bronstein57",
+            "aronson",
+            "korchnoi"
+          ]
+        }
+      },
+      "fechamento": {
+        "aprovado": "cap6.fechamento.aprovado",
+        "reprovado": "cap6.fechamento.reprovado",
+        "campeao": "cap6.fechamento.campeao",
+        "proximo": "cap6.fechamento.proximo",
+        "tentar": "cap6.fechamento.tentar"
+      }
     }
   ]
 }

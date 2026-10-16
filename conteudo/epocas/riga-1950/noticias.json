@@ -158,5 +158,37 @@
     "texto": "not.n1954_nova_york.texto",
     "fonte": "(docs/pesquisa/fatos_1954.md: W-03)",
     "confianca": "alta"
+  },
+  {
+    "id": "n1956_amsterda",
+    "data": "1956-04",
+    "titulo": "not.n1956_amsterda.titulo",
+    "texto": "not.n1956_amsterda.texto",
+    "fonte": "https://en.wikipedia.org/wiki/Candidates_Tournament_1956 (docs/pesquisa/fatos_1955_1957.md: I-03)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1956_olimpiada",
+    "data": "1956-09",
+    "titulo": "not.n1956_olimpiada.titulo",
+    "texto": "not.n1956_olimpiada.texto",
+    "fonte": "https://en.wikipedia.org/wiki/12th_Chess_Olympiad (docs/pesquisa/fatos_1955_1957.md: I-04)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1956_fischer",
+    "data": "1956-10",
+    "titulo": "not.n1956_fischer.titulo",
+    "texto": "not.n1956_fischer.texto",
+    "fonte": "https://en.wikipedia.org/wiki/Game_of_the_Century_(chess) (docs/pesquisa/fatos_1955_1957.md: I-05)",
+    "confianca": "alta"
+  },
+  {
+    "id": "n1955_gotemburgo",
+    "data": "1955-09",
+    "titulo": "not.n1955_gotemburgo.titulo",
+    "texto": "not.n1955_gotemburgo.texto",
+    "fonte": "https://www.olimpbase.org/ind-wcc/wc1957-iz.html (docs/pesquisa/fatos_1955_1957.md: I-01)",
+    "confianca": "alta"
   }
 ]

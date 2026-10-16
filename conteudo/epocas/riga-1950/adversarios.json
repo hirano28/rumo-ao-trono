@@ -215,5 +215,152 @@
     "forcaHistorica": 2250,
     "degrau": -25,
     "corDoJogador": "brancas"
+  },
+  "nezhmetdinov": {
+    "nome": "adv.nezhmetdinov.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2410,
+    "degrau": -40,
+    "corDoJogador": "brancas"
+  },
+  "tarasov": {
+    "nome": "adv.tarasov.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2330,
+    "degrau": -120,
+    "corDoJogador": "pretas"
+  },
+  "khasin": {
+    "nome": "adv.khasin.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2330,
+    "degrau": -120,
+    "corDoJogador": "brancas"
+  },
+  "spassky57": {
+    "nome": "adv.spassky57.nome",
+    "apresentacao": "adv.spassky57.apresentacao",
+    "forcaHistorica": 2550,
+    "degrau": 100,
+    "corDoJogador": "pretas"
+  },
+  "bannik": {
+    "nome": "adv.bannik.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2410,
+    "degrau": -40,
+    "corDoJogador": "brancas"
+  },
+  "klaman": {
+    "nome": "adv.klaman.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2410,
+    "degrau": -40,
+    "corDoJogador": "pretas"
+  },
+  "boleslavsky": {
+    "nome": "adv.boleslavsky.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2490,
+    "degrau": 40,
+    "corDoJogador": "brancas"
+  },
+  "petrosian57": {
+    "nome": "adv.petrosian57.nome",
+    "apresentacao": "adv.petrosian57.apresentacao",
+    "forcaHistorica": 2510,
+    "degrau": 60,
+    "corDoJogador": "pretas"
+  },
+  "antoshin": {
+    "nome": "adv.antoshin.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2390,
+    "degrau": -60,
+    "corDoJogador": "brancas"
+  },
+  "furman": {
+    "nome": "adv.furman.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2430,
+    "degrau": -20,
+    "corDoJogador": "pretas"
+  },
+  "keres57": {
+    "nome": "adv.keres57.nome",
+    "apresentacao": "adv.keres57.apresentacao",
+    "forcaHistorica": 2570,
+    "degrau": 120,
+    "corDoJogador": "brancas"
+  },
+  "aronin": {
+    "nome": "adv.aronin.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2470,
+    "degrau": 20,
+    "corDoJogador": "pretas"
+  },
+  "taimanov": {
+    "nome": "adv.taimanov.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2470,
+    "degrau": 20,
+    "corDoJogador": "brancas"
+  },
+  "stolyar": {
+    "nome": "adv.stolyar.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2370,
+    "degrau": -80,
+    "corDoJogador": "pretas"
+  },
+  "kholmov": {
+    "nome": "adv.kholmov.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2530,
+    "degrau": 80,
+    "corDoJogador": "pretas"
+  },
+  "tolush": {
+    "nome": "adv.tolush.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2550,
+    "degrau": 100,
+    "corDoJogador": "brancas"
+  },
+  "mikenas": {
+    "nome": "adv.mikenas.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2350,
+    "degrau": -100,
+    "corDoJogador": "pretas"
+  },
+  "tal57": {
+    "nome": "adv.tal57.nome",
+    "apresentacao": "adv.tal57.apresentacao",
+    "forcaHistorica": 2590,
+    "degrau": 140,
+    "corDoJogador": "brancas"
+  },
+  "bronstein57": {
+    "nome": "adv.bronstein57.nome",
+    "apresentacao": "adv.bronstein57.apresentacao",
+    "forcaHistorica": 2570,
+    "degrau": 120,
+    "corDoJogador": "pretas"
+  },
+  "aronson": {
+    "nome": "adv.aronson.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2330,
+    "degrau": -120,
+    "corDoJogador": "brancas"
+  },
+  "korchnoi": {
+    "nome": "adv.korchnoi.nome",
+    "apresentacao": "adv.finalista_urss.apresentacao",
+    "forcaHistorica": 2510,
+    "degrau": 60,
+    "corDoJogador": "pretas"
   }
 }

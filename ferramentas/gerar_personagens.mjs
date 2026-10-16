@@ -53,6 +53,15 @@ const PERSONAGENS = {
   // capítulo 5: o examinador do match de mestre (1954)
   kalvaitis: { idade: "adulto", pele: "clara", cabelo: { estilo: "curto", cor: "#7a7268" }, roupa: "terno", corRoupa: "#5a4a3a",
     calca: "#3a3028", sapato: "#1f1712", gravata: "#2f3a4a", bigode: "#6a625a" },
+  // capítulo 6: a final do campeonato da URSS (1957); estilizados, sem pretensão de retrato
+  keres: { idade: "adulto", pele: "clara", cabelo: { estilo: "penteado", cor: "#4a3a2e" }, roupa: "terno", corRoupa: "#46505c",
+    calca: "#353c46", sapato: "#1f1712", gravata: "#6a2a2a" },
+  bronstein: { idade: "adulto", pele: "clara", cabelo: { estilo: "calvo", cor: "#3a2a20" }, roupa: "terno", corRoupa: "#2f2f36",
+    calca: "#26262c", sapato: "#1f1712", gravata: "#3a4a5a" },
+  spassky: { idade: "jovem", pele: "rosada", cabelo: { estilo: "penteado", cor: "#a8875a" }, roupa: "terno", corRoupa: "#3d4a5c",
+    calca: "#2f3a4a", sapato: "#1f1712", gravata: "#7a3a2a" },
+  petrosian: { idade: "adulto", pele: "media", cabelo: { estilo: "penteado", cor: "#1e1612" }, roupa: "terno", corRoupa: "#3a3632",
+    calca: "#2e2a26", sapato: "#1f1712", gravata: "#2a3a2a" },
 };
 
 /** Medidas do corpo por idade (a cena ainda escala pela altura da ficha). */

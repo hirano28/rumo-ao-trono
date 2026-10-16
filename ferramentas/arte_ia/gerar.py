@@ -75,6 +75,10 @@ CENAS = {
         "smoky chess tournament hall at dusk, men at wooden tables with chessboards and clocks, hanging metal lamps, "
         "green painted wall panels, tall windows with red curtains, large tournament crosstable on wall, arbiter desk"
     ),
+    "moscou": (
+        "grand theatre stage set for a chess championship, four large wall demonstration boards, red velvet curtains, "
+        "chandeliers, stage spotlights, players at tables with clocks, tournament crosstable, empty front corridor"
+    ),
     "titulo": "Riga old town skyline at night across the Daugava river, church spires, lit windows, moon, reflections",
     "mesa-parque": "top-down view of a weathered granite table with fallen autumn leaves",
     "mesa-palacio": "top-down view of an old polished wooden table, chess scoresheet and pencil, lamplight",
@@ -101,6 +105,10 @@ PERSONAGENS = {
     "koblencs": "Latvian chess master about 36, dark combed hair, dark navy suit, dark red tie, calm gaze",
     "klavins": "21 year old Latvian physics student, light brown short hair, round glasses, green wool sweater",
     "kalvaitis": "Lithuanian chess master in his forties, short greying hair, grey mustache, brown suit, dark tie, reserved",
+    "keres": "tall Estonian chess grandmaster about 40, dark combed hair, high forehead, grey-blue suit, red tie, calm",
+    "bronstein": "Soviet chess grandmaster about 33, balding with dark hair on the sides, dark suit, blue tie, lively eyes",
+    "spassky": "20 year old Russian chess player, light brown combed hair, boyish face, navy suit, red tie, relaxed",
+    "petrosian": "Armenian chess grandmaster about 27, black combed hair, dark suit, dark green tie, watchful",
 }
 
 TIPOS = {"F16": torch.float16, "F32": torch.float32, "BF16": torch.bfloat16, "I64": torch.int64}

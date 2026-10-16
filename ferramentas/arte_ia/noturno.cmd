@@ -11,8 +11,8 @@ if not exist fotos\ia mkdir fotos\ia
 echo ===== inicio %date% %time% >> fotos\ia\noturno.log 2>&1
 rem cenas: força 0,6 (0,55 nas que têm muito ponto clicável), três sementes cada
 %PY% ferramentas\arte_ia\pintar_sd15.py --cenas titulo parque palacio mesa-parque mesa-palacio --forca 0.6 --sementes 5 6 7 --evitar "television, tv screen, bed, naive art, people, person, umbrella, religious painting, landscape painting" >> fotos\ia\noturno.log 2>&1
-%PY% ferramentas\arte_ia\pintar_sd15.py --cenas quarto clube --forca 0.55 --sementes 5 6 7 --evitar "television, tv screen, bed, naive art, people, person, umbrella, religious painting, landscape painting" >> fotos\ia\noturno.log 2>&1
+%PY% ferramentas\arte_ia\pintar_sd15.py --cenas quarto clube moscou --forca 0.55 --sementes 5 6 7 --evitar "television, tv screen, bed, naive art, people, person, umbrella, religious painting, landscape painting" >> fotos\ia\noturno.log 2>&1
 echo ===== cenarios terminados %date% %time% >> fotos\ia\noturno.log 2>&1
 %PY% ferramentas\arte_ia\pintar_sd15.py --personagens peteris grisha ozols marta kruzkops tal valdis ilze boris gipslis --forca 0.65 --sementes 1 2 3 >> fotos\ia\noturno.log 2>&1
-%PY% ferramentas\arte_ia\pintar_sd15.py --personagens arbitro kalnins sokolov zenta zilber koblencs klavins kalvaitis --forca 0.65 --sementes 1 2 3 >> fotos\ia\noturno.log 2>&1
+%PY% ferramentas\arte_ia\pintar_sd15.py --personagens arbitro kalnins sokolov zenta zilber koblencs klavins kalvaitis keres bronstein spassky petrosian --forca 0.65 --sementes 1 2 3 >> fotos\ia\noturno.log 2>&1
 echo ===== fim %date% %time% >> fotos\ia\noturno.log 2>&1

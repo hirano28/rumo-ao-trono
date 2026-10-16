@@ -37,6 +37,7 @@ turma do Palácio (Valdis, Ilze, Boris) e do torneio de adultos (Arvīds
 Kalniņš, major Sokolov, Zenta Liepiņa, o árbitro) e o examinador do match de
 1954 (Juozas Kalvaitis) são fictícios. Mikhail Tal,
 Jānis Krūzkops, Aivars Gipslis, Israel Zilber, Aleksandrs Koblencs, Jānis
-Kļaviņš e os outros finalistas do campeonato da Letônia de 1953 existiram; as cenas e falas deles são ficção,
+Kļaviņš e os outros finalistas do campeonato da Letônia de 1953 e da final
+da URSS de 1957 (Keres, Bronstein, Spassky, Petrosian e os demais) existiram; as cenas e falas deles são ficção,
 escrita a partir do que eles próprios contaram ou do que as fontes da ficha
 registram (por exemplo, Tal chegando ao Palácio atrás do grupo de teatro).

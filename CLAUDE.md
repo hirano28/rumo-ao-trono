@@ -52,7 +52,8 @@ por personagem (512×768). Força 0,6 nas cenas (0,5 fica chapado como o SVG;
 0,65 inventa e some com os objetos clicáveis); a descrição da cena tem de citar
 cada objeto clicável, senão ele vira outra coisa (o quadro do Palácio virou
 pintura de santos). Pessoas ficam proibidas nas cenas. O `gerar.py` (SDXL)
-continua como referência. O dono prefere rodar de madrugada
+continua como referência, mas os pesos do SDXL saíram do disco em 16/10/2026
+(7,3 GB); rodá-lo baixaria tudo de novo. O dono prefere rodar de madrugada
 (`ferramentas/arte_ia/noturno.cmd`, tarefa "Rumo ao Trono - arte noturna").
 
 ## Servidor
@@ -83,7 +84,8 @@ servidor guarda cópia e histórico. Teste de conta: `ferramentas/telas/conta.cj
   sela), com recarga da página no meio da noite; `capitulo4.cjs`, o torneio
   grande (resumo das rodadas simuladas, o luto de março, a tabela de vinte e o
   resultado); `capitulo5.cjs`, o match de mestre (cores alternadas, resumo das
-  partidas simuladas, a próxima partida oferecida pelo examinador, o título). Os percursos marcam "jogar
+  partidas simuladas, a próxima partida oferecida pelo examinador, o título);
+  `capitulo6.cjs`, a final da URSS (palco de Moscou, tabela de 22). Os percursos marcam "jogar
   sem conta" para a pergunta do apelido não cobrir a tela. Fotos vão para `fotos/`
   (fora do git).
 - O adversário humano é o Maia em ONNX (`public/maia/`). Para regerar:
