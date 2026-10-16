@@ -68,8 +68,8 @@ CENAS = {
         "gravel path, round stone chess tables, bench, gas lamp, green newspaper kiosk"
     ),
     "palacio": (
-        "chess club hall in an old castle, white walls, deep arched windows with light rays, parquet floor, "
-        "red runner carpet, long table with chessboards and chess clocks, demonstration board on an easel"
+        "chess club hall in an old castle, deep arched windows, tournament crosstable chart on the wall, "
+        "glass trophy cabinet, long table with chessboards, demonstration board on an easel, red carpet"
     ),
     "clube": (
         "smoky chess tournament hall at dusk, men at wooden tables with chessboards and clocks, hanging metal lamps, "

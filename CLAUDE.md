@@ -29,7 +29,7 @@ falta). Na cena, `y` do personagem é o chão (os pés). Os pontos clicáveis do
 cenários (objetos do quarto, quadro e vitrine do Palácio) têm de bater com o
 desenho: mudou a arte, confira as posições e fotografe.
 
-## Arte pintada (Stable Diffusion XL, no PC do dono)
+## Arte pintada (Stable Diffusion, no PC do dono)
 
 Desde 15/10/2026 os cenários passam a ser pintados pelo SDXL a partir dos SVGs
 (img2img: o SVG segura a composição e os pontos clicáveis). Ambiente fora do
@@ -41,9 +41,19 @@ pôr o nome em `PINTADOS` (`src/ui/arte.ts`) e acertar os pontos clicáveis.
 Armadilhas da GTX 1660 Super (6 GB) com 16 GB de RAM, todas já contornadas no
 `gerar.py`: NaN em fp16 (pesos em fp16, conta em fp32 por camada), o
 `safetensors` novo quebra lendo por mapeamento de memória (leitor próprio),
-U-Net direto para a GPU, textos num processo separado. Cada imagem leva ~6 min
-com o PC livre; com pouca memória livre fica muitas vezes mais lento — o dono
-prefere rodar de madrugada (`ferramentas/arte_ia/noturno.cmd`).
+U-Net direto para a GPU, textos num processo separado.
+
+**Desde 16/10/2026 o lote usa o DreamShaper 8 (SD 1.5),
+`ferramentas/arte_ia/pintar_sd15.py`:** o SDXL não cabe na placa (5 GB de
+pesos, convertidos camada a camada para fp32) e transbordava para a memória do
+sistema, a 4 min por passo e ~1 h por imagem. O SD 1.5 inteiro em fp32 cabe
+(pico de 5,1 GB): ~1,5 min por cena (1024×576, ampliada para 1280×720) e ~1 min
+por personagem (512×768). Força 0,6 nas cenas (0,5 fica chapado como o SVG;
+0,65 inventa e some com os objetos clicáveis); a descrição da cena tem de citar
+cada objeto clicável, senão ele vira outra coisa (o quadro do Palácio virou
+pintura de santos). Pessoas ficam proibidas nas cenas. O `gerar.py` (SDXL)
+continua como referência. O dono prefere rodar de madrugada
+(`ferramentas/arte_ia/noturno.cmd`, tarefa "Rumo ao Trono - arte noturna").
 
 ## Servidor
 
